@@ -1,0 +1,8 @@
+An autocompletion/refactoring daemon for the Go programming langauge
+====================================================================
+
+Features
+--------
+
+ - Test
+ - Test2
