@@ -1,0 +1,58 @@
+<html>
+<head>
+	<title>Wtf is encoding/hex?</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" href="shared/gowtf.css" />
+	<script type="text/javascript" src="shared/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="gowtf-encoding_hex-data.js"></script>
+	<script type="text/javascript" src="shared/gowtf-fuzzy.js"></script>
+	<script type="text/javascript" src="shared/gowtf.js"></script>
+</head>
+<body>
+
+<div id="header">
+	<h1><span class="shadow">WTF is </span><a class="black" href="?">encoding/hex</a><span class="shadow">?</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<a id="filterurl" href="?">URL&nbsp;&nbsp;<img src="images/magnifier.png" /></a> <input id="filter" class="inactive" /> <a href="??"><img id="helpicon" src="images/question-frame.png" /></a></h1>
+</div>
+
+<div id="contents">
+</div>
+
+<div id="helptext" style="display:none;">
+<h2>Help</h2>
+<p>Query syntax:</p>
+<pre>
+[CLASS:]ARG1[.ARG2][!]
+</pre>
+
+<p>Where CLASS is a sequence of:</p>
+
+<ul>
+	<li>c - const</li>
+	<li>v - var</li>
+	<li>m - method</li>
+	<li>t - type</li>
+	<li>f - func</li>
+</ul>
+
+<p>Default CLASS is:</p>
+<ul>
+	<li>tcfv - type/const/func/var</li>
+</ul>
+
+<p>Exclamation mark ('!') means "show the best match only".</p>
+
+<p>If '.' is in the query, 'm' class is added after 't' and '!' is forced for ARG1.</p>
+
+<p>ARG1 is used as a pattern to search for an entity of a certain class, which
+matches that pattern.</p>
+
+<p>ARG2 is used as a pattern to filter 'm' (method) search results.</p>
+</div>
+
+<div id="footer">
+	<div>Powered by: 
+		<a href="http://jquery.com">jQuery</a> and <a href="http://p.yusukekamiyamane.com">Fugue icons</a></div>
+</div>
+</body>
+</html>
