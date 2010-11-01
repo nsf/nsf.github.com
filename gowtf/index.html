@@ -1,127 +1,30 @@
 <html>
-<head><title>Go Standard library</title></head>
+<head>
+	<title>Go Library Index</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" href="shared/gowtf.css" />
+	<script type="text/javascript" src="gowtf-index.js"></script>
+	<script type="text/javascript" src="shared/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="shared/gowtf-fuzzy.js"></script>
+	<script type="text/javascript" src="shared/gowtf-index.js"></script>
+</head>
 <body>
-<table style="width:100%"><tr><td style="width:25%;">
-<a href="archive_tar.html">archive/tar</a><br />
-<a href="archive_zip.html">archive/zip</a><br />
-<a href="asn1.html">asn1</a><br />
-<a href="big.html">big</a><br />
-<a href="bufio.html">bufio</a><br />
-<a href="bytes.html">bytes</a><br />
-<a href="cmath.html">cmath</a><br />
-<a href="compress_flate.html">compress/flate</a><br />
-<a href="compress_gzip.html">compress/gzip</a><br />
-<a href="compress_zlib.html">compress/zlib</a><br />
-<a href="container_heap.html">container/heap</a><br />
-<a href="container_list.html">container/list</a><br />
-<a href="container_ring.html">container/ring</a><br />
-<a href="container_vector.html">container/vector</a><br />
-<a href="crypto_aes.html">crypto/aes</a><br />
-<a href="crypto_block.html">crypto/block</a><br />
-<a href="crypto_blowfish.html">crypto/blowfish</a><br />
-<a href="crypto_hmac.html">crypto/hmac</a><br />
-<a href="crypto_md4.html">crypto/md4</a><br />
-<a href="crypto_md5.html">crypto/md5</a><br />
-<a href="crypto_ocsp.html">crypto/ocsp</a><br />
-<a href="crypto_rand.html">crypto/rand</a><br />
-<a href="crypto_rc4.html">crypto/rc4</a><br />
-<a href="crypto_ripemd160.html">crypto/ripemd160</a><br />
-<a href="crypto_rsa.html">crypto/rsa</a><br />
-<a href="crypto_sha1.html">crypto/sha1</a><br />
-<a href="crypto_sha256.html">crypto/sha256</a><br />
-<a href="crypto_sha512.html">crypto/sha512</a><br />
-<a href="crypto_subtle.html">crypto/subtle</a><br />
-<a href="crypto_tls.html">crypto/tls</a><br />
-</td style="width:25%;"><td>
-<a href="crypto_x509.html">crypto/x509</a><br />
-<a href="crypto_xtea.html">crypto/xtea</a><br />
-<a href="debug_dwarf.html">debug/dwarf</a><br />
-<a href="debug_elf.html">debug/elf</a><br />
-<a href="debug_gosym.html">debug/gosym</a><br />
-<a href="debug_macho.html">debug/macho</a><br />
-<a href="debug_proc.html">debug/proc</a><br />
-<a href="ebnf.html">ebnf</a><br />
-<a href="encoding_ascii85.html">encoding/ascii85</a><br />
-<a href="encoding_base64.html">encoding/base64</a><br />
-<a href="encoding_binary.html">encoding/binary</a><br />
-<a href="encoding_git85.html">encoding/git85</a><br />
-<a href="encoding_hex.html">encoding/hex</a><br />
-<a href="encoding_pem.html">encoding/pem</a><br />
-<a href="exec.html">exec</a><br />
-<a href="exp_datafmt.html">exp/datafmt</a><br />
-<a href="exp_draw.html">exp/draw</a><br />
-<a href="exp_draw_x11.html">exp/draw/x11</a><br />
-<a href="exp_eval.html">exp/eval</a><br />
-<a href="exp_nacl_av.html">exp/nacl/av</a><br />
-<a href="exp_nacl_srpc.html">exp/nacl/srpc</a><br />
-<a href="exp_ogle.html">exp/ogle</a><br />
-<a href="expvar.html">expvar</a><br />
-<a href="flag.html">flag</a><br />
-<a href="fmt.html">fmt</a><br />
-<a href="go_ast.html">go/ast</a><br />
-<a href="go_doc.html">go/doc</a><br />
-<a href="go_parser.html">go/parser</a><br />
-<a href="go_printer.html">go/printer</a><br />
-</td style="width:25%;"><td>
-<a href="go_scanner.html">go/scanner</a><br />
-<a href="go_token.html">go/token</a><br />
-<a href="go_typechecker.html">go/typechecker</a><br />
-<a href="gob.html">gob</a><br />
-<a href="hash.html">hash</a><br />
-<a href="hash_adler32.html">hash/adler32</a><br />
-<a href="hash_crc32.html">hash/crc32</a><br />
-<a href="hash_crc64.html">hash/crc64</a><br />
-<a href="html.html">html</a><br />
-<a href="http.html">http</a><br />
-<a href="http_pprof.html">http/pprof</a><br />
-<a href="image.html">image</a><br />
-<a href="image_jpeg.html">image/jpeg</a><br />
-<a href="image_png.html">image/png</a><br />
-<a href="index_suffixarray.html">index/suffixarray</a><br />
-<a href="io.html">io</a><br />
-<a href="io_ioutil.html">io/ioutil</a><br />
-<a href="json.html">json</a><br />
-<a href="log.html">log</a><br />
-<a href="math.html">math</a><br />
-<a href="mime.html">mime</a><br />
-<a href="mime_multipart.html">mime/multipart</a><br />
-<a href="net.html">net</a><br />
-<a href="net_dict.html">net/dict</a><br />
-<a href="net_textproto.html">net/textproto</a><br />
-<a href="netchan.html">netchan</a><br />
-<a href="os.html">os</a><br />
-<a href="os_signal.html">os/signal</a><br />
-<a href="patch.html">patch</a><br />
-</td style="width:25%;"><td>
-<a href="path.html">path</a><br />
-<a href="rand.html">rand</a><br />
-<a href="reflect.html">reflect</a><br />
-<a href="regexp.html">regexp</a><br />
-<a href="rpc.html">rpc</a><br />
-<a href="rpc_jsonrpc.html">rpc/jsonrpc</a><br />
-<a href="runtime.html">runtime</a><br />
-<a href="runtime_pprof.html">runtime/pprof</a><br />
-<a href="scanner.html">scanner</a><br />
-<a href="smtp.html">smtp</a><br />
-<a href="sort.html">sort</a><br />
-<a href="strconv.html">strconv</a><br />
-<a href="strings.html">strings</a><br />
-<a href="sync.html">sync</a><br />
-<a href="syscall.html">syscall</a><br />
-<a href="syslog.html">syslog</a><br />
-<a href="tabwriter.html">tabwriter</a><br />
-<a href="template.html">template</a><br />
-<a href="testing.html">testing</a><br />
-<a href="testing_iotest.html">testing/iotest</a><br />
-<a href="testing_quick.html">testing/quick</a><br />
-<a href="testing_script.html">testing/script</a><br />
-<a href="time.html">time</a><br />
-<a href="try.html">try</a><br />
-<a href="unicode.html">unicode</a><br />
-<a href="utf16.html">utf16</a><br />
-<a href="utf8.html">utf8</a><br />
-<a href="websocket.html">websocket</a><br />
-<a href="xml.html">xml</a><br />
-</td style="width:25%;"><td>
-</td></tr></table>
-</body></html>
+
+<div id="header">
+	<h1>
+		Index&nbsp;&nbsp;&nbsp;
+		<input id="filter" placeholder="Press TAB" />
+	</h1>
+</div>
+
+<div id="contents">
+</div>
+
+<div id="footer">
+	<div>Powered by: 
+		<a href="http://jquery.com">jQuery</a> and 
+		<a href="http://p.yusukekamiyamane.com">Fugue icons</a>
+	</div>
+</div>
+</body>
+</html>

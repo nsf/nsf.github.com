@@ -1,5 +1,71 @@
+$(document).ready(function() {
+	// TODO(nsf): move this to offline
+	gowtfData.consts.sort(constSort)
+	gowtfData.vars.sort(varSort)
+
+	$(document).keypress(function(e) {
+		// this is required for opera
+		if (e.keyCode === 9)
+			e.preventDefault()
+	})
+	$(document).keydown(function(e) {
+		if (e.keyCode === 9) {
+			e.preventDefault()
+			$("#filter").focus()
+			$("#filter").select()
+		}
+	})
+	
+	var filterstr = ""
+
+	// try extract the filter str from an url
+	if (window.location.href.indexOf('?') != -1)
+		filterstr = window.location.href.slice(window.location.href.indexOf('?') + 1)
+
+	if (filterstr != "") {
+		$("#filter").attr('value', unescape(filterstr))
+		$("#filter").removeClass("inactive")
+	} else
+		$("#filter").attr('value', '')
+
+	// setup UI
+	$("#filter").focusin(function() {
+		var filter = $(this)
+		filter.select()
+		if (filter.hasClass("inactive")) {
+			filter.removeClass("inactive")	
+		}
+	})
+	$("#filter").focusout(function() {
+		var filter = $(this)
+		if (filter.attr("value") == "" && !filter.hasClass("inactive")) {
+			filter.addClass("inactive")
+		}
+	})
+	$("#filter").keyup(function(e) {
+		// update #filterurl and draw
+		var filterstr = $(this).attr("value")
+		if (filterstr == "<" && gowtfData.index != "") {
+			window.location = gowtfData.index
+			return
+		}
+		$("#filterurl").attr('href', hrefixUrl(filterstr))
+		sortAndDrawAll(parseFilterStr(filterstr))
+	})
+	$("#filter").mouseup(function(e) {
+		e.preventDefault()
+	})
+
+	$("#filterurl").attr('href', hrefixUrl(filterstr))
+
+	var r = parseFilterStr(unescape(filterstr))
+	// yay!
+	sortAndDrawAll(r)
+})
+
+//===============================================================================
+
 var lastR = null
-var helpText = null
 var currentQuery = null
 
 function yield(f, data) {
@@ -204,59 +270,13 @@ function fqStage4(fq) {
 function fqCleanup(fq) {
 	if (fq.iter < 5)
 		$("#contents").html(fq.html)
-	$("#contents").append("<h2></h2><em>Found items: " + fq.iter + "</em>")
+	if (fq.iter == 0) {
+		$("#contents").append("<h2></h2><em>Found nothing :-(</em>")
+	}
 	fq.html = ""
 	fq.data = []
 }
 
-$(document).ready(function() {
-	helpText = $("#helptext").html()
-
-	// TODO(nsf): move this to offline
-	gowtfData.consts.sort(constSort)
-	gowtfData.vars.sort(varSort)
-	
-	var filterstr = ""
-
-	// try extract the filter str from an url
-	if (window.location.href.indexOf('?') != -1)
-		filterstr = window.location.href.slice(window.location.href.indexOf('?') + 1)
-
-	// setup UI
-	if (filterstr != "") {
-		$("#filter").attr('value', unescape(filterstr))
-		$("#filter").removeClass("inactive")
-	} else {
-		$("#filter").attr('value', 'type ? for help')
-	}
-
-	$("#filterurl").attr('href', hrefixUrl(filterstr))
-	$("#filter").keyup(function(e) {
-		// update #filterurl and draw
-		var filterstr = $(this).attr("value")
-		$("#filterurl").attr('href', hrefixUrl(filterstr))
-		sortAndDrawAll(parseFilterStr(filterstr))
-	})
-	$("#filter").focusin(function() {
-		var filter = $(this)
-		if (filter.hasClass("inactive")) {
-			filter.attr("value", "")
-			filter.removeClass("inactive")	
-		}
-	})
-
-	$("#filter").focusout(function() {
-		var filter = $(this)
-		if (filter.attr("value") == "" && !filter.hasClass("inactive")) {
-			filter.attr("value", "type ? for help")
-			filter.addClass("inactive")
-		}
-	})
-
-	var r = parseFilterStr(unescape(filterstr))
-	// yay!
-	sortAndDrawAll(r)
-})
 
 String.prototype.startsWith = function(str) {
 	return !this.indexOf(str)
@@ -329,6 +349,10 @@ function drawShortcutsType(r, data) {
 }
 
 function drawMainItemType(r, data) {
+	if (data.methods.length > 0 && !rContains(r, 'm')) {
+		return data.html + '<p><a href="?tm:' + data.name + '!">Show methods</a></p>'
+
+	}
 	return data.html
 }
 
@@ -429,6 +453,7 @@ function parseFilterStr(s) {
 		dot  : false,
 		arg2 : '',
 		bang : false,
+		dflt : false,
 	}
 
 	var colon = s.indexOf(':')
@@ -436,7 +461,8 @@ function parseFilterStr(s) {
 		// we have a class spec, parse it
 		r.cls = s.slice(0, colon)
 		s = s.slice(colon+1)
-	}
+	} else
+		r.dflt = true
 
 	r.cls = validateFilterClass(r.cls)
 
@@ -458,8 +484,13 @@ function parseFilterStr(s) {
 		r.arg2 = s.slice(delimpos+1)
 	}
 
-	if (r.dot && !rContains(r, "m"))
-		r.cls = insertClsAfter(r.cls, "m", "t")
+	// special behaviour for unspecified cls
+	if (r.dot && r.dflt) {
+		if (r.arg2 == "")
+			r.cls = "tm"
+		else
+			r.cls = "m"
+	}
 
 	return r
 }
@@ -472,7 +503,8 @@ function isRTheSame(r) {
 		r.arg1 == lastR.arg1 &&
 		r.dot == lastR.dot &&
 		r.arg2 == lastR.arg2 &&
-		r.bang == lastR.bang
+		r.bang == lastR.bang &&
+		r.dflt == lastR.dflt
 }
 
 function insertClsAfter(cls, newcls, after) {
@@ -485,7 +517,7 @@ function insertClsAfter(cls, newcls, after) {
 }
 
 function rIsDefault(r) {
-	return r.cls == "tcfv" &&
+	return r.dflt &&
 		r.arg1 == "" &&
 		r.dot == false &&
 		r.arg2 == "" &&
@@ -505,6 +537,7 @@ function sortAndDrawAll(r) {
 	if (isRTheSame(r))
 		return
 	lastR = r
+	scroll(0,0)
 
 	/* start drawing */	
 	if (currentQuery != null)
@@ -758,5 +791,8 @@ function prepareData(data, arg1, bang, scorefunc, sortfunc) {
 		}
 	}
 
+	for (var i = 0; i < data.length; i++) {
+		data[i].score = undefined
+	}
 	return data
 }
