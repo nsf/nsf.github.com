@@ -492,6 +492,11 @@ function parseFilterStr(s) {
 			r.cls = "m"
 	}
 
+	// if 'm' is not in the class, insert 'm' after 't'
+	if (r.dot && !r.dflt && !rContains(r, "m")) {
+		r.cls = insertClsAfter(r.cls, "m", "t")
+	}
+
 	return r
 }
 
