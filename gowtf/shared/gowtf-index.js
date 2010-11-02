@@ -17,11 +17,13 @@ $(document).ready(function() {
 	$("#filter").focusin(function() {
 		$(this).select()
 	})
-	$("#filter").keyup(function(e) {
+	$("#filter").keydown(function(e) {
 		if (e.keyCode === 13) { // go to URL on enter
 			window.location = $("a").attr("href")
 			return
 		}
+	})
+	$("#filter").keyup(function(e) {
 		var filterstr = $(this).attr("value")
 		sortAndDrawAll(filterstr)
 	})
@@ -30,6 +32,7 @@ $(document).ready(function() {
 	})
 
 	sortAndDrawAll("")
+	$("#filter").focus()
 })
 
 function scoreSort(a, b) {

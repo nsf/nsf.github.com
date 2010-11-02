@@ -61,6 +61,8 @@ $(document).ready(function() {
 	var r = parseFilterStr(unescape(filterstr))
 	// yay!
 	sortAndDrawAll(r)
+
+	$("#filter").focus()
 })
 
 //===============================================================================
