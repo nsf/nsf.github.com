@@ -164,10 +164,12 @@ function fqStage3(fq) {
 		// show Package title and description
 		html += '<div id="package"><div class="container">'
 		html += "<h1>package " + gowtfData.name + "</h1>" + gowtfData.html
+		/*
 		html += "<h3>Package files:</h3>"
 		for (var i = 0; i < gowtfData.filenames.length; i++) {
 			html += gowtfData.filenames[i] + "<br />"
 		}
+		*/
 		html += "</div></div>"
 	}
 
