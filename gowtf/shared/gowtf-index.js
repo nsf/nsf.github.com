@@ -15,7 +15,17 @@ $(document).ready(function() {
 	// setup UI
 	$("#filter").attr("value", "")
 	$("#filter").focusin(function() {
-		$(this).select()
+		var filter = $(this)
+		filter.select()
+		if (filter.hasClass("inactive")) {
+			filter.removeClass("inactive")	
+		}
+	})
+	$("#filter").focusout(function() {
+		var filter = $(this)
+		if (filter.attr("value") == "" && !filter.hasClass("inactive")) {
+			filter.addClass("inactive")
+		}
 	})
 	$("#filter").keydown(function(e) {
 		if (e.keyCode === 13) { // go to URL on enter
@@ -57,7 +67,7 @@ function prepareData(data, filterstr) {
 
 function sortAndDrawAll(filterstr) {
 	var data = prepareData(gowtfData, filterstr)
-	var html = ""
+	var html = '<b>Packages</b>: '
 	for (var i = 0; i < data.length; i++) {
 		if (i == 0)
 			html += '<b>' + data[i].html + '</b>'

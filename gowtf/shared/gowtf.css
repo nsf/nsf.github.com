@@ -7,34 +7,30 @@ body {
 #header {
 	position: fixed;
 	width: 100%;
-}
-#header h1 {
-	background: #FAF3D2;
-	padding: 2px 18px 3px;
-	margin: 0;
+	height: 41px;
+	background-color: #FAF3D2;
 	border-bottom: 1px solid black;
+	display: table;
 }
-#header img, #header input {
+#header .line {
+	margin: 0;
+	padding: 0;
+	display: table-cell;
 	vertical-align: middle;
 }
-#header img {
-	border: 0;
-}
-#header .shadow {
-	color: darkgray;
-}
-#header .smallurl {
-	font-size: 14px;
+.line span {
+	margin: 0;
+	font-size: 28px;
+	font-weight: bold;
 	vertical-align: middle;
 }
-#header .medurl {
-	font-size: 18px;
+.line input {
+	margin: 0px 9px;
 	vertical-align: middle;
 }
 #contents {
 	overflow: auto;
-	/*padding: 12px 15px;*/
-	padding: 50px 15px;
+	padding: 53px 15px;
 }
 #contents h2 {
 	padding-top: 5px;

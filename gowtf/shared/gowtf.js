@@ -43,20 +43,23 @@ $(document).ready(function() {
 		}
 	})
 	$("#filter").keyup(function(e) {
-		// update #filterurl and draw
+		// redraw
 		var filterstr = $(this).attr("value")
+		// enter
+		if (e.keyCode === 13) {
+			window.location = "?" + filterstr
+			return
+		}
+		// '<' back to index
 		if (filterstr == "<" && gowtfData.index != "") {
 			window.location = gowtfData.index
 			return
 		}
-		$("#filterurl").attr('href', hrefixUrl(filterstr))
 		sortAndDrawAll(parseFilterStr(filterstr))
 	})
 	$("#filter").mouseup(function(e) {
 		e.preventDefault()
 	})
-
-	$("#filterurl").attr('href', hrefixUrl(filterstr))
 
 	var r = parseFilterStr(unescape(filterstr))
 	// yay!
