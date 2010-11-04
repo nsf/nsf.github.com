@@ -45,17 +45,19 @@ $(document).ready(function() {
 	$("#filter").keyup(function(e) {
 		// redraw
 		var filterstr = $(this).attr("value")
-		// enter
-		if (e.keyCode === 13) {
-			window.location = "?" + filterstr
-			return
-		}
 		// '<' back to index
 		if (filterstr == "<" && gowtfData.index != "") {
 			window.location = gowtfData.index
 			return
 		}
 		sortAndDrawAll(parseFilterStr(filterstr))
+	})
+	$("#filter").keydown(function(e) {
+		// enter
+		if (e.keyCode === 13) {
+			window.location = "?" + $(this).attr("value")
+			return
+		}
 	})
 	$("#filter").mouseup(function(e) {
 		e.preventDefault()
