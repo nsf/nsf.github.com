@@ -1,0 +1,1709 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.5" />
+<title>Crawl by example</title>
+<style type="text/css">
+/*
+ * AsciiDoc 'flask' theme for xhtml11 and html5 backends. A shameless knock-off
+ * of the Flask website styling (http://flask.pocoo.org/docs/).
+ *
+ * The implementation is straight-forward, consisting of the asciidoc.css file
+ * followed by theme specific overrides.
+ *
+ * */
+
+
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #777777;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+tt {
+  font-family: monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+.monospaced {
+  font-family: monospace;
+  font-size: inherit;
+  color: navy;
+}
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * Theme specific overrides of the preceding (asciidoc.css) CSS.
+ *
+ */
+body {
+  font-family: Garamond, Georgia, serif;
+  font-size: 17px;
+  color: #3E4349;
+  line-height: 1.3em;
+}
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Garmond, Georgia, serif;
+  font-weight: normal;
+  border-bottom-width: 0;
+  color: #3E4349;
+}
+div.title, caption.title { color: #596673; font-weight: bold; }
+h1 { font-size: 240%; }
+h2 { font-size: 180%; }
+h3 { font-size: 150%; }
+h4 { font-size: 130%; }
+h5 { font-size: 100%; }
+h6 { font-size: 100%; }
+#header h1 { margin-top: 0; }
+#toc {
+  color: #444444;
+  line-height: 1.5;
+  padding-top: 1.5em;
+}
+#toctitle {
+  font-size: 20px;
+}
+#toc a {
+    border-bottom: 1px dotted #999999;
+    color: #444444 !important;
+    text-decoration: none !important;
+}
+#toc a:hover {
+    border-bottom: 1px solid #6D4100;
+    color: #6D4100 !important;
+    text-decoration: none !important;
+}
+div.toclevel1 { margin-top: 0.2em; font-size: 16px; }
+div.toclevel2 { margin-top: 0.15em; font-size: 14px; }
+em, dt, td.hdlist1 { color: black; }
+strong { color: #3E4349; }
+a { color: #004B6B; text-decoration: none; border-bottom: 1px dotted #004B6B; }
+a:visited { color: #615FA0; border-bottom: 1px dotted #615FA0; }
+a:hover { color: #6D4100; border-bottom: 1px solid #6D4100; }
+div.tableblock > table, table.tableblock { border: 3px solid #E8E8E8; }
+th.tableblock, td.tableblock { border: 1px solid #E8E8E8; }
+ul > li > * { color: #3E4349; }
+pre, tt, .monospaced { font-family: Consolas,Menlo,'Deja Vu Sans Mono','Bitstream Vera Sans Mono',monospace; }
+tt, .monospaced { font-size: 0.9em; color: black;
+}
+div.exampleblock > div.content, div.sidebarblock > div.content, div.listingblock > div.content { border-width: 0 0 0 3px; border-color: #E8E8E8; }
+div.verseblock { border-left-width: 0; margin-left: 3em; }
+div.quoteblock { border-left-width: 3px; margin-left: 0; margin-right: 0;}
+div.admonitionblock td.content { border-left: 3px solid #E8E8E8; }
+@media screen {
+  body {
+    max-width: 50em; /* approximately 80 characters wide */
+    margin-left: 16em;
+  }
+
+  #toc {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 13em;
+    padding: 0.5em;
+    padding-bottom: 1.5em;
+    margin: 0;
+    overflow: auto;
+    border-right: 3px solid #f8f8f8;
+  }
+
+  #toc .toclevel1 {
+    margin-top: 0.5em;
+  }
+
+  #toc .toclevel2 {
+    margin-top: 0.25em;
+    display: list-item;
+    color: #aaaaaa;
+  }
+
+  #toctitle {
+    margin-top: 0.5em;
+  }
+}
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([2-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName == 'DIV'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName == 'DIV' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install(2);
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+<h1>Crawl by example</h1>
+<div id="toc">
+  <div id="toctitle">Table of Contents</div>
+  <noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph"><p>Crawl is a new vision of the C programming language. The idea is to fix all
+small and sometimes annoying C problems without adding any new features.
+Although replacing one feature with another is allowed, like it is planned for
+the C preprocessor (it is being replaced by a module system and simple
+templates system, which isn&#8217;t done yet). I&#8217;m trying hard to keep the spirit of
+C in Crawl alive and I really hope Crawl will give a rebirth to C. I do believe
+C is eternal, but it doesn&#8217;t mean it has to keep its form unchanged.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary_of_differences_with_c">Summary of differences with C</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+Context-independent grammar, mostly taken from the Go programming language.
+</p>
+</li>
+<li>
+<p>
+No type qualifiers (no <tt>const</tt>).
+</p>
+</li>
+<li>
+<p>
+Corrected operator precedence.
+</p>
+</li>
+<li>
+<p>
+Real module system (support for direct C headers import is included).
+</p>
+</li>
+<li>
+<p>
+Type inference.
+</p>
+</li>
+<li>
+<p>
+All variables are zero-initialized by default.
+</p>
+</li>
+<li>
+<p>
+Multiple return values.
+</p>
+</li>
+<li>
+<p>
+Tuple assignments (swap without temporaries, yay!).
+</p>
+</li>
+<li>
+<p>
+Various changes to <tt>switch</tt> statement.
+</p>
+</li>
+<li>
+<p>
+Stronger and explicit type system.
+</p>
+</li>
+<li>
+<p>
+Arrays behave like values.
+</p>
+</li>
+<li>
+<p>
+Uninterpreted multiline string literals.
+</p>
+</li>
+<li>
+<p>
+Many C expressions are statements.
+</p>
+</li>
+<li>
+<p>
+Constant groups system with powerful <tt>iota</tt> instead of enums.
+</p>
+</li>
+<li>
+<p>
+Boolean type, <tt>true</tt> and <tt>false</tt> constants, <tt>nil</tt> constant.
+</p>
+</li>
+<li>
+<p>
+Arbitrary precision constants.
+</p>
+</li>
+<li>
+<p>
+Unified <tt>for</tt> loop statement.
+</p>
+</li>
+<li>
+<p>
+Removed "<tt>-&gt;</tt>" accessor.
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_differences_with_c_in_details">Differences with C in details</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_context_independent_grammar">Context-independent grammar</h3>
+<div class="paragraph"><p>The new grammar for Crawl was taken from the Go programming language. It was
+tweaked a bit in order to suit semantics of the Crawl better. It&#8217;s important to
+have a context-independent grammar, because it adheres the KISS principle and
+you can easily write a parser for a grammar like that. Crawl&#8217;s grammar is also
+LALR(1) friendly and can be implemented without any parser hacks (it&#8217;s worth
+mentioning that it requires one simple lexer hack, but it&#8217;s really nothing).
+Let&#8217;s see how it looks like:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">import</span></span> <span style="color: #990000">(</span>
+        <span style="color: #FF0000">"stdio.h"</span><span style="color: #990000">;</span>
+        <span style="color: #FF0000">"stdlib.h"</span><span style="color: #990000">;</span>
+<span style="color: #990000">)</span>
+
+<span style="font-weight: bold"><span style="color: #0000FF">func</span></span> sort_ints<span style="color: #990000">(</span>a<span style="color: #990000">,</span> b <span style="color: #990000">*</span><span style="color: #009900">void</span><span style="color: #990000">)</span> <span style="color: #009900">int</span>
+<span style="color: #FF0000">{</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">*</span>a<span style="color: #990000">.(*</span><span style="color: #009900">int</span><span style="color: #990000">)</span> <span style="color: #990000">&gt;</span> <span style="color: #990000">*</span>b<span style="color: #990000">.(*</span><span style="color: #009900">int</span><span style="color: #990000">)</span> <span style="color: #FF0000">{</span>
+                <span style="font-weight: bold"><span style="color: #0000FF">return</span></span> <span style="color: #993399">1</span><span style="color: #990000">;</span>
+        <span style="color: #FF0000">}</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">return</span></span> <span style="color: #993399">0</span><span style="color: #990000">;</span>
+<span style="color: #FF0000">}</span>
+
+<span style="font-weight: bold"><span style="color: #0000FF">func</span></span> main<span style="color: #990000">(</span>argc <span style="color: #009900">int</span><span style="color: #990000">,</span> argv <span style="color: #990000">**</span><span style="color: #009900">byte</span><span style="color: #990000">)</span> <span style="color: #009900">int</span>
+<span style="color: #FF0000">{</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">var</span></span> a <span style="color: #990000">[]</span><span style="color: #009900">int</span> <span style="color: #990000">=</span> <span style="color: #FF0000">{</span><span style="color: #993399">5</span><span style="color: #990000">,</span> <span style="color: #993399">3</span><span style="color: #990000">,</span> <span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">4</span><span style="color: #990000">,</span> <span style="color: #993399">2</span><span style="color: #FF0000">}</span><span style="color: #990000">;</span>
+        stdlib<span style="color: #990000">.</span>qsort<span style="color: #990000">(&amp;</span>a<span style="color: #990000">,</span> <span style="color: #993399">5</span><span style="color: #990000">,</span> <span style="color: #993399">4</span><span style="color: #990000">,</span> sort_ints<span style="color: #990000">);</span>
+
+        <span style="font-weight: bold"><span style="color: #0000FF">for</span></span> i <span style="color: #990000">:=</span> <span style="color: #993399">0</span><span style="color: #990000">;</span> i <span style="color: #990000">&lt;</span> <span style="color: #993399">5</span><span style="color: #990000">;</span> i<span style="color: #990000">++</span> <span style="color: #FF0000">{</span>
+                stdio<span style="color: #990000">.</span>printf<span style="color: #990000">(</span><span style="color: #FF0000">"%d</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">,</span> a<span style="color: #990000">[</span>i<span style="color: #990000">]);</span>
+        <span style="color: #FF0000">}</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">return</span></span> <span style="color: #993399">0</span><span style="color: #990000">;</span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
+<div class="sect3">
+<h4 id="_declarations">Declarations</h4>
+<div class="paragraph"><p>Declarations in Crawl look reversed to a C programmer, but actually they are
+more readable and one can easily read every declaration from left to right.
+Some examples:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">// 'x' and 'y' are arrays containing 10 pointers to int</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> x<span style="color: #990000">,</span> y <span style="color: #990000">[</span><span style="color: #993399">10</span><span style="color: #990000">]*</span><span style="color: #009900">int</span><span style="color: #990000">;</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// 'z' is a byte</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> z <span style="color: #009900">byte</span><span style="color: #990000">;</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// 'cache' is an anonymous struct which has the following fields:</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">// - 'entries' which is a pointer to type 'CacheEntry'</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">// - 'num' which is an unsigned integer (32 bit)</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> cache <span style="font-weight: bold"><span style="color: #0000FF">struct</span></span> <span style="color: #FF0000">{</span> entries <span style="color: #990000">*</span>CacheEntry<span style="color: #990000">;</span> num <span style="color: #009900">uint</span><span style="color: #990000">;</span> <span style="color: #FF0000">}</span><span style="color: #990000">;</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// 'cmp' is a function pointer which points to a function, which has two</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">// arguments of type int and returns bool</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> cmp <span style="font-weight: bold"><span style="color: #0000FF">func</span></span><span style="color: #990000">(</span><span style="color: #009900">int</span><span style="color: #990000">,</span> <span style="color: #009900">int</span><span style="color: #990000">)</span> <span style="color: #009900">bool</span><span style="color: #990000">;</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// the defintion of the well known 'printf' function:</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">func</span></span> printf<span style="color: #990000">(</span>fmt <span style="color: #990000">*</span><span style="color: #009900">byte</span><span style="color: #990000">,</span> <span style="color: #990000">...)</span> <span style="color: #009900">int</span><span style="color: #990000">;</span></tt></pre></div></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_no_type_qualifiers">No type qualifiers</h3>
+<div class="paragraph"><p>Crawl has no type qualifiers, in C the most widely used one is a <tt>const</tt> type
+qualifier. When two other type qualifiers in C are optimizier hints (<tt>restrict</tt>
+and <tt>volatile</tt>) <tt>const</tt> is a semantic modifying qualifier and what&#8217;s more
+scary, it is viral. By that I mean that once you&#8217;ve used it in one place, you
+have to use it in all other places, especially if your type system is strict
+about that. The end result here, it causes many maintenance problems and solves
+zero real problems. Keyword <tt>const</tt> should prevent accidental writes to a
+memory location, but the most horrible bugs, which are buffer overflow writes,
+don&#8217;t care about <tt>const</tt>. As simple as that, no <tt>const</tt> in Crawl.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img src="icons/note.png" alt="Note" />
+</td>
+<td class="content">Most likely <tt>volatile</tt> and <tt>restrict</tt> will be added in future in some
+form.</td>
+</tr></table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_corrected_operator_precedence">Corrected operator precedence</h3>
+<div class="paragraph"><p>C has quite a long history and there are some side effects of that. One of them
+is broken operator precedence. Long time ago C&#8217;s predecessor, B, had only "|"
+and "&amp;" binary operators and no "&amp;&amp;" and "||" (one operator was used for logic
+and bitwise operations depending on the context). And as a result of that,
+precedence of "|" and "&amp;" operators was kept. The problem is that it is lower
+than precedence of "==" and "!=". For example:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">(</span>a <span style="color: #990000">&amp;</span> mask <span style="color: #990000">!=</span> <span style="color: #993399">0</span><span style="color: #990000">)</span>
+        <span style="font-weight: bold"><span style="color: #000000">foo</span></span><span style="color: #990000">();</span></tt></pre></div></div>
+<div class="paragraph"><p>This statement will be parsed into an AST as:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">(</span>a <span style="color: #990000">&amp;</span> <span style="color: #990000">(</span>mask <span style="color: #990000">!=</span> <span style="color: #993399">0</span><span style="color: #990000">))</span>
+        <span style="font-weight: bold"><span style="color: #000000">foo</span></span><span style="color: #990000">();</span></tt></pre></div></div>
+<div class="paragraph"><p>Which most likely isn&#8217;t what was a programmer&#8217;s intention. In C it doesn&#8217;t
+matter, because in C boolean expression is defined as integer being != 0 or ==
+0. In a language with a real boolean type it matters. Crawl has corrected
+operator precedence.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_real_module_system">Real module system</h3>
+<div class="paragraph"><p>Preprocessor based module system is a huge pain, everyone knows it. Many
+languages since then started to implement various module systems. Crawl of
+course follows this tendency. C++ decided to keep C&#8217;s module system for the
+sake of compatibility, but it was a horrible decision. We all realize that now,
+when C++ code takes ages to compile. Of course Crawl has a proper module
+system, but since one of the priorities for the language was to keep it C
+friendly, this module system also can import C header files directly. And as
+many of you may think it slows down compilation, it&#8217;s not true. Crawl uses
+smart caching scheme for C header modules. Hopefully, Crawl&#8217;s module system
+will allow us to make Crawl compilers very fast.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_type_inference">Type inference</h3>
+<div class="paragraph"><p>Crawl supports full type inference in hot spots, where it matters a lot.
+Compiler should help programmer in cases where it can do so. Removing tedious
+repitition is one of them. In C code you often see declarations like that:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="color: #008080">MyMegaType</span> <span style="color: #990000">*</span>concrete <span style="color: #990000">=</span> <span style="color: #990000">(</span>MyMegaType<span style="color: #990000">*)</span>abstract<span style="color: #990000">;</span></tt></pre></div></div>
+<div class="paragraph"><p>Obviously typing full type name twice is a pointless activity. Compiler knows
+the type of <tt>(MyMegaType*)abstract</tt> expression. Why can&#8217;t we use that fact?
+We can. Crawl has "declare and initialize" operator which declares a variable
+and infers its type using initializer type information:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>concrete <span style="color: #990000">:=</span> abstract<span style="color: #990000">.(*</span>MyMegaType<span style="color: #990000">);</span></tt></pre></div></div>
+<div class="paragraph"><p>Few other example type inference examples:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">// 'i' is int</span></span>
+i <span style="color: #990000">:=</span> <span style="color: #993399">0</span><span style="color: #990000">;</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// 'pi' is float, 'name' is *byte</span></span>
+pi<span style="color: #990000">,</span> name <span style="color: #990000">:=</span> <span style="color: #993399">3.1415</span><span style="color: #990000">,</span> <span style="color: #FF0000">"nsf"</span><span style="color: #990000">;</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// function with multiple return values</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> w<span style="color: #990000">,</span> h <span style="color: #990000">=</span> GetSize<span style="color: #990000">();</span></tt></pre></div></div>
+</div>
+<div class="sect2">
+<h3 id="_all_variables_are_zero_initialized">All variables are zero-initialized</h3>
+<div class="paragraph"><p>Most compilers/runtimes provide that kind of behaviour by default anyway.
+Currently we have enough horsepower in CPUs to forget about this tiny thing.
+But Crawl is a low level language and I understand that maybe, there will be a
+place, where having uninitialized variables matters. There is a way to remove
+zero-initializing behaviour. Just like in the D programming language:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">var</span></span> x <span style="color: #009900">int</span><span style="color: #990000">;</span>        <span style="font-style: italic"><span style="color: #9A1900">// zero</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> y <span style="color: #009900">int</span> <span style="color: #990000">=</span> <span style="color: #009900">void</span><span style="color: #990000">;</span> <span style="font-style: italic"><span style="color: #9A1900">// undefined (stack garbage)</span></span></tt></pre></div></div>
+<div class="paragraph"><p>It&#8217;s somewhat an area of premature optimization. Having everything
+zero-initialized provides you with nice assumptions as well.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img src="icons/warning.png" alt="Warning" />
+</td>
+<td class="content">Prohibiting zero-initialization is not implemented yet.</td>
+</tr></table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_multiple_return_values">Multiple return values</h3>
+<div class="paragraph"><p>This feature is simply useful. Sometimes you have more than one value to return
+from a function and defining a structure for only that purpose is kind of
+expensive. Crawl allows you to return multiple values from a function:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">func</span></span> GetSize<span style="color: #990000">()</span> <span style="color: #990000">(</span><span style="color: #009900">int</span><span style="color: #990000">,</span> <span style="color: #009900">int</span><span style="color: #990000">)</span>
+<span style="color: #FF0000">{</span>
+        w <span style="color: #990000">:=</span> CalculateWidth<span style="color: #990000">();</span>
+        h <span style="color: #990000">:=</span> CalculateHeight<span style="color: #990000">();</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">return</span></span> w<span style="color: #990000">,</span> h<span style="color: #990000">;</span>
+<span style="color: #FF0000">}</span>
+
+<span style="font-weight: bold"><span style="color: #0000FF">func</span></span> UseSize<span style="color: #990000">()</span>
+<span style="color: #FF0000">{</span>
+        w<span style="color: #990000">,</span> h <span style="color: #990000">:=</span> GetSize<span style="color: #990000">();</span>
+        stdio<span style="color: #990000">.</span>printf<span style="color: #990000">(</span><span style="color: #FF0000">"Size: %dx%d</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">,</span> w<span style="color: #990000">,</span> h<span style="color: #990000">);</span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
+<div class="paragraph"><p>Another small feature in this area which is worth mentioning is named return
+values. Crawl provides a way to name return values of a function. In this case
+they are zero-initialized:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">// Get a number of 'A' characters in 'chars'.</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">func</span></span> CountA<span style="color: #990000">(</span>chars <span style="color: #990000">*</span><span style="color: #009900">byte</span><span style="color: #990000">,</span> num <span style="color: #009900">int</span><span style="color: #990000">)</span> <span style="color: #990000">(</span>count <span style="color: #009900">int</span><span style="color: #990000">)</span>
+<span style="color: #FF0000">{</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">for</span></span> i <span style="color: #990000">:=</span> <span style="color: #993399">0</span><span style="color: #990000">;</span> i <span style="color: #990000">&lt;</span> num<span style="color: #990000">;</span> i<span style="color: #990000">++</span> <span style="color: #FF0000">{</span>
+                <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> chars<span style="color: #990000">[</span>i<span style="color: #990000">]</span> <span style="color: #990000">==</span> <span style="color: #FF0000">'A'</span> <span style="color: #FF0000">{</span>
+                        count<span style="color: #990000">++;</span>
+                <span style="color: #FF0000">}</span>
+        <span style="color: #FF0000">}</span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
+</div>
+<div class="sect2">
+<h3 id="_tuple_assignments">Tuple assignments</h3>
+<div class="paragraph"><p>As you have probably seen already, Crawl allows you to declare multiple
+variables at the same time and Crawl has multiple return values. The same is
+true for plain assignments:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">func</span></span> PointerArithmetic<span style="color: #990000">(</span>LHS<span style="color: #990000">,</span> RHS <span style="color: #990000">*</span>Expr<span style="color: #990000">)</span>
+<span style="color: #FF0000">{</span>
+        <span style="font-style: italic"><span style="color: #9A1900">// swap LHS and RHS if RHS is a pointer</span></span>
+        <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> sema<span style="color: #990000">.</span>IsPointer<span style="color: #990000">(</span>RHS<span style="color: #990000">)</span> <span style="color: #FF0000">{</span>
+                LHS<span style="color: #990000">,</span> RHS <span style="color: #990000">=</span> RHS<span style="color: #990000">,</span> LHS<span style="color: #990000">;</span>
+        <span style="color: #FF0000">}</span>
+        DoPointerArithmetic<span style="color: #990000">(</span>LHS<span style="color: #990000">.(*</span>Pointer<span style="color: #990000">),</span> RHS<span style="color: #990000">.(*</span>Integer<span style="color: #990000">));</span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
+</div>
+<div class="sect2">
+<h3 id="_switch_statement_changes">Switch statement changes</h3>
+<div class="paragraph"><p>Many languages these days preserve C switch statement semantics, which is not a
+smart idea at all. I&#8217;ve seen better ways of doing switch statements in
+different programming languages. In Crawl switch statement is quite different
+in behaviour from C&#8217;s. Here is the list of changes:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Case clause "breaks" by default. It&#8217;s actually quite easy to observe that
+  most switch statements written have case clauses with <tt>break</tt> at the end.
+  Apparently using <tt>break</tt> as a default behaviour for a switch case clause is
+  a good idea:
+</p>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>x <span style="color: #990000">:=</span> <span style="color: #993399">1</span><span style="color: #990000">;</span>
+<span style="font-weight: bold"><span style="color: #0000FF">switch</span></span> x <span style="color: #FF0000">{</span>
+<span style="font-weight: bold"><span style="color: #0000FF">case</span></span> <span style="color: #993399">0</span><span style="color: #990000">:</span>
+        printf<span style="color: #990000">(</span><span style="color: #FF0000">"0</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">);</span>
+<span style="font-weight: bold"><span style="color: #0000FF">case</span></span> <span style="color: #993399">1</span><span style="color: #990000">:</span>
+        printf<span style="color: #990000">(</span><span style="color: #FF0000">"1</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">);</span>
+<span style="font-weight: bold"><span style="color: #0000FF">case</span></span> <span style="color: #993399">2</span><span style="color: #990000">:</span>
+        printf<span style="color: #990000">(</span><span style="color: #FF0000">"2</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">);</span>
+<span style="font-weight: bold"><span style="color: #0000FF">default</span></span><span style="color: #990000">:</span>
+        printf<span style="color: #990000">(</span><span style="color: #FF0000">"something else</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">);</span>
+<span style="color: #FF0000">}</span>
+<span style="font-style: italic"><span style="color: #9A1900">// this code will print "1\n"</span></span></tt></pre></div></div>
+</li>
+<li>
+<p>
+One place where "fallthrough" behaviour was used a lot is a case clause,
+  which is triggered by multiple different values. Crawl allows you to specify
+  multiple values for each case clause directly avoiding another portion of
+  repitition:
+</p>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">var</span></span> x <span style="color: #009900">uint</span> <span style="color: #990000">=</span> GetX<span style="color: #990000">();</span>
+<span style="font-weight: bold"><span style="color: #0000FF">switch</span></span> x <span style="color: #FF0000">{</span>
+<span style="font-weight: bold"><span style="color: #0000FF">case</span></span> <span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">2</span><span style="color: #990000">,</span> <span style="color: #993399">3</span><span style="color: #990000">,</span> <span style="color: #993399">4</span><span style="color: #990000">:</span>
+        printf<span style="color: #990000">(</span><span style="color: #FF0000">"less than 5</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">);</span>
+<span style="font-weight: bold"><span style="color: #0000FF">case</span></span> <span style="color: #993399">5</span><span style="color: #990000">:</span>
+        printf<span style="color: #990000">(</span><span style="color: #FF0000">"5!</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">);</span>
+<span style="font-weight: bold"><span style="color: #0000FF">default</span></span><span style="color: #990000">:</span>
+        printf<span style="color: #990000">(</span><span style="color: #FF0000">"greater than 5</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">);</span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
+</li>
+<li>
+<p>
+Of course sometimes you just need to have a "fallthrough" behavior, a new
+  keyword - <tt>fallthrough</tt> was added for that purpose:
+</p>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>x <span style="color: #990000">:=</span> <span style="color: #993399">1</span><span style="color: #990000">;</span>
+<span style="font-weight: bold"><span style="color: #0000FF">switch</span></span> x <span style="color: #FF0000">{</span>
+<span style="font-weight: bold"><span style="color: #0000FF">case</span></span> <span style="color: #993399">0</span><span style="color: #990000">:</span>
+        printf<span style="color: #990000">(</span><span style="color: #FF0000">"0 and"</span><span style="color: #990000">);</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">fallthrough</span></span><span style="color: #990000">;</span>
+<span style="font-weight: bold"><span style="color: #0000FF">case</span></span> <span style="color: #993399">1</span><span style="color: #990000">:</span>
+        printf<span style="color: #990000">(</span><span style="color: #FF0000">"1 and"</span><span style="color: #990000">);</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">fallthrough</span></span><span style="color: #990000">;</span>
+<span style="font-weight: bold"><span style="color: #0000FF">case</span></span> <span style="color: #993399">2</span><span style="color: #990000">:</span>
+        printf<span style="color: #990000">(</span><span style="color: #FF0000">"2 and"</span><span style="color: #990000">);</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">fallthrough</span></span><span style="color: #990000">;</span>
+<span style="font-weight: bold"><span style="color: #0000FF">case</span></span> <span style="color: #993399">3</span><span style="color: #990000">:</span>
+        printf<span style="color: #990000">(</span><span style="color: #FF0000">"3</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">);</span>
+<span style="color: #FF0000">}</span>
+<span style="font-style: italic"><span style="color: #9A1900">// this code will print "1 and 2 and 3\n"</span></span></tt></pre></div></div>
+</li>
+<li>
+<p>
+Some people complain that their language&#8217;s switch statement doesn&#8217;t work for
+  strings. But frankly, how often do you need to use string comparison as a
+  base for variant selection mechanism? It&#8217;s simply inefficient. The only code
+  I can imagine where it works is a primitive command line or config parsing.
+  On the other hand a case where you have an if else "train" in your code is
+  quite common. In Crawl switch statements have a second form, which allows
+  you to write if else "trains" easier:
+</p>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">// this code:</span></span>
+flags <span style="color: #990000">:=</span> GetFlags<span style="color: #990000">();</span>
+<span style="font-weight: bold"><span style="color: #0000FF">if</span></span> flags <span style="color: #990000">&amp;</span> FEATURE_X <span style="color: #990000">!=</span> <span style="color: #993399">0</span> <span style="color: #FF0000">{</span>
+        UseFeatureX<span style="color: #990000">();</span>
+<span style="color: #FF0000">}</span> <span style="font-weight: bold"><span style="color: #0000FF">else</span></span> <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> flags <span style="color: #990000">&amp;</span> FEATURE_Y <span style="color: #990000">!=</span> <span style="color: #993399">0</span> <span style="color: #FF0000">{</span>
+        UseFeatureY<span style="color: #990000">();</span>
+<span style="color: #FF0000">}</span> <span style="font-weight: bold"><span style="color: #0000FF">else</span></span> <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> flags <span style="color: #990000">&amp;</span> FEATURE_Z <span style="color: #990000">!=</span> <span style="color: #993399">0</span> <span style="color: #FF0000">{</span>
+        UseFeatureZ<span style="color: #990000">();</span>
+<span style="color: #FF0000">}</span> <span style="font-weight: bold"><span style="color: #0000FF">else</span></span> <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> flags <span style="color: #990000">&amp;</span> <span style="color: #990000">(</span>FEATURE_A <span style="color: #990000">|</span> FEATURE_B <span style="color: #990000">|</span> FEATURE_C<span style="color: #990000">)</span> <span style="color: #990000">!=</span> <span style="color: #993399">0</span> <span style="color: #FF0000">{</span>
+        UseFeatureABC<span style="color: #990000">();</span>
+<span style="color: #FF0000">}</span>
+<span style="font-style: italic"><span style="color: #9A1900">// can be written as:</span></span>
+flags <span style="color: #990000">:=</span> GetFlags<span style="color: #990000">();</span>
+<span style="font-weight: bold"><span style="color: #0000FF">switch</span></span> <span style="color: #FF0000">{</span>
+<span style="font-weight: bold"><span style="color: #0000FF">case</span></span> flags <span style="color: #990000">&amp;</span> FEATURE_X <span style="color: #990000">!=</span> <span style="color: #993399">0</span><span style="color: #990000">:</span>
+        UseFeatureX<span style="color: #990000">();</span>
+<span style="font-weight: bold"><span style="color: #0000FF">case</span></span> flags <span style="color: #990000">&amp;</span> FEATURE_Y <span style="color: #990000">!=</span> <span style="color: #993399">0</span><span style="color: #990000">:</span>
+        UseFeatureY<span style="color: #990000">();</span>
+<span style="font-weight: bold"><span style="color: #0000FF">case</span></span> flags <span style="color: #990000">&amp;</span> FEATURE_Z <span style="color: #990000">!=</span> <span style="color: #993399">0</span><span style="color: #990000">:</span>
+        UseFeatureZ<span style="color: #990000">();</span>
+<span style="font-weight: bold"><span style="color: #0000FF">case</span></span> flags <span style="color: #990000">&amp;</span> <span style="color: #990000">(</span>FEATURE_A <span style="color: #990000">|</span> FEATURE_B <span style="color: #990000">|</span> FEATURE_C<span style="color: #990000">)</span> <span style="color: #990000">!=</span> <span style="color: #993399">0</span><span style="color: #990000">:</span>
+        UseFeatureABC<span style="color: #990000">();</span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
+<div class="paragraph"><p>And of course you can even use that for string comparison if you really want
+to:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>s <span style="color: #990000">:=</span> GetNextOption<span style="color: #990000">();</span>
+<span style="font-weight: bold"><span style="color: #0000FF">switch</span></span> <span style="color: #FF0000">{</span>
+<span style="font-weight: bold"><span style="color: #0000FF">case</span></span> str<span style="color: #990000">.</span>Equals<span style="color: #990000">(</span>s<span style="color: #990000">,</span> <span style="color: #FF0000">"option-x"</span><span style="color: #990000">):</span>
+        <span style="font-style: italic"><span style="color: #9A1900">// ...</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">case</span></span> str<span style="color: #990000">.</span>Equals<span style="color: #990000">(</span>s<span style="color: #990000">,</span> <span style="color: #FF0000">"option-y"</span><span style="color: #990000">):</span>
+        <span style="font-style: italic"><span style="color: #9A1900">// ...</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">case</span></span> str<span style="color: #990000">.</span>Equals<span style="color: #990000">(</span>s<span style="color: #990000">,</span> <span style="color: #FF0000">"option-z"</span><span style="color: #990000">):</span>
+        <span style="font-style: italic"><span style="color: #9A1900">// ...</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">default</span></span><span style="color: #990000">:</span>
+        <span style="font-style: italic"><span style="color: #9A1900">// unknown option 's'</span></span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="_stronger_and_explicit_type_system">Stronger and explicit type system</h3>
+<div class="paragraph"><p>Crawl&#8217;s type system is much more explicit than C&#8217;s, there are no implicit type
+casts. Floating point type cannot be used as an integer, integer cannot be used
+as a boolean, unsigned integer cannot be used as a signed integer, etc. There
+are some implicit conversions happening during assignments though, for example
+a pointer to an array can be converted to a pointer to an array&#8217;s element type,
+but it doesn&#8217;t break things. Many of you may think (as was I), that such a
+strict type system gives headaches to the programmer and I must say it&#8217;s not
+true. Explicit type system acutally forces you to think about types and why are
+you using them. In C most libraries define a zillion of types for no reason,
+they say its for portability, but defining zillion types doesn&#8217;t make you
+portable. Let&#8217;s take a look at example, where type system deals with
+portability:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">// Let's take famous C function:</span></span>
+
+<span style="font-weight: bold"><span style="color: #0000FF">type</span></span> size_t <span style="color: #009900">uint32</span><span style="color: #990000">;</span> <span style="font-style: italic"><span style="color: #9A1900">// on x86 or uint64 on x86_64</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">func</span></span> memcpy<span style="color: #990000">(</span>dest<span style="color: #990000">,</span> src <span style="color: #990000">*</span><span style="color: #009900">void</span><span style="color: #990000">,</span> n size_t<span style="color: #990000">)</span> <span style="color: #990000">*</span><span style="color: #009900">void</span><span style="color: #990000">;</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// Obviously you don't need to copy more bytes than your system supports,</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">// that's why C uses size_t here. But how do you use that function (let's</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">// imagine our type system is the same as in C):</span></span>
+
+<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> size <span style="color: #009900">uint64</span> <span style="color: #990000">=</span> GetSize<span style="color: #990000">();</span>
+memcpy<span style="color: #990000">(</span>d<span style="color: #990000">,</span> s<span style="color: #990000">,</span> size<span style="color: #990000">);</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// Ok, works for both x86 and x86_64, but on x86 it is possible to lose some</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">// information, because size_t is smaller than uint64. This on the other hand:</span></span>
+
+<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> size <span style="color: #009900">uint32</span> <span style="color: #990000">=</span> GetSize<span style="color: #990000">();</span>
+memcpy<span style="color: #990000">(</span>d<span style="color: #990000">,</span> s<span style="color: #990000">,</span> size<span style="color: #990000">);</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// Works safely for both platforms. You see, when you use variable sized types</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">// you may want to have an explicit cast to notice your code reader that there</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">// is a type change and possible information loss. You don't want to have these</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">// things implicit. In Crawl it doesn't matter whether uint32 or uint64 have</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">// the same size as size_t or not, they are different types. Therefore you have</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">// to introduce a cast and this cast will work as your agreement for possible</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">// information loss:</span></span>
+
+<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> size <span style="color: #009900">uint64</span> <span style="color: #990000">=</span> GetSize<span style="color: #990000">();</span>
+memcpy<span style="color: #990000">(</span>d<span style="color: #990000">,</span> s<span style="color: #990000">,</span> size<span style="color: #990000">.(</span>size_t<span style="color: #990000">));</span></tt></pre></div></div>
+<div class="paragraph"><p>I wasn&#8217;t sure for a long time that this is a right approach and probably I&#8217;m
+still not 100% sure. But it&#8217;s definitely something interesting to think about.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_arrays_behave_like_values">Arrays behave like values</h3>
+<div class="paragraph"><p>In C arrays have weird behaviour, in some places they are values in other
+places they are pointer types. If you use an array type as a function argument
+it becomes a pointer suddenly. And of course you can&#8217;t assign one array to
+another in C even if they have the same size, but actually it is achievable
+through wrapping them into structs.  Crawl simply uses arrays as if they were
+<tt>struct { T _[N]; }</tt> in C. You can copy arrays, you can pass arrays as
+arguments to functions (and it will make a copy), etc. It&#8217;s a tiny thing, but
+it&#8217;s good to have a clear conceptual vision of array types in a language.</p></div>
+<div class="paragraph"><p>There is also one thing I haven&#8217;t thought about a lot. Array operations or
+vector operations. We all know that CPUs are stream oriented these days and
+most of them have SSE instructions which support vector operations. Maybe it
+makes sense to allow things like that in Crawl:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">var</span></span> a <span style="color: #990000">[]</span><span style="color: #009900">int</span> <span style="color: #990000">=</span> <span style="color: #FF0000">{</span><span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">2</span><span style="color: #990000">,</span> <span style="color: #993399">3</span><span style="color: #FF0000">}</span><span style="color: #990000">;</span>
+<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> b <span style="color: #990000">[]</span><span style="color: #009900">int</span> <span style="color: #990000">=</span> <span style="color: #FF0000">{</span><span style="color: #993399">4</span><span style="color: #990000">,</span> <span style="color: #993399">5</span><span style="color: #990000">,</span> <span style="color: #993399">6</span><span style="color: #FF0000">}</span><span style="color: #990000">;</span>
+
+c <span style="color: #990000">:=</span> a <span style="color: #990000">+</span> b<span style="color: #990000">;</span>
+
+c<span style="color: #990000">[</span><span style="color: #993399">0</span><span style="color: #990000">]</span> <span style="color: #990000">==</span> <span style="color: #993399">5</span><span style="color: #990000">;</span>
+c<span style="color: #990000">[</span><span style="color: #993399">1</span><span style="color: #990000">]</span> <span style="color: #990000">==</span> <span style="color: #993399">7</span><span style="color: #990000">;</span>
+c<span style="color: #990000">[</span><span style="color: #993399">2</span><span style="color: #990000">]</span> <span style="color: #990000">==</span> <span style="color: #993399">9</span><span style="color: #990000">;</span></tt></pre></div></div>
+<div class="paragraph"><p>We&#8217;ll see.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_uninterpreted_multiline_string_literals">Uninterpreted multiline string literals</h3>
+<div class="paragraph"><p>Not a big addition, but having it is useful sometimes. Uninterpreted strings
+works just fine for regular expressions. Multiline strings are good for things
+like templates or something. Examples:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">var</span></span> uninterpreted <span style="color: #990000">=</span> <span style="color: #FF0000">`\n is \n here and it's not a 0x0A`</span><span style="color: #990000">;</span>
+<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> multiline <span style="color: #990000">=</span>
+<span style="color: #FF0000">`Multiline strings v1.0</span>
+
+<span style="color: #FF0000">${HEADER}</span>
+
+<span style="color: #FF0000">${BODY}</span>
+
+<span style="color: #FF0000">${FOOTER}</span>
+<span style="color: #FF0000">`</span><span style="color: #990000">;</span></tt></pre></div></div>
+</div>
+<div class="sect2">
+<h3 id="_many_c_expressions_are_statements">Many C expressions are statements</h3>
+<div class="paragraph"><p>Probably, it can be interpreted as a bad idea. For example you can&#8217;t do that in
+Crawl:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">var</span></span> p <span style="color: #990000">*</span><span style="color: #009900">int</span><span style="color: #990000">;</span>
+a <span style="color: #990000">:=</span> p<span style="color: #990000">++;</span>
+b <span style="color: #990000">:=</span> p<span style="color: #990000">++;</span>
+c <span style="color: #990000">:=</span> p<span style="color: #990000">++;</span></tt></pre></div></div>
+<div class="paragraph"><p>But at the end, one of the most important things about the code is readability.
+And restricting programmer&#8217;s ingenuity in that area matters. We&#8217;ve seen all
+those code obfuscation contests, and quite ambigous expressions like:
+<tt>a**++*i++</tt>. In Crawl C&#8217;s increment/decrement expression is a statement and
+therefore has only postfix form. There is no such thing as assignment
+expression in Crawl. The only expression type that has side effects is a
+function call expression. And Crawl guarantees that all expressions with side
+effects are evaluated from left to right (but of course function call argument
+expressions should be evaluated before calling the function, so.. the order is
+depth-first in that sense):</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>x<span style="color: #990000">[</span>a<span style="color: #990000">()],</span> y<span style="color: #990000">[</span>b<span style="color: #990000">()]</span> <span style="color: #990000">=</span> foo<span style="color: #990000">(</span>c<span style="color: #990000">(),</span> d<span style="color: #990000">()),</span> bar<span style="color: #990000">(</span>e<span style="color: #990000">(),</span> f<span style="color: #990000">());</span></tt></pre></div></div>
+<div class="paragraph"><p>And that&#8217;s how it will be interpreted (using improvised SSA form):</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="color: #990000">%</span><span style="color: #993399">1</span>  <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">a</span></span><span style="color: #990000">();</span>
+<span style="color: #990000">%</span><span style="color: #993399">2</span>  <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">nth_element_address_in</span></span><span style="color: #990000">(</span>x<span style="color: #990000">,</span> <span style="color: #990000">%</span><span style="color: #993399">1</span><span style="color: #990000">);</span>
+<span style="color: #990000">%</span><span style="color: #993399">3</span>  <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">b</span></span><span style="color: #990000">();</span>
+<span style="color: #990000">%</span><span style="color: #993399">4</span>  <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">nth_element_address_in</span></span><span style="color: #990000">(</span>y<span style="color: #990000">,</span> <span style="color: #990000">%</span><span style="color: #993399">3</span><span style="color: #990000">);</span>
+<span style="color: #990000">%</span><span style="color: #993399">5</span>  <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">c</span></span><span style="color: #990000">();</span>
+<span style="color: #990000">%</span><span style="color: #993399">6</span>  <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">d</span></span><span style="color: #990000">();</span>
+<span style="color: #990000">%</span><span style="color: #993399">7</span>  <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">foo</span></span><span style="color: #990000">(%</span><span style="color: #993399">5</span><span style="color: #990000">,</span> <span style="color: #990000">%</span><span style="color: #993399">6</span><span style="color: #990000">);</span>
+<span style="color: #990000">%</span><span style="color: #993399">8</span>  <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">e</span></span><span style="color: #990000">();</span>
+<span style="color: #990000">%</span><span style="color: #993399">9</span>  <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">f</span></span><span style="color: #990000">();</span>
+<span style="color: #990000">%</span><span style="color: #993399">10</span> <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">bar</span></span><span style="color: #990000">(%</span><span style="color: #993399">8</span><span style="color: #990000">,</span> <span style="color: #990000">%</span><span style="color: #993399">9</span><span style="color: #990000">);</span>
+<span style="color: #990000">*%</span><span style="color: #993399">2</span> <span style="color: #990000">=</span> <span style="color: #990000">%</span><span style="color: #993399">7</span><span style="color: #990000">;</span>
+<span style="color: #990000">*%</span><span style="color: #993399">4</span> <span style="color: #990000">=</span> <span style="color: #990000">%</span><span style="color: #993399">10</span><span style="color: #990000">;</span></tt></pre></div></div>
+</div>
+<div class="sect2">
+<h3 id="_constant_groups_and_powerful_iota">Constant groups and powerful iota</h3>
+<div class="paragraph"><p>In Crawl there are no enums, but you can emulate them using constant groups and
+magic <tt>iota</tt>. Iota is somewhat like C&#8217;s <tt>__LINE__</tt>, depending on a position
+relative to a <tt>const</tt> keyword it changes the value of itself starting from 0
+after each <tt>const</tt> keyword. It increments every constant specification
+clause. Take a look:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">const</span></span> <span style="color: #990000">(</span>
+        ZERO <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #0000FF">iota</span></span><span style="color: #990000">;</span>
+        ONE <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #0000FF">iota</span></span><span style="color: #990000">;</span>
+        TWO <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #0000FF">iota</span></span><span style="color: #990000">;</span>
+        THREE <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #0000FF">iota</span></span><span style="color: #990000">;</span>
+        FOUR <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #0000FF">iota</span></span><span style="color: #990000">;</span>
+        FIVE <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #0000FF">iota</span></span><span style="color: #990000">;</span>
+<span style="color: #990000">)</span>
+<span style="font-style: italic"><span style="color: #9A1900">// ZERO == 0, ONE == 1, etc.</span></span></tt></pre></div></div>
+<div class="paragraph"><p>But of course typing <tt>iota</tt> each time is painful, constant groups have another
+feature that helps you avoid code duplication. If a constant specification
+clause contains no initializer, it takes an initializer of a previous clause.
+Of course first constant specification clause must have a non-empty
+initializer. The example above can be written as:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">const</span></span> <span style="color: #990000">(</span>
+        ZERO <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #0000FF">iota</span></span><span style="color: #990000">;</span>
+        ONE<span style="color: #990000">;</span>
+        TWO<span style="color: #990000">;</span>
+        THREE<span style="color: #990000">;</span>
+        FOUR<span style="color: #990000">;</span>
+        FIVE<span style="color: #990000">;</span>
+<span style="color: #990000">)</span></tt></pre></div></div>
+<div class="paragraph"><p>But as you can see, <tt>iota</tt> is more powerful than plain enums. You can create
+various interesting thing with it:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">// reversing</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">const</span></span> <span style="color: #990000">(</span>
+        A <span style="color: #990000">=</span> LAST <span style="color: #990000">-</span> <span style="color: #990000">(</span><span style="font-weight: bold"><span style="color: #0000FF">iota</span></span> <span style="color: #990000">+</span> <span style="color: #993399">1</span><span style="color: #990000">);</span> <span style="font-style: italic"><span style="color: #9A1900">// 4</span></span>
+        B<span style="color: #990000">;</span>                     <span style="font-style: italic"><span style="color: #9A1900">// 3</span></span>
+        C<span style="color: #990000">;</span>                     <span style="font-style: italic"><span style="color: #9A1900">// 2</span></span>
+        D<span style="color: #990000">;</span>                     <span style="font-style: italic"><span style="color: #9A1900">// 1</span></span>
+        E<span style="color: #990000">;</span>                     <span style="font-style: italic"><span style="color: #9A1900">// 0</span></span>
+
+        LAST <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #0000FF">iota</span></span><span style="color: #990000">;</span>           <span style="font-style: italic"><span style="color: #9A1900">// 5</span></span>
+<span style="color: #990000">)</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// bit flags</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">const</span></span> <span style="color: #990000">(</span>
+        BIT1 <span style="color: #990000">=</span> <span style="color: #993399">1</span> <span style="color: #990000">&lt;&lt;</span> <span style="font-weight: bold"><span style="color: #0000FF">iota</span></span><span style="color: #990000">;</span> <span style="font-style: italic"><span style="color: #9A1900">// 1  (0b00000001)</span></span>
+        BIT2<span style="color: #990000">;</span>             <span style="font-style: italic"><span style="color: #9A1900">// 2  (0b00000010)</span></span>
+        BIT3<span style="color: #990000">;</span>             <span style="font-style: italic"><span style="color: #9A1900">// 4  (0b00000100)</span></span>
+        BIT4<span style="color: #990000">;</span>             <span style="font-style: italic"><span style="color: #9A1900">// 8  (0b00001000)</span></span>
+        BIT5<span style="color: #990000">;</span>             <span style="font-style: italic"><span style="color: #9A1900">// 16 (0b00010000)</span></span>
+<span style="color: #990000">)</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// bit masks (Crawl uses ^ as binary NOT, in C it's ~)</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">const</span></span> <span style="color: #990000">(</span>
+        ALL_BUT_BIT1 <span style="color: #990000">=</span> <span style="color: #990000">^(</span><span style="color: #993399">1</span> <span style="color: #990000">&lt;&lt;</span> <span style="font-weight: bold"><span style="color: #0000FF">iota</span></span><span style="color: #990000">).(</span><span style="color: #009900">uint8</span><span style="color: #990000">);</span> <span style="font-style: italic"><span style="color: #9A1900">// 254 (0b11111110)</span></span>
+        ALL_BUT_BIT2<span style="color: #990000">;</span>                        <span style="font-style: italic"><span style="color: #9A1900">// 253 (0b11111101)</span></span>
+        ALL_BUT_BIT3<span style="color: #990000">;</span>                        <span style="font-style: italic"><span style="color: #9A1900">// 251 (0b11111011)</span></span>
+        ALL_BUT_BIT4<span style="color: #990000">;</span>                        <span style="font-style: italic"><span style="color: #9A1900">// 247 (0b11110111)</span></span>
+        ALL_BUT_BIT5<span style="color: #990000">;</span>                        <span style="font-style: italic"><span style="color: #9A1900">// 239 (0b11101111)</span></span>
+<span style="color: #990000">)</span></tt></pre></div></div>
+</div>
+<div class="sect2">
+<h3 id="_boolean_type_and_predefined_constants">Boolean type, and predefined constants</h3>
+<div class="paragraph"><p>There is a real boolean type in Crawl, just like in C++. And many statements
+have a requirement for their parts to have an expression of boolean type. For
+example:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>x <span style="color: #990000">:=</span> <span style="color: #993399">84</span><span style="color: #990000">;</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// this is a compilation error, 'if' conditional expression must be of boolean type</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">if</span></span> x <span style="color: #FF0000">{</span> do_something<span style="color: #990000">();</span> <span style="color: #FF0000">}</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// and that's how you should write it</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">if</span></span> x <span style="color: #990000">!=</span> <span style="color: #993399">0</span> <span style="color: #FF0000">{</span> do_something<span style="color: #990000">();</span> <span style="color: #FF0000">}</span></tt></pre></div></div>
+<div class="paragraph"><p>In Crawl, there are three more predefined constants other than <tt>iota</tt>. They
+don&#8217;t have any special meaning however.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<tt>true</tt> is a predefined constant of an abstract boolean type, compatible with
+  any boolean type.
+</p>
+</li>
+<li>
+<p>
+<tt>false</tt> is a predefined constant of an abstract boolean type, compatible with
+  any boolean type.
+</p>
+</li>
+<li>
+<p>
+<tt>nil</tt> is a predefined constant of a special <tt>*void</tt> (pointer to void) type. It
+  is compatible with any pointer type.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Since boolean binary expressions result in an abstract boolean type as well,
+you can make all these constants by yourself (that&#8217;s why I&#8217;m not calling them
+special, they are just predefined):</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">const</span></span> <span style="color: #990000">(</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">true</span></span> <span style="color: #990000">=</span> <span style="color: #993399">1</span> <span style="color: #990000">!=</span> <span style="color: #993399">0</span><span style="color: #990000">;</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">false</span></span> <span style="color: #990000">=</span> <span style="color: #993399">1</span> <span style="color: #990000">!=</span> <span style="color: #993399">1</span><span style="color: #990000">;</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">nil</span></span> <span style="color: #990000">=</span> <span style="color: #993399">0</span><span style="color: #990000">.(*</span><span style="color: #009900">void</span><span style="color: #990000">);</span>
+<span style="color: #990000">)</span></tt></pre></div></div>
+</div>
+<div class="sect2">
+<h3 id="_arbitrary_precision_constants">Arbitrary precision constants</h3>
+<div class="paragraph"><p>In Crawl constants are of an abstract type by default. There are four abstract
+types: boolean, integer, float and string.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Abstract boolean is a result of all binary boolean operations, like <tt>a &gt; b</tt>,
+  etc. Crawl has two predefined constants of this type: <tt>true</tt> and <tt>false</tt>.
+  Abstract boolean type is simply compatible with any other non-abstract type.
+</p>
+</li>
+<li>
+<p>
+Abstract integer is a type of an integer literal, like <tt>31337</tt>. It can be
+  converted to a real type depending on the context. However until that happens
+  and during constant expression evaluation it has arbitrary precision (in
+  practice it simply means precision is big enough).
+</p>
+</li>
+<li>
+<p>
+Abstract float is a type of a floating point literal, like <tt>3.1415</tt>. It has
+  arbitrary precision as well.
+</p>
+</li>
+<li>
+<p>
+Abstract string is a type of a string literal, like <tt>"nsf"</tt>. You can
+  concatenate abstract strings with <tt>+</tt> operator. Abstract string literal can
+  be converted to <tt>*byte</tt> typed constant.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Here is the simple example that shows how arbitrary precision constants work:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">const</span></span> Huge <span style="color: #990000">=</span> <span style="color: #993399">1</span> <span style="color: #990000">&lt;&lt;</span> <span style="color: #993399">100</span>
+<span style="font-weight: bold"><span style="color: #0000FF">const</span></span> Four <span style="color: #009900">int8</span> <span style="color: #990000">=</span> Huge <span style="color: #990000">&gt;&gt;</span> <span style="color: #993399">98</span></tt></pre></div></div>
+</div>
+<div class="sect2">
+<h3 id="_unified_for_statement">Unified for statement</h3>
+<div class="paragraph"><p>In C there were few loop statements: <tt>while()</tt>, <tt>for(;;)</tt> and <tt>do; while()</tt>. In
+Crawl it&#8217;s all now a single <tt>for</tt> statment with different forms. Examples:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">// while-like</span></span>
+i <span style="color: #990000">:=</span> <span style="color: #993399">0</span><span style="color: #990000">;</span>
+<span style="font-weight: bold"><span style="color: #0000FF">for</span></span> i <span style="color: #990000">&lt;</span> <span style="color: #993399">5</span> <span style="color: #FF0000">{</span>
+        i<span style="color: #990000">++;</span>
+<span style="color: #FF0000">}</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// for-like</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">for</span></span> i <span style="color: #990000">:=</span> <span style="color: #993399">0</span><span style="color: #990000">;</span> i <span style="color: #990000">&lt;</span> <span style="color: #993399">5</span><span style="color: #990000">;</span> i<span style="color: #990000">++</span> <span style="color: #FF0000">{</span>
+<span style="color: #FF0000">}</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// infinite loop</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">for</span></span> <span style="color: #FF0000">{</span>
+<span style="color: #FF0000">}</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// there is no do while form, but you can emulate it easily</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">for</span></span> <span style="color: #FF0000">{</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">!</span>cond <span style="color: #FF0000">{</span> <span style="font-weight: bold"><span style="color: #0000FF">break</span></span> <span style="color: #FF0000">}</span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
+</div>
+<div class="sect2">
+<h3 id="_removed_tt_gt_tt_accessor">Removed "<tt>-&gt;</tt>" accessor</h3>
+<div class="paragraph"><p>The famous C/C++ dereferencing struct field accessor was removed. Now "<tt>.</tt>"
+accessor does both types of field access. Rules are simple: if the operand is a
+struct, then it&#8217;s a direct access operation, if the operand is a pointer to
+struct, then it&#8217;s an indirect access operation.</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">type</span></span> Element <span style="font-weight: bold"><span style="color: #0000FF">struct</span></span> <span style="color: #FF0000">{</span>
+        a<span style="color: #990000">,</span> b<span style="color: #990000">,</span> c <span style="color: #009900">int</span><span style="color: #990000">;</span>
+<span style="color: #FF0000">}</span><span style="color: #990000">;</span>
+
+<span style="font-weight: bold"><span style="color: #0000FF">type</span></span> List <span style="font-weight: bold"><span style="color: #0000FF">struct</span></span> <span style="color: #FF0000">{</span>
+        elem Element<span style="color: #990000">;</span>
+        next <span style="color: #990000">*</span>List<span style="color: #990000">;</span>
+<span style="color: #FF0000">}</span><span style="color: #990000">;</span>
+
+<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> x <span style="color: #990000">*</span>List<span style="color: #990000">;</span>
+y <span style="color: #990000">:=</span> x<span style="color: #990000">.</span>next<span style="color: #990000">.</span>next<span style="color: #990000">.</span>elem<span style="color: #990000">.</span>a<span style="color: #990000">;</span></tt></pre></div></div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2011-05-28 23:28:34 YEKST
+</div>
+</div>
+</body>
+</html>
