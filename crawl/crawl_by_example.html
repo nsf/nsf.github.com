@@ -954,27 +954,25 @@ by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
 <pre><tt><span style="font-weight: bold"><span style="color: #0000FF">import</span></span> <span style="color: #990000">(</span>
-        <span style="color: #FF0000">"stdio.h"</span><span style="color: #990000">;</span>
-        <span style="color: #FF0000">"stdlib.h"</span><span style="color: #990000">;</span>
+        <span style="color: #FF0000">"stdio.h"</span>
+        <span style="color: #FF0000">"stdlib.h"</span>
 <span style="color: #990000">)</span>
 
-<span style="font-weight: bold"><span style="color: #0000FF">func</span></span> sort_ints<span style="color: #990000">(</span>a<span style="color: #990000">,</span> b <span style="color: #990000">*</span><span style="color: #009900">void</span><span style="color: #990000">)</span> <span style="color: #009900">int</span>
-<span style="color: #FF0000">{</span>
+<span style="font-weight: bold"><span style="color: #0000FF">func</span></span> sort_ints<span style="color: #990000">(</span>a<span style="color: #990000">,</span> b <span style="color: #990000">*</span><span style="color: #009900">void</span><span style="color: #990000">)</span> <span style="color: #009900">int</span> <span style="color: #FF0000">{</span>
         <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">*</span>a<span style="color: #990000">.(*</span><span style="color: #009900">int</span><span style="color: #990000">)</span> <span style="color: #990000">&gt;</span> <span style="color: #990000">*</span>b<span style="color: #990000">.(*</span><span style="color: #009900">int</span><span style="color: #990000">)</span> <span style="color: #FF0000">{</span>
-                <span style="font-weight: bold"><span style="color: #0000FF">return</span></span> <span style="color: #993399">1</span><span style="color: #990000">;</span>
+                <span style="font-weight: bold"><span style="color: #0000FF">return</span></span> <span style="color: #993399">1</span>
         <span style="color: #FF0000">}</span>
-        <span style="font-weight: bold"><span style="color: #0000FF">return</span></span> <span style="color: #993399">0</span><span style="color: #990000">;</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">return</span></span> <span style="color: #993399">0</span>
 <span style="color: #FF0000">}</span>
 
-<span style="font-weight: bold"><span style="color: #0000FF">func</span></span> main<span style="color: #990000">(</span>argc <span style="color: #009900">int</span><span style="color: #990000">,</span> argv <span style="color: #990000">**</span><span style="color: #009900">byte</span><span style="color: #990000">)</span> <span style="color: #009900">int</span>
-<span style="color: #FF0000">{</span>
-        <span style="font-weight: bold"><span style="color: #0000FF">var</span></span> a <span style="color: #990000">[]</span><span style="color: #009900">int</span> <span style="color: #990000">=</span> <span style="color: #FF0000">{</span><span style="color: #993399">5</span><span style="color: #990000">,</span> <span style="color: #993399">3</span><span style="color: #990000">,</span> <span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">4</span><span style="color: #990000">,</span> <span style="color: #993399">2</span><span style="color: #FF0000">}</span><span style="color: #990000">;</span>
-        stdlib<span style="color: #990000">.</span>qsort<span style="color: #990000">(&amp;</span>a<span style="color: #990000">,</span> <span style="color: #993399">5</span><span style="color: #990000">,</span> <span style="color: #993399">4</span><span style="color: #990000">,</span> sort_ints<span style="color: #990000">);</span>
+<span style="font-weight: bold"><span style="color: #0000FF">func</span></span> main<span style="color: #990000">(</span>argc <span style="color: #009900">int</span><span style="color: #990000">,</span> argv <span style="color: #990000">**</span><span style="color: #009900">byte</span><span style="color: #990000">)</span> <span style="color: #009900">int</span> <span style="color: #FF0000">{</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">var</span></span> a <span style="color: #990000">[]</span><span style="color: #009900">int</span> <span style="color: #990000">=</span> <span style="color: #FF0000">{</span><span style="color: #993399">5</span><span style="color: #990000">,</span> <span style="color: #993399">3</span><span style="color: #990000">,</span> <span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">4</span><span style="color: #990000">,</span> <span style="color: #993399">2</span><span style="color: #FF0000">}</span>
+        stdlib<span style="color: #990000">.</span>qsort<span style="color: #990000">(&amp;</span>a<span style="color: #990000">,</span> <span style="color: #993399">5</span><span style="color: #990000">,</span> <span style="color: #993399">4</span><span style="color: #990000">,</span> sort_ints<span style="color: #990000">)</span>
 
         <span style="font-weight: bold"><span style="color: #0000FF">for</span></span> i <span style="color: #990000">:=</span> <span style="color: #993399">0</span><span style="color: #990000">;</span> i <span style="color: #990000">&lt;</span> <span style="color: #993399">5</span><span style="color: #990000">;</span> i<span style="color: #990000">++</span> <span style="color: #FF0000">{</span>
-                stdio<span style="color: #990000">.</span>printf<span style="color: #990000">(</span><span style="color: #FF0000">"%d</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">,</span> a<span style="color: #990000">[</span>i<span style="color: #990000">]);</span>
+                stdio<span style="color: #990000">.</span>printf<span style="color: #990000">(</span><span style="color: #FF0000">"%d</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">,</span> a<span style="color: #990000">[</span>i<span style="color: #990000">])</span>
         <span style="color: #FF0000">}</span>
-        <span style="font-weight: bold"><span style="color: #0000FF">return</span></span> <span style="color: #993399">0</span><span style="color: #990000">;</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">return</span></span> <span style="color: #993399">0</span>
 <span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="sect3">
 <h4 id="_declarations">Declarations</h4>
@@ -987,22 +985,25 @@ by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
 <pre><tt><span style="font-style: italic"><span style="color: #9A1900">// 'x' and 'y' are arrays containing 10 pointers to int</span></span>
-<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> x<span style="color: #990000">,</span> y <span style="color: #990000">[</span><span style="color: #993399">10</span><span style="color: #990000">]*</span><span style="color: #009900">int</span><span style="color: #990000">;</span>
+<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> x<span style="color: #990000">,</span> y <span style="color: #990000">[</span><span style="color: #993399">10</span><span style="color: #990000">]*</span><span style="color: #009900">int</span>
 
 <span style="font-style: italic"><span style="color: #9A1900">// 'z' is a byte</span></span>
-<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> z <span style="color: #009900">byte</span><span style="color: #990000">;</span>
+<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> z <span style="color: #009900">byte</span>
 
 <span style="font-style: italic"><span style="color: #9A1900">// 'cache' is an anonymous struct which has the following fields:</span></span>
 <span style="font-style: italic"><span style="color: #9A1900">// - 'entries' which is a pointer to type 'CacheEntry'</span></span>
 <span style="font-style: italic"><span style="color: #9A1900">// - 'num' which is an unsigned integer (32 bit)</span></span>
-<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> cache <span style="font-weight: bold"><span style="color: #0000FF">struct</span></span> <span style="color: #FF0000">{</span> entries <span style="color: #990000">*</span>CacheEntry<span style="color: #990000">;</span> num <span style="color: #009900">uint</span><span style="color: #990000">;</span> <span style="color: #FF0000">}</span><span style="color: #990000">;</span>
+<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> cache <span style="font-weight: bold"><span style="color: #0000FF">struct</span></span> <span style="color: #FF0000">{</span>
+        entries <span style="color: #990000">*</span>CacheEntry
+        num <span style="color: #009900">uint</span>
+<span style="color: #FF0000">}</span>
 
 <span style="font-style: italic"><span style="color: #9A1900">// 'cmp' is a function pointer which points to a function, which has two</span></span>
 <span style="font-style: italic"><span style="color: #9A1900">// arguments of type int and returns bool</span></span>
-<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> cmp <span style="font-weight: bold"><span style="color: #0000FF">func</span></span><span style="color: #990000">(</span><span style="color: #009900">int</span><span style="color: #990000">,</span> <span style="color: #009900">int</span><span style="color: #990000">)</span> <span style="color: #009900">bool</span><span style="color: #990000">;</span>
+<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> cmp <span style="font-weight: bold"><span style="color: #0000FF">func</span></span><span style="color: #990000">(</span><span style="color: #009900">int</span><span style="color: #990000">,</span> <span style="color: #009900">int</span><span style="color: #990000">)</span> <span style="color: #009900">bool</span>
 
 <span style="font-style: italic"><span style="color: #9A1900">// the defintion of the well known 'printf' function:</span></span>
-<span style="font-weight: bold"><span style="color: #0000FF">func</span></span> printf<span style="color: #990000">(</span>fmt <span style="color: #990000">*</span><span style="color: #009900">byte</span><span style="color: #990000">,</span> <span style="color: #990000">...)</span> <span style="color: #009900">int</span><span style="color: #990000">;</span></tt></pre></div></div>
+<span style="font-weight: bold"><span style="color: #0000FF">func</span></span> printf<span style="color: #990000">(</span>fmt <span style="color: #990000">*</span><span style="color: #009900">byte</span><span style="color: #990000">,</span> <span style="color: #990000">...)</span> <span style="color: #009900">int</span></tt></pre></div></div>
 </div>
 </div>
 <div class="sect2">
@@ -1088,7 +1089,7 @@ and infers its type using initializer type information:</p></div>
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>concrete <span style="color: #990000">:=</span> abstract<span style="color: #990000">.(*</span>MyMegaType<span style="color: #990000">);</span></tt></pre></div></div>
+<pre><tt>concrete <span style="color: #990000">:=</span> abstract<span style="color: #990000">.(*</span>MyMegaType<span style="color: #990000">)</span></tt></pre></div></div>
 <div class="paragraph"><p>Few other example type inference examples:</p></div>
 <div class="listingblock">
 <div class="content"><!-- Generator: GNU source-highlight 3.1.4
@@ -1096,13 +1097,13 @@ by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
 <pre><tt><span style="font-style: italic"><span style="color: #9A1900">// 'i' is int</span></span>
-i <span style="color: #990000">:=</span> <span style="color: #993399">0</span><span style="color: #990000">;</span>
+i <span style="color: #990000">:=</span> <span style="color: #993399">0</span>
 
 <span style="font-style: italic"><span style="color: #9A1900">// 'pi' is float, 'name' is *byte</span></span>
-pi<span style="color: #990000">,</span> name <span style="color: #990000">:=</span> <span style="color: #993399">3.1415</span><span style="color: #990000">,</span> <span style="color: #FF0000">"nsf"</span><span style="color: #990000">;</span>
+pi<span style="color: #990000">,</span> name <span style="color: #990000">:=</span> <span style="color: #993399">3.1415</span><span style="color: #990000">,</span> <span style="color: #FF0000">"nsf"</span>
 
 <span style="font-style: italic"><span style="color: #9A1900">// function with multiple return values</span></span>
-<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> w<span style="color: #990000">,</span> h <span style="color: #990000">=</span> GetSize<span style="color: #990000">();</span></tt></pre></div></div>
+<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> w<span style="color: #990000">,</span> h <span style="color: #990000">=</span> GetSize<span style="color: #990000">()</span></tt></pre></div></div>
 </div>
 <div class="sect2">
 <h3 id="_all_variables_are_zero_initialized">All variables are zero-initialized</h3>
@@ -1116,8 +1117,8 @@ zero-initializing behaviour. Just like in the D programming language:</p></div>
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">var</span></span> x <span style="color: #009900">int</span><span style="color: #990000">;</span>        <span style="font-style: italic"><span style="color: #9A1900">// zero</span></span>
-<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> y <span style="color: #009900">int</span> <span style="color: #990000">=</span> <span style="color: #009900">void</span><span style="color: #990000">;</span> <span style="font-style: italic"><span style="color: #9A1900">// undefined (stack garbage)</span></span></tt></pre></div></div>
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">var</span></span> x <span style="color: #009900">int</span>        <span style="font-style: italic"><span style="color: #9A1900">// zero</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> y <span style="color: #009900">int</span> <span style="color: #990000">=</span> <span style="color: #009900">void</span> <span style="font-style: italic"><span style="color: #9A1900">// undefined (stack garbage)</span></span></tt></pre></div></div>
 <div class="paragraph"><p>It&#8217;s somewhat an area of premature optimization. Having everything
 zero-initialized provides you with nice assumptions as well.</p></div>
 <div class="admonitionblock">
@@ -1139,17 +1140,15 @@ expensive. Crawl allows you to return multiple values from a function:</p></div>
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">func</span></span> GetSize<span style="color: #990000">()</span> <span style="color: #990000">(</span><span style="color: #009900">int</span><span style="color: #990000">,</span> <span style="color: #009900">int</span><span style="color: #990000">)</span>
-<span style="color: #FF0000">{</span>
-        w <span style="color: #990000">:=</span> CalculateWidth<span style="color: #990000">();</span>
-        h <span style="color: #990000">:=</span> CalculateHeight<span style="color: #990000">();</span>
-        <span style="font-weight: bold"><span style="color: #0000FF">return</span></span> w<span style="color: #990000">,</span> h<span style="color: #990000">;</span>
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">func</span></span> GetSize<span style="color: #990000">()</span> <span style="color: #990000">(</span><span style="color: #009900">int</span><span style="color: #990000">,</span> <span style="color: #009900">int</span><span style="color: #990000">)</span> <span style="color: #FF0000">{</span>
+        w <span style="color: #990000">:=</span> CalculateWidth<span style="color: #990000">()</span>
+        h <span style="color: #990000">:=</span> CalculateHeight<span style="color: #990000">()</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">return</span></span> w<span style="color: #990000">,</span> h
 <span style="color: #FF0000">}</span>
 
-<span style="font-weight: bold"><span style="color: #0000FF">func</span></span> UseSize<span style="color: #990000">()</span>
-<span style="color: #FF0000">{</span>
-        w<span style="color: #990000">,</span> h <span style="color: #990000">:=</span> GetSize<span style="color: #990000">();</span>
-        stdio<span style="color: #990000">.</span>printf<span style="color: #990000">(</span><span style="color: #FF0000">"Size: %dx%d</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">,</span> w<span style="color: #990000">,</span> h<span style="color: #990000">);</span>
+<span style="font-weight: bold"><span style="color: #0000FF">func</span></span> UseSize<span style="color: #990000">()</span> <span style="color: #FF0000">{</span>
+        w<span style="color: #990000">,</span> h <span style="color: #990000">:=</span> GetSize<span style="color: #990000">()</span>
+        stdio<span style="color: #990000">.</span>printf<span style="color: #990000">(</span><span style="color: #FF0000">"Size: %dx%d</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">,</span> w<span style="color: #990000">,</span> h<span style="color: #990000">)</span>
 <span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="paragraph"><p>Another small feature in this area which is worth mentioning is named return
 values. Crawl provides a way to name return values of a function. In this case
@@ -1160,11 +1159,10 @@ by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
 <pre><tt><span style="font-style: italic"><span style="color: #9A1900">// Get a number of 'A' characters in 'chars'.</span></span>
-<span style="font-weight: bold"><span style="color: #0000FF">func</span></span> CountA<span style="color: #990000">(</span>chars <span style="color: #990000">*</span><span style="color: #009900">byte</span><span style="color: #990000">,</span> num <span style="color: #009900">int</span><span style="color: #990000">)</span> <span style="color: #990000">(</span>count <span style="color: #009900">int</span><span style="color: #990000">)</span>
-<span style="color: #FF0000">{</span>
+<span style="font-weight: bold"><span style="color: #0000FF">func</span></span> CountA<span style="color: #990000">(</span>chars <span style="color: #990000">*</span><span style="color: #009900">byte</span><span style="color: #990000">,</span> num <span style="color: #009900">int</span><span style="color: #990000">)</span> <span style="color: #990000">(</span>count <span style="color: #009900">int</span><span style="color: #990000">)</span> <span style="color: #FF0000">{</span>
         <span style="font-weight: bold"><span style="color: #0000FF">for</span></span> i <span style="color: #990000">:=</span> <span style="color: #993399">0</span><span style="color: #990000">;</span> i <span style="color: #990000">&lt;</span> num<span style="color: #990000">;</span> i<span style="color: #990000">++</span> <span style="color: #FF0000">{</span>
                 <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> chars<span style="color: #990000">[</span>i<span style="color: #990000">]</span> <span style="color: #990000">==</span> <span style="color: #FF0000">'A'</span> <span style="color: #FF0000">{</span>
-                        count<span style="color: #990000">++;</span>
+                        count<span style="color: #990000">++</span>
                 <span style="color: #FF0000">}</span>
         <span style="color: #FF0000">}</span>
 <span style="color: #FF0000">}</span></tt></pre></div></div>
@@ -1179,13 +1177,12 @@ true for plain assignments:</p></div>
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">func</span></span> PointerArithmetic<span style="color: #990000">(</span>LHS<span style="color: #990000">,</span> RHS <span style="color: #990000">*</span>Expr<span style="color: #990000">)</span>
-<span style="color: #FF0000">{</span>
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">func</span></span> PointerArithmetic<span style="color: #990000">(</span>LHS<span style="color: #990000">,</span> RHS <span style="color: #990000">*</span>Expr<span style="color: #990000">)</span> <span style="color: #FF0000">{</span>
         <span style="font-style: italic"><span style="color: #9A1900">// swap LHS and RHS if RHS is a pointer</span></span>
         <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> sema<span style="color: #990000">.</span>IsPointer<span style="color: #990000">(</span>RHS<span style="color: #990000">)</span> <span style="color: #FF0000">{</span>
-                LHS<span style="color: #990000">,</span> RHS <span style="color: #990000">=</span> RHS<span style="color: #990000">,</span> LHS<span style="color: #990000">;</span>
+                LHS<span style="color: #990000">,</span> RHS <span style="color: #990000">=</span> RHS<span style="color: #990000">,</span> LHS
         <span style="color: #FF0000">}</span>
-        DoPointerArithmetic<span style="color: #990000">(</span>LHS<span style="color: #990000">.(*</span>Pointer<span style="color: #990000">),</span> RHS<span style="color: #990000">.(*</span>Integer<span style="color: #990000">));</span>
+        DoPointerArithmetic<span style="color: #990000">(</span>LHS<span style="color: #990000">.(*</span>Pointer<span style="color: #990000">),</span> RHS<span style="color: #990000">.(*</span>Integer<span style="color: #990000">))</span>
 <span style="color: #FF0000">}</span></tt></pre></div></div>
 </div>
 <div class="sect2">
@@ -1207,16 +1204,16 @@ Case clause "breaks" by default. It&#8217;s actually quite easy to observe that
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>x <span style="color: #990000">:=</span> <span style="color: #993399">1</span><span style="color: #990000">;</span>
+<pre><tt>x <span style="color: #990000">:=</span> <span style="color: #993399">1</span>
 <span style="font-weight: bold"><span style="color: #0000FF">switch</span></span> x <span style="color: #FF0000">{</span>
 <span style="font-weight: bold"><span style="color: #0000FF">case</span></span> <span style="color: #993399">0</span><span style="color: #990000">:</span>
-        printf<span style="color: #990000">(</span><span style="color: #FF0000">"0</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">);</span>
+        printf<span style="color: #990000">(</span><span style="color: #FF0000">"0</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">)</span>
 <span style="font-weight: bold"><span style="color: #0000FF">case</span></span> <span style="color: #993399">1</span><span style="color: #990000">:</span>
-        printf<span style="color: #990000">(</span><span style="color: #FF0000">"1</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">);</span>
+        printf<span style="color: #990000">(</span><span style="color: #FF0000">"1</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">)</span>
 <span style="font-weight: bold"><span style="color: #0000FF">case</span></span> <span style="color: #993399">2</span><span style="color: #990000">:</span>
-        printf<span style="color: #990000">(</span><span style="color: #FF0000">"2</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">);</span>
+        printf<span style="color: #990000">(</span><span style="color: #FF0000">"2</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">)</span>
 <span style="font-weight: bold"><span style="color: #0000FF">default</span></span><span style="color: #990000">:</span>
-        printf<span style="color: #990000">(</span><span style="color: #FF0000">"something else</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">);</span>
+        printf<span style="color: #990000">(</span><span style="color: #FF0000">"something else</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">)</span>
 <span style="color: #FF0000">}</span>
 <span style="font-style: italic"><span style="color: #9A1900">// this code will print "1\n"</span></span></tt></pre></div></div>
 </li>
@@ -1232,14 +1229,14 @@ One place where "fallthrough" behaviour was used a lot is a case clause,
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">var</span></span> x <span style="color: #009900">uint</span> <span style="color: #990000">=</span> GetX<span style="color: #990000">();</span>
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">var</span></span> x <span style="color: #009900">uint</span> <span style="color: #990000">=</span> GetX<span style="color: #990000">()</span>
 <span style="font-weight: bold"><span style="color: #0000FF">switch</span></span> x <span style="color: #FF0000">{</span>
 <span style="font-weight: bold"><span style="color: #0000FF">case</span></span> <span style="color: #993399">0</span><span style="color: #990000">,</span> <span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">2</span><span style="color: #990000">,</span> <span style="color: #993399">3</span><span style="color: #990000">,</span> <span style="color: #993399">4</span><span style="color: #990000">:</span>
-        printf<span style="color: #990000">(</span><span style="color: #FF0000">"less than 5</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">);</span>
+        printf<span style="color: #990000">(</span><span style="color: #FF0000">"less than 5</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">)</span>
 <span style="font-weight: bold"><span style="color: #0000FF">case</span></span> <span style="color: #993399">5</span><span style="color: #990000">:</span>
-        printf<span style="color: #990000">(</span><span style="color: #FF0000">"5!</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">);</span>
+        printf<span style="color: #990000">(</span><span style="color: #FF0000">"5!</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">)</span>
 <span style="font-weight: bold"><span style="color: #0000FF">default</span></span><span style="color: #990000">:</span>
-        printf<span style="color: #990000">(</span><span style="color: #FF0000">"greater than 5</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">);</span>
+        printf<span style="color: #990000">(</span><span style="color: #FF0000">"greater than 5</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">)</span>
 <span style="color: #FF0000">}</span></tt></pre></div></div>
 </li>
 <li>
@@ -1252,19 +1249,19 @@ Of course sometimes you just need to have a "fallthrough" behavior, a new
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>x <span style="color: #990000">:=</span> <span style="color: #993399">1</span><span style="color: #990000">;</span>
+<pre><tt>x <span style="color: #990000">:=</span> <span style="color: #993399">1</span>
 <span style="font-weight: bold"><span style="color: #0000FF">switch</span></span> x <span style="color: #FF0000">{</span>
 <span style="font-weight: bold"><span style="color: #0000FF">case</span></span> <span style="color: #993399">0</span><span style="color: #990000">:</span>
-        printf<span style="color: #990000">(</span><span style="color: #FF0000">"0 and"</span><span style="color: #990000">);</span>
-        <span style="font-weight: bold"><span style="color: #0000FF">fallthrough</span></span><span style="color: #990000">;</span>
+        printf<span style="color: #990000">(</span><span style="color: #FF0000">"0 and"</span><span style="color: #990000">)</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">fallthrough</span></span>
 <span style="font-weight: bold"><span style="color: #0000FF">case</span></span> <span style="color: #993399">1</span><span style="color: #990000">:</span>
-        printf<span style="color: #990000">(</span><span style="color: #FF0000">"1 and"</span><span style="color: #990000">);</span>
-        <span style="font-weight: bold"><span style="color: #0000FF">fallthrough</span></span><span style="color: #990000">;</span>
+        printf<span style="color: #990000">(</span><span style="color: #FF0000">"1 and"</span><span style="color: #990000">)</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">fallthrough</span></span>
 <span style="font-weight: bold"><span style="color: #0000FF">case</span></span> <span style="color: #993399">2</span><span style="color: #990000">:</span>
-        printf<span style="color: #990000">(</span><span style="color: #FF0000">"2 and"</span><span style="color: #990000">);</span>
-        <span style="font-weight: bold"><span style="color: #0000FF">fallthrough</span></span><span style="color: #990000">;</span>
+        printf<span style="color: #990000">(</span><span style="color: #FF0000">"2 and"</span><span style="color: #990000">)</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">fallthrough</span></span>
 <span style="font-weight: bold"><span style="color: #0000FF">case</span></span> <span style="color: #993399">3</span><span style="color: #990000">:</span>
-        printf<span style="color: #990000">(</span><span style="color: #FF0000">"3</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">);</span>
+        printf<span style="color: #990000">(</span><span style="color: #FF0000">"3</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">)</span>
 <span style="color: #FF0000">}</span>
 <span style="font-style: italic"><span style="color: #9A1900">// this code will print "1 and 2 and 3\n"</span></span></tt></pre></div></div>
 </li>
@@ -1284,27 +1281,27 @@ by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
 <pre><tt><span style="font-style: italic"><span style="color: #9A1900">// this code:</span></span>
-flags <span style="color: #990000">:=</span> GetFlags<span style="color: #990000">();</span>
+flags <span style="color: #990000">:=</span> GetFlags<span style="color: #990000">()</span>
 <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> flags <span style="color: #990000">&amp;</span> FEATURE_X <span style="color: #990000">!=</span> <span style="color: #993399">0</span> <span style="color: #FF0000">{</span>
-        UseFeatureX<span style="color: #990000">();</span>
+        UseFeatureX<span style="color: #990000">()</span>
 <span style="color: #FF0000">}</span> <span style="font-weight: bold"><span style="color: #0000FF">else</span></span> <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> flags <span style="color: #990000">&amp;</span> FEATURE_Y <span style="color: #990000">!=</span> <span style="color: #993399">0</span> <span style="color: #FF0000">{</span>
-        UseFeatureY<span style="color: #990000">();</span>
+        UseFeatureY<span style="color: #990000">()</span>
 <span style="color: #FF0000">}</span> <span style="font-weight: bold"><span style="color: #0000FF">else</span></span> <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> flags <span style="color: #990000">&amp;</span> FEATURE_Z <span style="color: #990000">!=</span> <span style="color: #993399">0</span> <span style="color: #FF0000">{</span>
-        UseFeatureZ<span style="color: #990000">();</span>
+        UseFeatureZ<span style="color: #990000">()</span>
 <span style="color: #FF0000">}</span> <span style="font-weight: bold"><span style="color: #0000FF">else</span></span> <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> flags <span style="color: #990000">&amp;</span> <span style="color: #990000">(</span>FEATURE_A <span style="color: #990000">|</span> FEATURE_B <span style="color: #990000">|</span> FEATURE_C<span style="color: #990000">)</span> <span style="color: #990000">!=</span> <span style="color: #993399">0</span> <span style="color: #FF0000">{</span>
-        UseFeatureABC<span style="color: #990000">();</span>
+        UseFeatureABC<span style="color: #990000">()</span>
 <span style="color: #FF0000">}</span>
 <span style="font-style: italic"><span style="color: #9A1900">// can be written as:</span></span>
-flags <span style="color: #990000">:=</span> GetFlags<span style="color: #990000">();</span>
+flags <span style="color: #990000">:=</span> GetFlags<span style="color: #990000">()</span>
 <span style="font-weight: bold"><span style="color: #0000FF">switch</span></span> <span style="color: #FF0000">{</span>
 <span style="font-weight: bold"><span style="color: #0000FF">case</span></span> flags <span style="color: #990000">&amp;</span> FEATURE_X <span style="color: #990000">!=</span> <span style="color: #993399">0</span><span style="color: #990000">:</span>
-        UseFeatureX<span style="color: #990000">();</span>
+        UseFeatureX<span style="color: #990000">()</span>
 <span style="font-weight: bold"><span style="color: #0000FF">case</span></span> flags <span style="color: #990000">&amp;</span> FEATURE_Y <span style="color: #990000">!=</span> <span style="color: #993399">0</span><span style="color: #990000">:</span>
-        UseFeatureY<span style="color: #990000">();</span>
+        UseFeatureY<span style="color: #990000">()</span>
 <span style="font-weight: bold"><span style="color: #0000FF">case</span></span> flags <span style="color: #990000">&amp;</span> FEATURE_Z <span style="color: #990000">!=</span> <span style="color: #993399">0</span><span style="color: #990000">:</span>
-        UseFeatureZ<span style="color: #990000">();</span>
+        UseFeatureZ<span style="color: #990000">()</span>
 <span style="font-weight: bold"><span style="color: #0000FF">case</span></span> flags <span style="color: #990000">&amp;</span> <span style="color: #990000">(</span>FEATURE_A <span style="color: #990000">|</span> FEATURE_B <span style="color: #990000">|</span> FEATURE_C<span style="color: #990000">)</span> <span style="color: #990000">!=</span> <span style="color: #993399">0</span><span style="color: #990000">:</span>
-        UseFeatureABC<span style="color: #990000">();</span>
+        UseFeatureABC<span style="color: #990000">()</span>
 <span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="paragraph"><p>And of course you can even use that for string comparison if you really want
 to:</p></div>
@@ -1313,7 +1310,7 @@ to:</p></div>
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>s <span style="color: #990000">:=</span> GetNextOption<span style="color: #990000">();</span>
+<pre><tt>s <span style="color: #990000">:=</span> GetNextOption<span style="color: #990000">()</span>
 <span style="font-weight: bold"><span style="color: #0000FF">switch</span></span> <span style="color: #FF0000">{</span>
 <span style="font-weight: bold"><span style="color: #0000FF">case</span></span> str<span style="color: #990000">.</span>Equals<span style="color: #990000">(</span>s<span style="color: #990000">,</span> <span style="color: #FF0000">"option-x"</span><span style="color: #990000">):</span>
         <span style="font-style: italic"><span style="color: #9A1900">// ...</span></span>
@@ -1329,6 +1326,14 @@ http://www.gnu.org/software/src-highlite -->
 </div>
 <div class="sect2">
 <h3 id="_stronger_and_explicit_type_system">Stronger and explicit type system</h3>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img src="icons/warning.png" alt="Warning" />
+</td>
+<td class="content">This section is out-dated. Crawl has C-like unrestricted type system.</td>
+</tr></table>
+</div>
 <div class="paragraph"><p>Crawl&#8217;s type system is much more explicit than C&#8217;s, there are no implicit type
 casts. Floating point type cannot be used as an integer, integer cannot be used
 as a boolean, unsigned integer cannot be used as a signed integer, etc. There
@@ -1348,21 +1353,21 @@ http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
 <pre><tt><span style="font-style: italic"><span style="color: #9A1900">// Let's take famous C function:</span></span>
 
-<span style="font-weight: bold"><span style="color: #0000FF">type</span></span> size_t <span style="color: #009900">uint32</span><span style="color: #990000">;</span> <span style="font-style: italic"><span style="color: #9A1900">// on x86 or uint64 on x86_64</span></span>
-<span style="font-weight: bold"><span style="color: #0000FF">func</span></span> memcpy<span style="color: #990000">(</span>dest<span style="color: #990000">,</span> src <span style="color: #990000">*</span><span style="color: #009900">void</span><span style="color: #990000">,</span> n size_t<span style="color: #990000">)</span> <span style="color: #990000">*</span><span style="color: #009900">void</span><span style="color: #990000">;</span>
+<span style="font-weight: bold"><span style="color: #0000FF">type</span></span> size_t <span style="color: #009900">uint32</span> <span style="font-style: italic"><span style="color: #9A1900">// on x86 or uint64 on x86_64</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">func</span></span> memcpy<span style="color: #990000">(</span>dest<span style="color: #990000">,</span> src <span style="color: #990000">*</span><span style="color: #009900">void</span><span style="color: #990000">,</span> n size_t<span style="color: #990000">)</span> <span style="color: #990000">*</span><span style="color: #009900">void</span>
 
 <span style="font-style: italic"><span style="color: #9A1900">// Obviously you don't need to copy more bytes than your system supports,</span></span>
 <span style="font-style: italic"><span style="color: #9A1900">// that's why C uses size_t here. But how do you use that function (let's</span></span>
 <span style="font-style: italic"><span style="color: #9A1900">// imagine our type system is the same as in C):</span></span>
 
-<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> size <span style="color: #009900">uint64</span> <span style="color: #990000">=</span> GetSize<span style="color: #990000">();</span>
-memcpy<span style="color: #990000">(</span>d<span style="color: #990000">,</span> s<span style="color: #990000">,</span> size<span style="color: #990000">);</span>
+<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> size <span style="color: #009900">uint64</span> <span style="color: #990000">=</span> GetSize<span style="color: #990000">()</span>
+memcpy<span style="color: #990000">(</span>d<span style="color: #990000">,</span> s<span style="color: #990000">,</span> size<span style="color: #990000">)</span>
 
 <span style="font-style: italic"><span style="color: #9A1900">// Ok, works for both x86 and x86_64, but on x86 it is possible to lose some</span></span>
 <span style="font-style: italic"><span style="color: #9A1900">// information, because size_t is smaller than uint64. This on the other hand:</span></span>
 
-<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> size <span style="color: #009900">uint32</span> <span style="color: #990000">=</span> GetSize<span style="color: #990000">();</span>
-memcpy<span style="color: #990000">(</span>d<span style="color: #990000">,</span> s<span style="color: #990000">,</span> size<span style="color: #990000">);</span>
+<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> size <span style="color: #009900">uint32</span> <span style="color: #990000">=</span> GetSize<span style="color: #990000">()</span>
+memcpy<span style="color: #990000">(</span>d<span style="color: #990000">,</span> s<span style="color: #990000">,</span> size<span style="color: #990000">)</span>
 
 <span style="font-style: italic"><span style="color: #9A1900">// Works safely for both platforms. You see, when you use variable sized types</span></span>
 <span style="font-style: italic"><span style="color: #9A1900">// you may want to have an explicit cast to notice your code reader that there</span></span>
@@ -1372,8 +1377,8 @@ memcpy<span style="color: #990000">(</span>d<span style="color: #990000">,</span
 <span style="font-style: italic"><span style="color: #9A1900">// to introduce a cast and this cast will work as your agreement for possible</span></span>
 <span style="font-style: italic"><span style="color: #9A1900">// information loss:</span></span>
 
-<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> size <span style="color: #009900">uint64</span> <span style="color: #990000">=</span> GetSize<span style="color: #990000">();</span>
-memcpy<span style="color: #990000">(</span>d<span style="color: #990000">,</span> s<span style="color: #990000">,</span> size<span style="color: #990000">.(</span>size_t<span style="color: #990000">));</span></tt></pre></div></div>
+<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> size <span style="color: #009900">uint64</span> <span style="color: #990000">=</span> GetSize<span style="color: #990000">()</span>
+memcpy<span style="color: #990000">(</span>d<span style="color: #990000">,</span> s<span style="color: #990000">,</span> size<span style="color: #990000">.(</span>size_t<span style="color: #990000">))</span></tt></pre></div></div>
 <div class="paragraph"><p>I wasn&#8217;t sure for a long time that this is a right approach and probably I&#8217;m
 still not 100% sure. But it&#8217;s definitely something interesting to think about.</p></div>
 </div>
@@ -1396,14 +1401,14 @@ makes sense to allow things like that in Crawl:</p></div>
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">var</span></span> a <span style="color: #990000">[]</span><span style="color: #009900">int</span> <span style="color: #990000">=</span> <span style="color: #FF0000">{</span><span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">2</span><span style="color: #990000">,</span> <span style="color: #993399">3</span><span style="color: #FF0000">}</span><span style="color: #990000">;</span>
-<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> b <span style="color: #990000">[]</span><span style="color: #009900">int</span> <span style="color: #990000">=</span> <span style="color: #FF0000">{</span><span style="color: #993399">4</span><span style="color: #990000">,</span> <span style="color: #993399">5</span><span style="color: #990000">,</span> <span style="color: #993399">6</span><span style="color: #FF0000">}</span><span style="color: #990000">;</span>
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">var</span></span> a <span style="color: #990000">[]</span><span style="color: #009900">int</span> <span style="color: #990000">=</span> <span style="color: #FF0000">{</span><span style="color: #993399">1</span><span style="color: #990000">,</span> <span style="color: #993399">2</span><span style="color: #990000">,</span> <span style="color: #993399">3</span><span style="color: #FF0000">}</span>
+<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> b <span style="color: #990000">[]</span><span style="color: #009900">int</span> <span style="color: #990000">=</span> <span style="color: #FF0000">{</span><span style="color: #993399">4</span><span style="color: #990000">,</span> <span style="color: #993399">5</span><span style="color: #990000">,</span> <span style="color: #993399">6</span><span style="color: #FF0000">}</span>
 
-c <span style="color: #990000">:=</span> a <span style="color: #990000">+</span> b<span style="color: #990000">;</span>
+c <span style="color: #990000">:=</span> a <span style="color: #990000">+</span> b
 
-c<span style="color: #990000">[</span><span style="color: #993399">0</span><span style="color: #990000">]</span> <span style="color: #990000">==</span> <span style="color: #993399">5</span><span style="color: #990000">;</span>
-c<span style="color: #990000">[</span><span style="color: #993399">1</span><span style="color: #990000">]</span> <span style="color: #990000">==</span> <span style="color: #993399">7</span><span style="color: #990000">;</span>
-c<span style="color: #990000">[</span><span style="color: #993399">2</span><span style="color: #990000">]</span> <span style="color: #990000">==</span> <span style="color: #993399">9</span><span style="color: #990000">;</span></tt></pre></div></div>
+c<span style="color: #990000">[</span><span style="color: #993399">0</span><span style="color: #990000">]</span> <span style="color: #990000">==</span> <span style="color: #993399">5</span>
+c<span style="color: #990000">[</span><span style="color: #993399">1</span><span style="color: #990000">]</span> <span style="color: #990000">==</span> <span style="color: #993399">7</span>
+c<span style="color: #990000">[</span><span style="color: #993399">2</span><span style="color: #990000">]</span> <span style="color: #990000">==</span> <span style="color: #993399">9</span></tt></pre></div></div>
 <div class="paragraph"><p>We&#8217;ll see.</p></div>
 </div>
 <div class="sect2">
@@ -1416,7 +1421,7 @@ like templates or something. Examples:</p></div>
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">var</span></span> uninterpreted <span style="color: #990000">=</span> <span style="color: #FF0000">`\n is \n here and it's not a 0x0A`</span><span style="color: #990000">;</span>
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">var</span></span> uninterpreted <span style="color: #990000">=</span> <span style="color: #FF0000">`\n is \n here and it's not a 0x0A`</span>
 <span style="font-weight: bold"><span style="color: #0000FF">var</span></span> multiline <span style="color: #990000">=</span>
 <span style="color: #FF0000">`Multiline strings v1.0</span>
 
@@ -1425,7 +1430,7 @@ http://www.gnu.org/software/src-highlite -->
 <span style="color: #FF0000">${BODY}</span>
 
 <span style="color: #FF0000">${FOOTER}</span>
-<span style="color: #FF0000">`</span><span style="color: #990000">;</span></tt></pre></div></div>
+<span style="color: #FF0000">`</span></tt></pre></div></div>
 </div>
 <div class="sect2">
 <h3 id="_many_c_expressions_are_statements">Many C expressions are statements</h3>
@@ -1436,10 +1441,10 @@ Crawl:</p></div>
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">var</span></span> p <span style="color: #990000">*</span><span style="color: #009900">int</span><span style="color: #990000">;</span>
-a <span style="color: #990000">:=</span> p<span style="color: #990000">++;</span>
-b <span style="color: #990000">:=</span> p<span style="color: #990000">++;</span>
-c <span style="color: #990000">:=</span> p<span style="color: #990000">++;</span></tt></pre></div></div>
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">var</span></span> p <span style="color: #990000">*</span><span style="color: #009900">int</span>
+a <span style="color: #990000">:=</span> p<span style="color: #990000">++</span>
+b <span style="color: #990000">:=</span> p<span style="color: #990000">++</span>
+c <span style="color: #990000">:=</span> p<span style="color: #990000">++</span></tt></pre></div></div>
 <div class="paragraph"><p>But at the end, one of the most important things about the code is readability.
 And restricting programmer&#8217;s ingenuity in that area matters. We&#8217;ve seen all
 those code obfuscation contests, and quite ambigous expressions like:
@@ -1455,25 +1460,25 @@ depth-first in that sense):</p></div>
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>x<span style="color: #990000">[</span>a<span style="color: #990000">()],</span> y<span style="color: #990000">[</span>b<span style="color: #990000">()]</span> <span style="color: #990000">=</span> foo<span style="color: #990000">(</span>c<span style="color: #990000">(),</span> d<span style="color: #990000">()),</span> bar<span style="color: #990000">(</span>e<span style="color: #990000">(),</span> f<span style="color: #990000">());</span></tt></pre></div></div>
+<pre><tt>x<span style="color: #990000">[</span>a<span style="color: #990000">()],</span> y<span style="color: #990000">[</span>b<span style="color: #990000">()]</span> <span style="color: #990000">=</span> foo<span style="color: #990000">(</span>c<span style="color: #990000">(),</span> d<span style="color: #990000">()),</span> bar<span style="color: #990000">(</span>e<span style="color: #990000">(),</span> f<span style="color: #990000">())</span></tt></pre></div></div>
 <div class="paragraph"><p>And that&#8217;s how it will be interpreted (using improvised SSA form):</p></div>
 <div class="listingblock">
 <div class="content"><!-- Generator: GNU source-highlight 3.1.4
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt><span style="color: #990000">%</span><span style="color: #993399">1</span>  <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">a</span></span><span style="color: #990000">();</span>
-<span style="color: #990000">%</span><span style="color: #993399">2</span>  <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">nth_element_address_in</span></span><span style="color: #990000">(</span>x<span style="color: #990000">,</span> <span style="color: #990000">%</span><span style="color: #993399">1</span><span style="color: #990000">);</span>
-<span style="color: #990000">%</span><span style="color: #993399">3</span>  <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">b</span></span><span style="color: #990000">();</span>
-<span style="color: #990000">%</span><span style="color: #993399">4</span>  <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">nth_element_address_in</span></span><span style="color: #990000">(</span>y<span style="color: #990000">,</span> <span style="color: #990000">%</span><span style="color: #993399">3</span><span style="color: #990000">);</span>
-<span style="color: #990000">%</span><span style="color: #993399">5</span>  <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">c</span></span><span style="color: #990000">();</span>
-<span style="color: #990000">%</span><span style="color: #993399">6</span>  <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">d</span></span><span style="color: #990000">();</span>
-<span style="color: #990000">%</span><span style="color: #993399">7</span>  <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">foo</span></span><span style="color: #990000">(%</span><span style="color: #993399">5</span><span style="color: #990000">,</span> <span style="color: #990000">%</span><span style="color: #993399">6</span><span style="color: #990000">);</span>
-<span style="color: #990000">%</span><span style="color: #993399">8</span>  <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">e</span></span><span style="color: #990000">();</span>
-<span style="color: #990000">%</span><span style="color: #993399">9</span>  <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">f</span></span><span style="color: #990000">();</span>
-<span style="color: #990000">%</span><span style="color: #993399">10</span> <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">bar</span></span><span style="color: #990000">(%</span><span style="color: #993399">8</span><span style="color: #990000">,</span> <span style="color: #990000">%</span><span style="color: #993399">9</span><span style="color: #990000">);</span>
-<span style="color: #990000">*%</span><span style="color: #993399">2</span> <span style="color: #990000">=</span> <span style="color: #990000">%</span><span style="color: #993399">7</span><span style="color: #990000">;</span>
-<span style="color: #990000">*%</span><span style="color: #993399">4</span> <span style="color: #990000">=</span> <span style="color: #990000">%</span><span style="color: #993399">10</span><span style="color: #990000">;</span></tt></pre></div></div>
+<pre><tt><span style="color: #990000">%</span><span style="color: #993399">1</span>  <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">a</span></span><span style="color: #990000">()</span>
+<span style="color: #990000">%</span><span style="color: #993399">2</span>  <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">nth_element_address_in</span></span><span style="color: #990000">(</span>x<span style="color: #990000">,</span> <span style="color: #990000">%</span><span style="color: #993399">1</span><span style="color: #990000">)</span>
+<span style="color: #990000">%</span><span style="color: #993399">3</span>  <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">b</span></span><span style="color: #990000">()</span>
+<span style="color: #990000">%</span><span style="color: #993399">4</span>  <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">nth_element_address_in</span></span><span style="color: #990000">(</span>y<span style="color: #990000">,</span> <span style="color: #990000">%</span><span style="color: #993399">3</span><span style="color: #990000">)</span>
+<span style="color: #990000">%</span><span style="color: #993399">5</span>  <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">c</span></span><span style="color: #990000">()</span>
+<span style="color: #990000">%</span><span style="color: #993399">6</span>  <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">d</span></span><span style="color: #990000">()</span>
+<span style="color: #990000">%</span><span style="color: #993399">7</span>  <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">foo</span></span><span style="color: #990000">(%</span><span style="color: #993399">5</span><span style="color: #990000">,</span> <span style="color: #990000">%</span><span style="color: #993399">6</span><span style="color: #990000">)</span>
+<span style="color: #990000">%</span><span style="color: #993399">8</span>  <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">e</span></span><span style="color: #990000">()</span>
+<span style="color: #990000">%</span><span style="color: #993399">9</span>  <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">f</span></span><span style="color: #990000">()</span>
+<span style="color: #990000">%</span><span style="color: #993399">10</span> <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">bar</span></span><span style="color: #990000">(%</span><span style="color: #993399">8</span><span style="color: #990000">,</span> <span style="color: #990000">%</span><span style="color: #993399">9</span><span style="color: #990000">)</span>
+<span style="color: #990000">*%</span><span style="color: #993399">2</span> <span style="color: #990000">=</span> <span style="color: #990000">%</span><span style="color: #993399">7</span>
+<span style="color: #990000">*%</span><span style="color: #993399">4</span> <span style="color: #990000">=</span> <span style="color: #990000">%</span><span style="color: #993399">10</span></tt></pre></div></div>
 </div>
 <div class="sect2">
 <h3 id="_constant_groups_and_powerful_iota">Constant groups and powerful iota</h3>
@@ -1488,12 +1493,12 @@ by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
 <pre><tt><span style="font-weight: bold"><span style="color: #0000FF">const</span></span> <span style="color: #990000">(</span>
-        ZERO <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #0000FF">iota</span></span><span style="color: #990000">;</span>
-        ONE <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #0000FF">iota</span></span><span style="color: #990000">;</span>
-        TWO <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #0000FF">iota</span></span><span style="color: #990000">;</span>
-        THREE <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #0000FF">iota</span></span><span style="color: #990000">;</span>
-        FOUR <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #0000FF">iota</span></span><span style="color: #990000">;</span>
-        FIVE <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #0000FF">iota</span></span><span style="color: #990000">;</span>
+        ZERO <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #0000FF">iota</span></span>
+        ONE <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #0000FF">iota</span></span>
+        TWO <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #0000FF">iota</span></span>
+        THREE <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #0000FF">iota</span></span>
+        FOUR <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #0000FF">iota</span></span>
+        FIVE <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #0000FF">iota</span></span>
 <span style="color: #990000">)</span>
 <span style="font-style: italic"><span style="color: #9A1900">// ZERO == 0, ONE == 1, etc.</span></span></tt></pre></div></div>
 <div class="paragraph"><p>But of course typing <tt>iota</tt> each time is painful, constant groups have another
@@ -1507,12 +1512,12 @@ by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
 <pre><tt><span style="font-weight: bold"><span style="color: #0000FF">const</span></span> <span style="color: #990000">(</span>
-        ZERO <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #0000FF">iota</span></span><span style="color: #990000">;</span>
-        ONE<span style="color: #990000">;</span>
-        TWO<span style="color: #990000">;</span>
-        THREE<span style="color: #990000">;</span>
-        FOUR<span style="color: #990000">;</span>
-        FIVE<span style="color: #990000">;</span>
+        ZERO <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #0000FF">iota</span></span>
+        ONE
+        TWO
+        THREE
+        FOUR
+        FIVE
 <span style="color: #990000">)</span></tt></pre></div></div>
 <div class="paragraph"><p>But as you can see, <tt>iota</tt> is more powerful than plain enums. You can create
 various interesting thing with it:</p></div>
@@ -1523,31 +1528,31 @@ http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
 <pre><tt><span style="font-style: italic"><span style="color: #9A1900">// reversing</span></span>
 <span style="font-weight: bold"><span style="color: #0000FF">const</span></span> <span style="color: #990000">(</span>
-        A <span style="color: #990000">=</span> LAST <span style="color: #990000">-</span> <span style="color: #990000">(</span><span style="font-weight: bold"><span style="color: #0000FF">iota</span></span> <span style="color: #990000">+</span> <span style="color: #993399">1</span><span style="color: #990000">);</span> <span style="font-style: italic"><span style="color: #9A1900">// 4</span></span>
-        B<span style="color: #990000">;</span>                     <span style="font-style: italic"><span style="color: #9A1900">// 3</span></span>
-        C<span style="color: #990000">;</span>                     <span style="font-style: italic"><span style="color: #9A1900">// 2</span></span>
-        D<span style="color: #990000">;</span>                     <span style="font-style: italic"><span style="color: #9A1900">// 1</span></span>
-        E<span style="color: #990000">;</span>                     <span style="font-style: italic"><span style="color: #9A1900">// 0</span></span>
+        A <span style="color: #990000">=</span> LAST <span style="color: #990000">-</span> <span style="color: #990000">(</span><span style="font-weight: bold"><span style="color: #0000FF">iota</span></span> <span style="color: #990000">+</span> <span style="color: #993399">1</span><span style="color: #990000">)</span> <span style="font-style: italic"><span style="color: #9A1900">// 4</span></span>
+        B                     <span style="font-style: italic"><span style="color: #9A1900">// 3</span></span>
+        C                     <span style="font-style: italic"><span style="color: #9A1900">// 2</span></span>
+        D                     <span style="font-style: italic"><span style="color: #9A1900">// 1</span></span>
+        E                     <span style="font-style: italic"><span style="color: #9A1900">// 0</span></span>
 
-        LAST <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #0000FF">iota</span></span><span style="color: #990000">;</span>           <span style="font-style: italic"><span style="color: #9A1900">// 5</span></span>
+        LAST <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #0000FF">iota</span></span>           <span style="font-style: italic"><span style="color: #9A1900">// 5</span></span>
 <span style="color: #990000">)</span>
 
 <span style="font-style: italic"><span style="color: #9A1900">// bit flags</span></span>
 <span style="font-weight: bold"><span style="color: #0000FF">const</span></span> <span style="color: #990000">(</span>
-        BIT1 <span style="color: #990000">=</span> <span style="color: #993399">1</span> <span style="color: #990000">&lt;&lt;</span> <span style="font-weight: bold"><span style="color: #0000FF">iota</span></span><span style="color: #990000">;</span> <span style="font-style: italic"><span style="color: #9A1900">// 1  (0b00000001)</span></span>
-        BIT2<span style="color: #990000">;</span>             <span style="font-style: italic"><span style="color: #9A1900">// 2  (0b00000010)</span></span>
-        BIT3<span style="color: #990000">;</span>             <span style="font-style: italic"><span style="color: #9A1900">// 4  (0b00000100)</span></span>
-        BIT4<span style="color: #990000">;</span>             <span style="font-style: italic"><span style="color: #9A1900">// 8  (0b00001000)</span></span>
-        BIT5<span style="color: #990000">;</span>             <span style="font-style: italic"><span style="color: #9A1900">// 16 (0b00010000)</span></span>
+        BIT1 <span style="color: #990000">=</span> <span style="color: #993399">1</span> <span style="color: #990000">&lt;&lt;</span> <span style="font-weight: bold"><span style="color: #0000FF">iota</span></span> <span style="font-style: italic"><span style="color: #9A1900">// 1  (0b00000001)</span></span>
+        BIT2             <span style="font-style: italic"><span style="color: #9A1900">// 2  (0b00000010)</span></span>
+        BIT3             <span style="font-style: italic"><span style="color: #9A1900">// 4  (0b00000100)</span></span>
+        BIT4             <span style="font-style: italic"><span style="color: #9A1900">// 8  (0b00001000)</span></span>
+        BIT5             <span style="font-style: italic"><span style="color: #9A1900">// 16 (0b00010000)</span></span>
 <span style="color: #990000">)</span>
 
 <span style="font-style: italic"><span style="color: #9A1900">// bit masks (Crawl uses ^ as unary NOT, in C it's ~)</span></span>
 <span style="font-weight: bold"><span style="color: #0000FF">const</span></span> <span style="color: #990000">(</span>
-        ALL_BUT_BIT1 <span style="color: #990000">=</span> <span style="color: #990000">^(</span><span style="color: #993399">1</span> <span style="color: #990000">&lt;&lt;</span> <span style="font-weight: bold"><span style="color: #0000FF">iota</span></span><span style="color: #990000">).(</span><span style="color: #009900">uint8</span><span style="color: #990000">);</span> <span style="font-style: italic"><span style="color: #9A1900">// 254 (0b11111110)</span></span>
-        ALL_BUT_BIT2<span style="color: #990000">;</span>                        <span style="font-style: italic"><span style="color: #9A1900">// 253 (0b11111101)</span></span>
-        ALL_BUT_BIT3<span style="color: #990000">;</span>                        <span style="font-style: italic"><span style="color: #9A1900">// 251 (0b11111011)</span></span>
-        ALL_BUT_BIT4<span style="color: #990000">;</span>                        <span style="font-style: italic"><span style="color: #9A1900">// 247 (0b11110111)</span></span>
-        ALL_BUT_BIT5<span style="color: #990000">;</span>                        <span style="font-style: italic"><span style="color: #9A1900">// 239 (0b11101111)</span></span>
+        ALL_BUT_BIT1 <span style="color: #990000">=</span> <span style="color: #990000">^(</span><span style="color: #993399">1</span> <span style="color: #990000">&lt;&lt;</span> <span style="font-weight: bold"><span style="color: #0000FF">iota</span></span><span style="color: #990000">).(</span><span style="color: #009900">uint8</span><span style="color: #990000">)</span> <span style="font-style: italic"><span style="color: #9A1900">// 254 (0b11111110)</span></span>
+        ALL_BUT_BIT2                        <span style="font-style: italic"><span style="color: #9A1900">// 253 (0b11111101)</span></span>
+        ALL_BUT_BIT3                        <span style="font-style: italic"><span style="color: #9A1900">// 251 (0b11111011)</span></span>
+        ALL_BUT_BIT4                        <span style="font-style: italic"><span style="color: #9A1900">// 247 (0b11110111)</span></span>
+        ALL_BUT_BIT5                        <span style="font-style: italic"><span style="color: #9A1900">// 239 (0b11101111)</span></span>
 <span style="color: #990000">)</span></tt></pre></div></div>
 </div>
 <div class="sect2">
@@ -1560,13 +1565,13 @@ example:</p></div>
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt>x <span style="color: #990000">:=</span> <span style="color: #993399">84</span><span style="color: #990000">;</span>
+<pre><tt>x <span style="color: #990000">:=</span> <span style="color: #993399">84</span>
 
 <span style="font-style: italic"><span style="color: #9A1900">// this is a compilation error, 'if' conditional expression must be of boolean type</span></span>
-<span style="font-weight: bold"><span style="color: #0000FF">if</span></span> x <span style="color: #FF0000">{</span> do_something<span style="color: #990000">();</span> <span style="color: #FF0000">}</span>
+<span style="font-weight: bold"><span style="color: #0000FF">if</span></span> x <span style="color: #FF0000">{</span> do_something<span style="color: #990000">()</span> <span style="color: #FF0000">}</span>
 
 <span style="font-style: italic"><span style="color: #9A1900">// and that's how you should write it</span></span>
-<span style="font-weight: bold"><span style="color: #0000FF">if</span></span> x <span style="color: #990000">!=</span> <span style="color: #993399">0</span> <span style="color: #FF0000">{</span> do_something<span style="color: #990000">();</span> <span style="color: #FF0000">}</span></tt></pre></div></div>
+<span style="font-weight: bold"><span style="color: #0000FF">if</span></span> x <span style="color: #990000">!=</span> <span style="color: #993399">0</span> <span style="color: #FF0000">{</span> do_something<span style="color: #990000">()</span> <span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="paragraph"><p>In Crawl, there are three more predefined constants other than <tt>iota</tt>. They
 don&#8217;t have any special meaning however.</p></div>
 <div class="ulist"><ul>
@@ -1598,9 +1603,9 @@ by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
 <pre><tt><span style="font-weight: bold"><span style="color: #0000FF">const</span></span> <span style="color: #990000">(</span>
-        <span style="font-weight: bold"><span style="color: #0000FF">true</span></span> <span style="color: #990000">=</span> <span style="color: #993399">1</span> <span style="color: #990000">!=</span> <span style="color: #993399">0</span><span style="color: #990000">;</span>
-        <span style="font-weight: bold"><span style="color: #0000FF">false</span></span> <span style="color: #990000">=</span> <span style="color: #993399">1</span> <span style="color: #990000">!=</span> <span style="color: #993399">1</span><span style="color: #990000">;</span>
-        <span style="font-weight: bold"><span style="color: #0000FF">nil</span></span> <span style="color: #990000">=</span> <span style="color: #993399">0</span><span style="color: #990000">.(*</span><span style="color: #009900">void</span><span style="color: #990000">);</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">true</span></span> <span style="color: #990000">=</span> <span style="color: #993399">1</span> <span style="color: #990000">!=</span> <span style="color: #993399">0</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">false</span></span> <span style="color: #990000">=</span> <span style="color: #993399">1</span> <span style="color: #990000">!=</span> <span style="color: #993399">1</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">nil</span></span> <span style="color: #990000">=</span> <span style="color: #993399">0</span><span style="color: #990000">.(*</span><span style="color: #009900">void</span><span style="color: #990000">)</span>
 <span style="color: #990000">)</span></tt></pre></div></div>
 </div>
 <div class="sect2">
@@ -1656,9 +1661,9 @@ by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
 <pre><tt><span style="font-style: italic"><span style="color: #9A1900">// while-like</span></span>
-i <span style="color: #990000">:=</span> <span style="color: #993399">0</span><span style="color: #990000">;</span>
+i <span style="color: #990000">:=</span> <span style="color: #993399">0</span>
 <span style="font-weight: bold"><span style="color: #0000FF">for</span></span> i <span style="color: #990000">&lt;</span> <span style="color: #993399">5</span> <span style="color: #FF0000">{</span>
-        i<span style="color: #990000">++;</span>
+        i<span style="color: #990000">++</span>
 <span style="color: #FF0000">}</span>
 
 <span style="font-style: italic"><span style="color: #9A1900">// for-like</span></span>
@@ -1686,16 +1691,16 @@ by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
 <pre><tt><span style="font-weight: bold"><span style="color: #0000FF">type</span></span> Element <span style="font-weight: bold"><span style="color: #0000FF">struct</span></span> <span style="color: #FF0000">{</span>
-        a<span style="color: #990000">,</span> b<span style="color: #990000">,</span> c <span style="color: #009900">int</span><span style="color: #990000">;</span>
-<span style="color: #FF0000">}</span><span style="color: #990000">;</span>
+        a<span style="color: #990000">,</span> b<span style="color: #990000">,</span> c <span style="color: #009900">int</span>
+<span style="color: #FF0000">}</span>
 
 <span style="font-weight: bold"><span style="color: #0000FF">type</span></span> List <span style="font-weight: bold"><span style="color: #0000FF">struct</span></span> <span style="color: #FF0000">{</span>
-        elem Element<span style="color: #990000">;</span>
-        next <span style="color: #990000">*</span>List<span style="color: #990000">;</span>
-<span style="color: #FF0000">}</span><span style="color: #990000">;</span>
+        elem Element
+        next <span style="color: #990000">*</span>List
+<span style="color: #FF0000">}</span>
 
-<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> x <span style="color: #990000">*</span>List<span style="color: #990000">;</span>
-y <span style="color: #990000">:=</span> x<span style="color: #990000">.</span>next<span style="color: #990000">.</span>next<span style="color: #990000">.</span>elem<span style="color: #990000">.</span>a<span style="color: #990000">;</span></tt></pre></div></div>
+<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> x <span style="color: #990000">*</span>List
+y <span style="color: #990000">:=</span> x<span style="color: #990000">.</span>next<span style="color: #990000">.</span>next<span style="color: #990000">.</span>elem<span style="color: #990000">.</span>a</tt></pre></div></div>
 </div>
 </div>
 </div>
@@ -1703,7 +1708,7 @@ y <span style="color: #990000">:=</span> x<span style="color: #990000">.</span>n
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2011-05-29 05:48:15 YEKST
+Last updated 2011-06-08 05:51:32 YEKST
 </div>
 </div>
 </body>
