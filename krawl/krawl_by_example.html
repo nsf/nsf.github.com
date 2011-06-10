@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
 <meta name="generator" content="AsciiDoc 8.6.5" />
-<title>Crawl by example</title>
+<title>Krawl by example</title>
 <style type="text/css">
 /*
  * AsciiDoc 'flask' theme for xhtml11 and html5 backends. A shameless knock-off
@@ -821,7 +821,7 @@ asciidoc.install(2);
 </head>
 <body class="article">
 <div id="header">
-<h1>Crawl by example</h1>
+<h1>Krawl by example</h1>
 <div id="toc">
   <div id="toctitle">Table of Contents</div>
   <noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
@@ -830,12 +830,12 @@ asciidoc.install(2);
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
-<div class="paragraph"><p>Crawl is a new vision of the C programming language. The idea is to fix all
+<div class="paragraph"><p>Krawl is a new vision of the C programming language. The idea is to fix all
 small and sometimes annoying C problems without adding any new features.
 Although replacing one feature with another is allowed, like it is planned for
 the C preprocessor (it is being replaced by a module system and simple
 templates system, which isn&#8217;t done yet). I&#8217;m trying hard to keep the spirit of
-C in Crawl alive and I really hope Crawl will give a rebirth to C. I do believe
+C in Krawl alive and I really hope Krawl will give a rebirth to C. I do believe
 C is eternal, but it doesn&#8217;t mean it has to keep its form unchanged.</p></div>
 </div>
 </div>
@@ -941,10 +941,10 @@ Removed "<tt>-&gt;</tt>" accessor.
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_context_independent_grammar">Context-independent grammar</h3>
-<div class="paragraph"><p>The new grammar for Crawl was taken from the Go programming language. It was
-tweaked a bit in order to suit semantics of the Crawl better. It&#8217;s important to
+<div class="paragraph"><p>The new grammar for Krawl was taken from the Go programming language. It was
+tweaked a bit in order to suit semantics of the Krawl better. It&#8217;s important to
 have a context-independent grammar, because it adheres the KISS principle and
-you can easily write a parser for a grammar like that. Crawl&#8217;s grammar is also
+you can easily write a parser for a grammar like that. Krawl&#8217;s grammar is also
 LALR(1) friendly and can be implemented without any parser hacks (it&#8217;s worth
 mentioning that it requires one simple lexer hack, but it&#8217;s really nothing).
 Let&#8217;s see how it looks like:</p></div>
@@ -976,7 +976,7 @@ http://www.gnu.org/software/src-highlite -->
 <span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="sect3">
 <h4 id="_declarations">Declarations</h4>
-<div class="paragraph"><p>Declarations in Crawl look reversed to a C programmer, but actually they are
+<div class="paragraph"><p>Declarations in Krawl look reversed to a C programmer, but actually they are
 more readable and one can easily read every declaration from left to right.
 Some examples:</p></div>
 <div class="listingblock">
@@ -1008,7 +1008,7 @@ http://www.gnu.org/software/src-highlite -->
 </div>
 <div class="sect2">
 <h3 id="_no_type_qualifiers">No type qualifiers</h3>
-<div class="paragraph"><p>Crawl has no type qualifiers, in C the most widely used one is a <tt>const</tt> type
+<div class="paragraph"><p>Krawl has no type qualifiers, in C the most widely used one is a <tt>const</tt> type
 qualifier. When two other type qualifiers in C are optimizier hints (<tt>restrict</tt>
 and <tt>volatile</tt>) <tt>const</tt> is a semantic modifying qualifier and what&#8217;s more
 scary, it is viral. By that I mean that once you&#8217;ve used it in one place, you
@@ -1017,7 +1017,7 @@ about that. The end result here, it causes many maintenance problems and solves
 zero real problems. Keyword <tt>const</tt> should prevent accidental writes to a
 memory location, but the most horrible bugs, which are buffer overflow writes,
 don&#8217;t care about <tt>const</tt>. As simple as that, no <tt>const</tt> type qualifier in
-Crawl. Constants in Crawl have completely different meaning.</p></div>
+Krawl. Constants in Krawl have completely different meaning.</p></div>
 <div class="admonitionblock">
 <table><tr>
 <td class="icon">
@@ -1053,25 +1053,25 @@ http://www.gnu.org/software/src-highlite -->
         <span style="font-weight: bold"><span style="color: #000000">foo</span></span><span style="color: #990000">();</span></tt></pre></div></div>
 <div class="paragraph"><p>Which most likely isn&#8217;t what was a programmer&#8217;s intention. In C it doesn&#8217;t
 matter, because in C boolean expression is defined as integer being != 0 or ==
-0. In a language with a real boolean type it matters. Crawl has corrected
+0. In a language with a real boolean type it matters. Krawl has corrected
 operator precedence.</p></div>
 </div>
 <div class="sect2">
 <h3 id="_real_module_system">Real module system</h3>
 <div class="paragraph"><p>Preprocessor based module system is a huge pain, everyone knows it. Many
-languages since then started to implement various module systems. Crawl of
+languages since then started to implement various module systems. Krawl of
 course follows this tendency. C++ decided to keep C&#8217;s module system for the
 sake of compatibility, but it was a horrible decision. We all realize that now,
-when C++ code takes ages to compile. Of course Crawl has a proper module
+when C++ code takes ages to compile. Of course Krawl has a proper module
 system, but since one of the priorities for the language was to keep it C
 friendly, this module system also can import C header files directly. And as
-many of you may think it slows down compilation, it&#8217;s not true. Crawl uses
-smart caching scheme for C header modules. Hopefully, Crawl&#8217;s module system
-will allow us to make Crawl compilers very fast.</p></div>
+many of you may think it slows down compilation, it&#8217;s not true. Krawl uses
+smart caching scheme for C header modules. Hopefully, Krawl&#8217;s module system
+will allow us to make Krawl compilers very fast.</p></div>
 </div>
 <div class="sect2">
 <h3 id="_type_inference">Type inference</h3>
-<div class="paragraph"><p>Crawl supports full type inference in hot spots, where it matters a lot.
+<div class="paragraph"><p>Krawl supports full type inference in hot spots, where it matters a lot.
 Compiler should help programmer in cases where it can do so. Removing tedious
 repitition is one of them. In C code you often see declarations like that:</p></div>
 <div class="listingblock">
@@ -1082,7 +1082,7 @@ http://www.gnu.org/software/src-highlite -->
 <pre><tt><span style="color: #008080">MyMegaType</span> <span style="color: #990000">*</span>concrete <span style="color: #990000">=</span> <span style="color: #990000">(</span>MyMegaType<span style="color: #990000">*)</span>abstract<span style="color: #990000">;</span></tt></pre></div></div>
 <div class="paragraph"><p>Obviously typing full type name twice is a pointless activity. Compiler knows
 the type of <tt>(MyMegaType*)abstract</tt> expression. Why can&#8217;t we use that fact?
-We can. Crawl has "declare and initialize" operator which declares a variable
+We can. Krawl has "declare and initialize" operator which declares a variable
 and infers its type using initializer type information:</p></div>
 <div class="listingblock">
 <div class="content"><!-- Generator: GNU source-highlight 3.1.4
@@ -1109,7 +1109,7 @@ pi<span style="color: #990000">,</span> name <span style="color: #990000">:=</sp
 <h3 id="_all_variables_are_zero_initialized">All variables are zero-initialized</h3>
 <div class="paragraph"><p>Most compilers/runtimes provide that kind of behaviour by default anyway.
 Currently we have enough horsepower in CPUs to forget about this tiny thing.
-But Crawl is a low level language and I understand that maybe, there will be a
+But Krawl is a low level language and I understand that maybe, there will be a
 place, where having uninitialized variables matters. There is a way to remove
 zero-initializing behaviour. Just like in the D programming language:</p></div>
 <div class="listingblock">
@@ -1134,7 +1134,7 @@ zero-initialized provides you with nice assumptions as well.</p></div>
 <h3 id="_multiple_return_values">Multiple return values</h3>
 <div class="paragraph"><p>This feature is simply useful. Sometimes you have more than one value to return
 from a function and defining a structure for only that purpose is kind of
-expensive. Crawl allows you to return multiple values from a function:</p></div>
+expensive. Krawl allows you to return multiple values from a function:</p></div>
 <div class="listingblock">
 <div class="content"><!-- Generator: GNU source-highlight 3.1.4
 by Lorenzo Bettini
@@ -1151,7 +1151,7 @@ http://www.gnu.org/software/src-highlite -->
         stdio<span style="color: #990000">.</span>printf<span style="color: #990000">(</span><span style="color: #FF0000">"Size: %dx%d</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span><span style="color: #990000">,</span> w<span style="color: #990000">,</span> h<span style="color: #990000">)</span>
 <span style="color: #FF0000">}</span></tt></pre></div></div>
 <div class="paragraph"><p>Another small feature in this area which is worth mentioning is named return
-values. Crawl provides a way to name return values of a function. In this case
+values. Krawl provides a way to name return values of a function. In this case
 they are zero-initialized:</p></div>
 <div class="listingblock">
 <div class="content"><!-- Generator: GNU source-highlight 3.1.4
@@ -1169,8 +1169,8 @@ http://www.gnu.org/software/src-highlite -->
 </div>
 <div class="sect2">
 <h3 id="_tuple_assignments">Tuple assignments</h3>
-<div class="paragraph"><p>As you have probably seen already, Crawl allows you to declare multiple
-variables at the same time and Crawl has multiple return values. The same is
+<div class="paragraph"><p>As you have probably seen already, Krawl allows you to declare multiple
+variables at the same time and Krawl has multiple return values. The same is
 true for plain assignments:</p></div>
 <div class="listingblock">
 <div class="content"><!-- Generator: GNU source-highlight 3.1.4
@@ -1189,7 +1189,7 @@ http://www.gnu.org/software/src-highlite -->
 <h3 id="_switch_statement_changes">Switch statement changes</h3>
 <div class="paragraph"><p>Many languages these days preserve C switch statement semantics, which is not a
 smart idea at all. I&#8217;ve seen better ways of doing switch statements in
-different programming languages. In Crawl switch statement is quite different
+different programming languages. In Krawl switch statement is quite different
 in behaviour from C&#8217;s. Here is the list of changes:</p></div>
 <div class="ulist"><ul>
 <li>
@@ -1220,7 +1220,7 @@ http://www.gnu.org/software/src-highlite -->
 <li>
 <p>
 One place where "fallthrough" behaviour was used a lot is a case clause,
-  which is triggered by multiple different values. Crawl allows you to specify
+  which is triggered by multiple different values. Krawl allows you to specify
   multiple values for each case clause directly avoiding another portion of
   repitition:
 </p>
@@ -1272,7 +1272,7 @@ Some people complain that their language&#8217;s switch statement doesn&#8217;t 
   base for variant selection mechanism? It&#8217;s simply inefficient. The only code
   I can imagine where it works is a primitive command line or config parsing.
   On the other hand a case where you have an if else "train" in your code is
-  quite common. In Crawl switch statements have a second form, which allows
+  quite common. In Krawl switch statements have a second form, which allows
   you to write if else "trains" easier:
 </p>
 <div class="listingblock">
@@ -1331,10 +1331,10 @@ http://www.gnu.org/software/src-highlite -->
 <td class="icon">
 <img src="icons/warning.png" alt="Warning" />
 </td>
-<td class="content">This section is out-dated. Crawl has C-like unrestricted type system.</td>
+<td class="content">This section is out-dated. Krawl has C-like unrestricted type system.</td>
 </tr></table>
 </div>
-<div class="paragraph"><p>Crawl&#8217;s type system is much more explicit than C&#8217;s, there are no implicit type
+<div class="paragraph"><p>Krawl&#8217;s type system is much more explicit than C&#8217;s, there are no implicit type
 casts. Floating point type cannot be used as an integer, integer cannot be used
 as a boolean, unsigned integer cannot be used as a signed integer, etc. There
 are some implicit conversions happening during assignments though, for example
@@ -1372,7 +1372,7 @@ memcpy<span style="color: #990000">(</span>d<span style="color: #990000">,</span
 <span style="font-style: italic"><span style="color: #9A1900">// Works safely for both platforms. You see, when you use variable sized types</span></span>
 <span style="font-style: italic"><span style="color: #9A1900">// you may want to have an explicit cast to notice your code reader that there</span></span>
 <span style="font-style: italic"><span style="color: #9A1900">// is a type change and possible information loss. You don't want to have these</span></span>
-<span style="font-style: italic"><span style="color: #9A1900">// things implicit. In Crawl it doesn't matter whether uint32 or uint64 have</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">// things implicit. In Krawl it doesn't matter whether uint32 or uint64 have</span></span>
 <span style="font-style: italic"><span style="color: #9A1900">// the same size as size_t or not, they are different types. Therefore you have</span></span>
 <span style="font-style: italic"><span style="color: #9A1900">// to introduce a cast and this cast will work as your agreement for possible</span></span>
 <span style="font-style: italic"><span style="color: #9A1900">// information loss:</span></span>
@@ -1388,14 +1388,14 @@ still not 100% sure. But it&#8217;s definitely something interesting to think ab
 places they are pointer types. If you use an array type as a function argument
 it becomes a pointer suddenly. And of course you can&#8217;t assign one array to
 another in C even if they have the same size, but actually it is achievable
-through wrapping them into structs.  Crawl simply uses arrays as if they were
+through wrapping them into structs.  Krawl simply uses arrays as if they were
 <tt>struct { T _[N]; }</tt> in C. You can copy arrays, you can pass arrays as
 arguments to functions (and it will make a copy), etc. It&#8217;s a tiny thing, but
 it&#8217;s good to have a clear conceptual vision of array types in a language.</p></div>
 <div class="paragraph"><p>There is also one thing I haven&#8217;t thought about a lot. Array operations or
 vector operations. We all know that CPUs are stream oriented these days and
 most of them have SSE instructions which support vector operations. Maybe it
-makes sense to allow things like that in Crawl:</p></div>
+makes sense to allow things like that in Krawl:</p></div>
 <div class="listingblock">
 <div class="content"><!-- Generator: GNU source-highlight 3.1.4
 by Lorenzo Bettini
@@ -1435,7 +1435,7 @@ http://www.gnu.org/software/src-highlite -->
 <div class="sect2">
 <h3 id="_many_c_expressions_are_statements">Many C expressions are statements</h3>
 <div class="paragraph"><p>Probably, it can be interpreted as a bad idea. For example you can&#8217;t do that in
-Crawl:</p></div>
+Krawl:</p></div>
 <div class="listingblock">
 <div class="content"><!-- Generator: GNU source-highlight 3.1.4
 by Lorenzo Bettini
@@ -1448,10 +1448,10 @@ c <span style="color: #990000">:=</span> p<span style="color: #990000">++</span>
 <div class="paragraph"><p>But at the end, one of the most important things about the code is readability.
 And restricting programmer&#8217;s ingenuity in that area matters. We&#8217;ve seen all
 those code obfuscation contests, and quite ambigous expressions like:
-<tt>a**++*i++</tt>. In Crawl C&#8217;s increment/decrement expression is a statement and
+<tt>a**++*i++</tt>. In Krawl C&#8217;s increment/decrement expression is a statement and
 therefore has only postfix form. There is no such thing as assignment
-expression in Crawl. The only expression type that has side effects is a
-function call expression. And Crawl guarantees that all expressions with side
+expression in Krawl. The only expression type that has side effects is a
+function call expression. And Krawl guarantees that all expressions with side
 effects are evaluated from left to right (but of course function call argument
 expressions should be evaluated before calling the function, so.. the order is
 depth-first in that sense):</p></div>
@@ -1482,7 +1482,7 @@ http://www.gnu.org/software/src-highlite -->
 </div>
 <div class="sect2">
 <h3 id="_constant_groups_and_powerful_iota">Constant groups and powerful iota</h3>
-<div class="paragraph"><p>In Crawl there are no enums, but you can emulate them using constant groups and
+<div class="paragraph"><p>In Krawl there are no enums, but you can emulate them using constant groups and
 magic <tt>iota</tt>. Iota is somewhat like C&#8217;s <tt>__LINE__</tt>, depending on a position
 relative to a <tt>const</tt> keyword it changes the value of itself starting from 0
 after each <tt>const</tt> keyword. It increments every constant specification
@@ -1546,7 +1546,7 @@ http://www.gnu.org/software/src-highlite -->
         BIT5             <span style="font-style: italic"><span style="color: #9A1900">// 16 (0b00010000)</span></span>
 <span style="color: #990000">)</span>
 
-<span style="font-style: italic"><span style="color: #9A1900">// bit masks (Crawl uses ^ as unary NOT, in C it's ~)</span></span>
+<span style="font-style: italic"><span style="color: #9A1900">// bit masks (Krawl uses ^ as unary NOT, in C it's ~)</span></span>
 <span style="font-weight: bold"><span style="color: #0000FF">const</span></span> <span style="color: #990000">(</span>
         ALL_BUT_BIT1 <span style="color: #990000">=</span> <span style="color: #990000">^(</span><span style="color: #993399">1</span> <span style="color: #990000">&lt;&lt;</span> <span style="font-weight: bold"><span style="color: #0000FF">iota</span></span><span style="color: #990000">).(</span><span style="color: #009900">uint8</span><span style="color: #990000">)</span> <span style="font-style: italic"><span style="color: #9A1900">// 254 (0b11111110)</span></span>
         ALL_BUT_BIT2                        <span style="font-style: italic"><span style="color: #9A1900">// 253 (0b11111101)</span></span>
@@ -1557,7 +1557,7 @@ http://www.gnu.org/software/src-highlite -->
 </div>
 <div class="sect2">
 <h3 id="_boolean_type_and_predefined_constants">Boolean type, and predefined constants</h3>
-<div class="paragraph"><p>There is a real boolean type in Crawl, just like in C++. And many statements
+<div class="paragraph"><p>There is a real boolean type in Krawl, just like in C++. And many statements
 have a requirement for their parts to have an expression of boolean type. For
 example:</p></div>
 <div class="listingblock">
@@ -1572,7 +1572,7 @@ http://www.gnu.org/software/src-highlite -->
 
 <span style="font-style: italic"><span style="color: #9A1900">// and that's how you should write it</span></span>
 <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> x <span style="color: #990000">!=</span> <span style="color: #993399">0</span> <span style="color: #FF0000">{</span> do_something<span style="color: #990000">()</span> <span style="color: #FF0000">}</span></tt></pre></div></div>
-<div class="paragraph"><p>In Crawl, there are three more predefined constants other than <tt>iota</tt>. They
+<div class="paragraph"><p>In Krawl, there are three more predefined constants other than <tt>iota</tt>. They
 don&#8217;t have any special meaning however.</p></div>
 <div class="ulist"><ul>
 <li>
@@ -1610,13 +1610,13 @@ http://www.gnu.org/software/src-highlite -->
 </div>
 <div class="sect2">
 <h3 id="_arbitrary_precision_constants">Arbitrary precision constants</h3>
-<div class="paragraph"><p>In Crawl constants are of an abstract type by default. There are four abstract
+<div class="paragraph"><p>In Krawl constants are of an abstract type by default. There are four abstract
 types: boolean, integer, float and string.</p></div>
 <div class="ulist"><ul>
 <li>
 <p>
 Abstract boolean is a result of all binary boolean operations, like <tt>a &gt; b</tt>,
-  etc. Crawl has two predefined constants of this type: <tt>true</tt> and <tt>false</tt>.
+  etc. Krawl has two predefined constants of this type: <tt>true</tt> and <tt>false</tt>.
   Abstract boolean type is simply compatible with any other non-abstract type.
 </p>
 </li>
@@ -1654,7 +1654,7 @@ http://www.gnu.org/software/src-highlite -->
 <div class="sect2">
 <h3 id="_unified_for_statement">Unified for statement</h3>
 <div class="paragraph"><p>In C there were few loop statements: <tt>while()</tt>, <tt>for(;;)</tt> and <tt>do; while()</tt>. In
-Crawl it&#8217;s all now a single <tt>for</tt> statment with different forms. Examples:</p></div>
+Krawl it&#8217;s all now a single <tt>for</tt> statment with different forms. Examples:</p></div>
 <div class="listingblock">
 <div class="content"><!-- Generator: GNU source-highlight 3.1.4
 by Lorenzo Bettini
@@ -1708,7 +1708,7 @@ y <span style="color: #990000">:=</span> x<span style="color: #990000">.</span>n
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2011-06-08 05:51:32 YEKST
+Last updated 2011-06-10 16:29:05 YEKST
 </div>
 </div>
 </body>
