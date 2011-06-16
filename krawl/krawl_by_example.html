@@ -890,7 +890,7 @@ Various changes to <tt>switch</tt> statement.
 </li>
 <li>
 <p>
-Stronger and explicit type system.
+Slightly stronger type system.
 </p>
 </li>
 <li>
@@ -931,6 +931,11 @@ Unified <tt>for</tt> loop statement.
 <li>
 <p>
 Removed "<tt>-&gt;</tt>" accessor.
+</p>
+</li>
+<li>
+<p>
+No more semicolons.
 </p>
 </li>
 </ul></div>
@@ -1325,62 +1330,72 @@ http://www.gnu.org/software/src-highlite -->
 </ul></div>
 </div>
 <div class="sect2">
-<h3 id="_stronger_and_explicit_type_system">Stronger and explicit type system</h3>
-<div class="admonitionblock">
-<table><tr>
-<td class="icon">
-<img src="icons/warning.png" alt="Warning" />
-</td>
-<td class="content">This section is out-dated. Krawl has C-like unrestricted type system.</td>
-</tr></table>
-</div>
-<div class="paragraph"><p>Krawl&#8217;s type system is much more explicit than C&#8217;s, there are no implicit type
-casts. Floating point type cannot be used as an integer, integer cannot be used
-as a boolean, unsigned integer cannot be used as a signed integer, etc. There
-are some implicit conversions happening during assignments though, for example
-a pointer to an array can be converted to a pointer to an array&#8217;s element type,
-but it doesn&#8217;t break things. Many of you may think (as was I), that such a
-strict type system gives headaches to the programmer and I must say it&#8217;s not
-true. Explicit type system acutally forces you to think about types and why are
-you using them. In C most libraries define a zillion of types for no reason,
-they say its for portability, but defining zillion types doesn&#8217;t make you
-portable. Let&#8217;s take a look at example, where type system deals with
-portability:</p></div>
+<h3 id="_slightly_stronger_type_system">Slightly stronger type system</h3>
+<div class="paragraph"><p>Krawl&#8217;s type system is slightly stronger than C&#8217;s. There are no implicit type
+casts between "classes" of types (boolean, integer, floating point number).
+E.g. you can&#8217;t assign a variable of type integer to a variable of type float
+without adding an explicit cast. And it&#8217;s not possible to cast an integer type
+to a boolean type, even explicitly, in order to do that use the following
+trick:</p></div>
 <div class="listingblock">
 <div class="content"><!-- Generator: GNU source-highlight 3.1.4
 by Lorenzo Bettini
 http://www.lorenzobettini.it
 http://www.gnu.org/software/src-highlite -->
-<pre><tt><span style="font-style: italic"><span style="color: #9A1900">// Let's take famous C function:</span></span>
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">var</span></span> is_true <span style="color: #009900">bool</span> <span style="color: #990000">=</span> some_int <span style="color: #990000">!=</span> <span style="color: #993399">0</span></tt></pre></div></div>
+<div class="paragraph"><p>Another difference with C is the common type of two types in a binary
+expression. In C the common type of signed int and unsigned int of the same
+size is unsigned int. In Krawl I use signed int. The rationale for that is
+simple: you rarely see unsigned values larger than 2,147,483,647, and values
+that are less than zero are much frequent. Therefore it is much likely to
+misinterpret integer as unsigned integer than vice versa. Also <tt>int</tt> is the
+default type of the type system in general.</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">var</span></span> x <span style="color: #009900">uint</span> <span style="color: #990000">=</span> <span style="color: #993399">500</span>
+<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> y <span style="color: #009900">int</span> <span style="color: #990000">=</span> <span style="color: #990000">-</span><span style="color: #993399">20</span>
+<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> z <span style="color: #990000">=</span> x <span style="color: #990000">+</span> y <span style="font-style: italic"><span style="color: #9A1900">// 'z' is 'int' and its value is 480</span></span></tt></pre></div></div>
+<div class="paragraph"><p>Also it&#8217;s worth to mention that there is no such thing as integer promotion in
+type system. In C each integer type that is smaller than int is being
+implicitly promoted to int during binary and unary operations. For example that
+is true in C++0x:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="color: #009900">unsigned</span> <span style="color: #009900">short</span> x <span style="color: #990000">=</span> <span style="color: #993399">5</span><span style="color: #990000">;</span>
+<span style="font-weight: bold"><span style="color: #0000FF">auto</span></span> y <span style="color: #990000">=</span> x<span style="color: #990000">;</span> <span style="font-style: italic"><span style="color: #9A1900">// 'y' is 'unsigned short'</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">auto</span></span> z <span style="color: #990000">=</span> <span style="color: #990000">+</span>x<span style="color: #990000">;</span> <span style="font-style: italic"><span style="color: #9A1900">// 'z' is 'int' due to integer promotion</span></span></tt></pre></div></div>
+<div class="paragraph"><p>In Krawl integer promotion happens only behind the curtains and doesn&#8217;t affect
+the common type of a binary expression or a resulting type of an unary
+expression. For example the following is true in Krawl:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">var</span></span> a<span style="color: #990000">,</span> b <span style="color: #009900">uint8</span> <span style="color: #990000">=</span> <span style="color: #993399">250</span><span style="color: #990000">,</span> <span style="color: #993399">200</span>
+<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> average <span style="color: #990000">=</span> <span style="color: #990000">(</span>a <span style="color: #990000">+</span> b<span style="color: #990000">)</span> <span style="color: #990000">/</span> <span style="color: #993399">2</span> <span style="font-style: italic"><span style="color: #9A1900">// the result is 225, 'average' is 'uint8'</span></span>
 
-<span style="font-weight: bold"><span style="color: #0000FF">type</span></span> size_t <span style="color: #009900">uint32</span> <span style="font-style: italic"><span style="color: #9A1900">// on x86 or uint64 on x86_64</span></span>
-<span style="font-weight: bold"><span style="color: #0000FF">func</span></span> memcpy<span style="color: #990000">(</span>dest<span style="color: #990000">,</span> src <span style="color: #990000">*</span><span style="color: #009900">void</span><span style="color: #990000">,</span> n size_t<span style="color: #990000">)</span> <span style="color: #990000">*</span><span style="color: #009900">void</span>
+<span style="font-weight: bold"><span style="color: #0000FF">type</span></span> Packet <span style="color: #FF0000">{</span>
+        size <span style="color: #009900">uint8</span>
+<span style="color: #FF0000">}</span>
 
-<span style="font-style: italic"><span style="color: #9A1900">// Obviously you don't need to copy more bytes than your system supports,</span></span>
-<span style="font-style: italic"><span style="color: #9A1900">// that's why C uses size_t here. But how do you use that function (let's</span></span>
-<span style="font-style: italic"><span style="color: #9A1900">// imagine our type system is the same as in C):</span></span>
-
-<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> size <span style="color: #009900">uint64</span> <span style="color: #990000">=</span> GetSize<span style="color: #990000">()</span>
-memcpy<span style="color: #990000">(</span>d<span style="color: #990000">,</span> s<span style="color: #990000">,</span> size<span style="color: #990000">)</span>
-
-<span style="font-style: italic"><span style="color: #9A1900">// Ok, works for both x86 and x86_64, but on x86 it is possible to lose some</span></span>
-<span style="font-style: italic"><span style="color: #9A1900">// information, because size_t is smaller than uint64. This on the other hand:</span></span>
-
-<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> size <span style="color: #009900">uint32</span> <span style="color: #990000">=</span> GetSize<span style="color: #990000">()</span>
-memcpy<span style="color: #990000">(</span>d<span style="color: #990000">,</span> s<span style="color: #990000">,</span> size<span style="color: #990000">)</span>
-
-<span style="font-style: italic"><span style="color: #9A1900">// Works safely for both platforms. You see, when you use variable sized types</span></span>
-<span style="font-style: italic"><span style="color: #9A1900">// you may want to have an explicit cast to notice your code reader that there</span></span>
-<span style="font-style: italic"><span style="color: #9A1900">// is a type change and possible information loss. You don't want to have these</span></span>
-<span style="font-style: italic"><span style="color: #9A1900">// things implicit. In Krawl it doesn't matter whether uint32 or uint64 have</span></span>
-<span style="font-style: italic"><span style="color: #9A1900">// the same size as size_t or not, they are different types. Therefore you have</span></span>
-<span style="font-style: italic"><span style="color: #9A1900">// to introduce a cast and this cast will work as your agreement for possible</span></span>
-<span style="font-style: italic"><span style="color: #9A1900">// information loss:</span></span>
-
-<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> size <span style="color: #009900">uint64</span> <span style="color: #990000">=</span> GetSize<span style="color: #990000">()</span>
-memcpy<span style="color: #990000">(</span>d<span style="color: #990000">,</span> s<span style="color: #990000">,</span> size<span style="color: #990000">.(</span>size_t<span style="color: #990000">))</span></tt></pre></div></div>
-<div class="paragraph"><p>I wasn&#8217;t sure for a long time that this is a right approach and probably I&#8217;m
-still not 100% sure. But it&#8217;s definitely something interesting to think about.</p></div>
+<span style="font-weight: bold"><span style="color: #0000FF">func</span></span> SizeRequired<span style="color: #990000">(</span>p1<span style="color: #990000">,</span> p2<span style="color: #990000">,</span> p3 <span style="color: #990000">*</span>Packet<span style="color: #990000">)</span> <span style="color: #009900">int</span> <span style="color: #FF0000">{</span>
+        <span style="font-style: italic"><span style="color: #9A1900">// this expression doesn't overflow and the result can be bigger than</span></span>
+        <span style="font-style: italic"><span style="color: #9A1900">// uint8 can hold, because it is assigned to an int at the end and</span></span>
+        <span style="font-style: italic"><span style="color: #9A1900">// during expression evaluation all integers are temporarly promoted to</span></span>
+        <span style="font-style: italic"><span style="color: #9A1900">// int</span></span>
+        <span style="font-weight: bold"><span style="color: #0000FF">return</span></span> p1<span style="color: #990000">.</span>size <span style="color: #990000">+</span> p2<span style="color: #990000">.</span>size <span style="color: #990000">+</span> p3<span style="color: #990000">.</span>size
+<span style="color: #FF0000">}</span></tt></pre></div></div>
+<div class="paragraph"><p>As you can see, Krawl chooses the best compromise possible. The idea is that in
+a language which uses type inference a lot, the resulting type of an expression
+matters and we can&#8217;t just easily throw it away. But on the other hand language
+should help avoiding different programmer&#8217;s mistakes.</p></div>
 </div>
 <div class="sect2">
 <h3 id="_arrays_behave_like_values">Arrays behave like values</h3>
@@ -1702,13 +1717,126 @@ http://www.gnu.org/software/src-highlite -->
 <span style="font-weight: bold"><span style="color: #0000FF">var</span></span> x <span style="color: #990000">*</span>List
 y <span style="color: #990000">:=</span> x<span style="color: #990000">.</span>next<span style="color: #990000">.</span>next<span style="color: #990000">.</span>elem<span style="color: #990000">.</span>a</tt></pre></div></div>
 </div>
+<div class="sect2">
+<h3 id="_no_more_semicolons">No more semicolons</h3>
+<div class="paragraph"><p>Just the same way as Go programming language does, Krawl uses simple automatic
+semicolon insertion scheme. The rules are very simple and easy to remember. I
+can even show you the lexer code which inserts semicolons:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">// for non empty lines</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">(</span>last_tline <span style="color: #990000">==</span> line<span style="color: #990000">-</span><span style="color: #993399">1</span><span style="color: #990000">)</span> <span style="color: #FF0000">{</span>
+        <span style="font-style: italic"><span style="color: #9A1900">// automatic semicolon insertion</span></span>
+        <span style="font-weight: bold"><span style="color: #0000FF">switch</span></span> <span style="color: #990000">(</span>last_tok<span style="color: #990000">)</span> <span style="color: #FF0000">{</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">case</span></span> TOK_IDENT<span style="color: #990000">:</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">case</span></span> TOK_INT<span style="color: #990000">:</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">case</span></span> TOK_FLOAT<span style="color: #990000">:</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">case</span></span> TOK_CHAR<span style="color: #990000">:</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">case</span></span> TOK_STRING<span style="color: #990000">:</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">case</span></span> TOK_BREAK<span style="color: #990000">:</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">case</span></span> TOK_CONTINUE<span style="color: #990000">:</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">case</span></span> TOK_FALLTHROUGH<span style="color: #990000">:</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">case</span></span> TOK_RETURN<span style="color: #990000">:</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">case</span></span> TOK_INC<span style="color: #990000">:</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">case</span></span> TOK_DEC<span style="color: #990000">:</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">case</span></span> TOK_RPAREN<span style="color: #990000">:</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">case</span></span> TOK_RSB<span style="color: #990000">:</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">case</span></span> TOK_RCURLY<span style="color: #990000">:</span>
+                <span style="font-weight: bold"><span style="color: #000000">tok_op</span></span><span style="color: #990000">(</span>TOK_SEMICOLON<span style="color: #990000">);</span>
+                fbreak<span style="color: #990000">;</span>
+                <span style="font-weight: bold"><span style="color: #0000FF">break</span></span><span style="color: #990000">;</span>
+<span style="font-weight: bold"><span style="color: #008080">        default:</span></span>
+                <span style="font-weight: bold"><span style="color: #0000FF">break</span></span><span style="color: #990000">;</span>
+        <span style="color: #FF0000">}</span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
+<div class="paragraph"><p>As you can see, semicolon is simply being inserted in each non-empty line which
+ends with one of the following tokens:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>identifier
+15
+3.1415
+'a'
+"123"
+`123`
+break
+continue
+fallthrough
+return
+x++
+y--
+)
+]
+}</tt></pre>
+</div></div>
+<div class="paragraph"><p>In practice it works just fine, but there are some things to remember about
+that. Each opening brace, be it a function brace or a statement brace, should
+be on the same line as the statement/declaration itself:</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">// good</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">func</span></span> foo<span style="color: #990000">()</span> <span style="color: #FF0000">{</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> a <span style="color: #990000">&gt;</span> <span style="color: #993399">10</span> <span style="color: #FF0000">{</span>
+                say_yay<span style="color: #990000">()</span>
+        <span style="color: #FF0000">}</span>
+<span style="color: #FF0000">}</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// bad</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">func</span></span> foo<span style="color: #990000">()</span>
+<span style="color: #FF0000">{</span>
+        <span style="font-weight: bold"><span style="color: #0000FF">if</span></span> a <span style="color: #990000">&gt;</span> <span style="color: #993399">10</span>
+        <span style="color: #FF0000">{</span>
+                say_yay<span style="color: #990000">()</span>
+        <span style="color: #FF0000">}</span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
+<div class="paragraph"><p>Various list elements, be it function arguments or compound literal elements,
+must end with a comma (grammar allows optional comma at the end of both lists):</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.4
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">// good</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> numbers <span style="color: #990000">[]</span><span style="color: #009900">int</span> <span style="color: #990000">=</span> <span style="color: #FF0000">{</span>
+        <span style="color: #993399">1</span><span style="color: #990000">,</span>
+        <span style="color: #993399">2</span><span style="color: #990000">,</span>
+        <span style="color: #993399">3</span><span style="color: #990000">,</span>
+<span style="color: #FF0000">}</span>
+
+<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> result <span style="color: #990000">=</span> foo<span style="color: #990000">(</span>
+        a<span style="color: #990000">,</span>
+        b<span style="color: #990000">,</span>
+        c<span style="color: #990000">,</span>
+<span style="color: #990000">)</span>
+
+<span style="font-style: italic"><span style="color: #9A1900">// bad</span></span>
+<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> numbers <span style="color: #990000">[]</span><span style="color: #009900">int</span> <span style="color: #990000">=</span> <span style="color: #FF0000">{</span>
+        <span style="color: #993399">1</span><span style="color: #990000">,</span>
+        <span style="color: #993399">2</span><span style="color: #990000">,</span>
+        <span style="color: #993399">3</span>
+<span style="color: #FF0000">}</span>
+
+<span style="font-weight: bold"><span style="color: #0000FF">var</span></span> result <span style="color: #990000">=</span> foo<span style="color: #990000">(</span>
+        a<span style="color: #990000">,</span>
+        b<span style="color: #990000">,</span>
+        c
+<span style="color: #990000">)</span></tt></pre></div></div>
+<div class="paragraph"><p>And that&#8217;s pretty all you should be aware of and as a result you get automatic
+semicolon insertion. It can&#8217;t be a bad deal.</p></div>
+</div>
 </div>
 </div>
 </div>
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2011-06-10 16:29:05 YEKST
+Last updated 2011-06-16 10:58:34 YEKST
 </div>
 </div>
 </body>
