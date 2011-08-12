@@ -1,0 +1,71 @@
+[br]
+[table=3][c,width=2][color=r][!color][c,width=100%]
+[color=r][b][align=c]BMPanel's page[!color][!align][!b][br]
+[align=r]
+[color=y]---= TOC =---[!color][br]
+[u]BMPanel[!u] | [u]Latest News[!u] | [u]Downloads[!u] | [u]Development[!u] | [u]Themes[!u] | [u]Contacts[!u]
+[!align][br][br]
+
+[b][color=b]BMPanel[!color][!b][br][br]
+BMPanel (BitMap Panel) is a lightweight, NETWM compliant panel for X11 Window System, which contains a desktop switcher, taskbar, system tray and clock. The application is inspired by simplicity of fspanel.[br][br]
+BMPanel has a modern look and feel, while keeping itself tiny and small. It is written in C and has only few dependencies, such as: imlib2, xlib, fontconfig, xrender and xcomposite extensions. Also, the panel has a few notable features:[br]
+[table=2]
+[c,width=4][align=r][b][color=g]* [!color][!b][!align][c,width=100%]BMPanel can select ARGB visuals providing, together with composite manager, a true transparency (but system tray doesn't work in composite mode).
+[c][align=r][b][color=g]* [!color][!b][!align][c]BMPanel has no configuration files. Its behaviour is customized via themes.
+[c][align=r][b][color=g]* [!color][!b][!align][c]Well, it is themable!
+[!table]
+BMPanel doesn't try to be portable. It should work on a distribution with the latest Linux kernel and with the latest software (probably CVS/SVN/git versions). Supported architectures are x86 (32 bit) and x86_64 (64 bit). However, BMpanel may work on other distributions, kernels (like FreeBSD) and even architectures, but it isn't guaranteed.[br][br]
+
+[b][color=b]Latest News[!color][!b][br]
+[i]There are only 3 latest news in this section, all news history is [u]here[!u][!i][br][br]
+[color=c]26 June 2008[!color][br]
+[table=2][c,width=4][c,width=100%]Add portability notice to bmpanel's page.[!table]
+[color=c]24 June 2008[!color][br]
+[table=2][c,width=4][c,width=100%]BMPanel 0.9.22 release. Few notable changes:[br]
+[table=2]
+[c,width=4][align=r][b][color=g]* [!color][!b][!align][c,width=100%]New versioning scheme for me (no more forgetting to bump up version string).
+[c][align=r][b][color=g]* [!color][!b][!align][c]My helpful scripts are in the git repository now (and as a result in the source package).
+[c][align=r][b][color=g]* [!color][!b][!align][c]Build system updates. Makefile supports external CFLAGS. The panel builds with -Wall flag. New options like --mem-debug . More beautiful summary table in configure script. Etc.
+[c][align=r][b][color=g]* [!color][!b][!align][c]Tray placement bug fix (appeared in amsn). Thanks for bug report to Thomas Lundgaard.
+[c][align=r][b][color=g]* [!color][!b][!align][c]Libev was removed from dependencies. Actually the panel doesn't require high performance event loop. Because it isn't a http server.
+[!table][!table]
+[color=c]11 June 2008[!color][br]
+[table=2][c,width=4][c,width=100%]BMPanel's page update. Old page is
+available here.[!table][br]
+
+[b][color=b]Downloads[!color][!b][br][br]
+The latest version: [u]bmpanel-0.9.22.tar.gz[!u][br][br]
+
+[b][color=b]Development[!color][!b][br][br]
+All open source projects are always in development. BMPanel is not an exception. It needs various contributions like:[br][br]
+[b]Ports[!b]
+[table=2][c,width=4][c,width=100%]BMPanel currently works only on x86 and x86_64 machines.[!table]
+[b]Themes[!b]
+[table=2][c,width=4][c,width=100%]If you are an artist or have such skills and you like bmpanel, you can make a theme, which will be included in source distribution. Even if you can't deal with actual theme creation, just draw a look of theme and I or someone else will help you create actual theme.[!table]
+[b]Distribution[!b]
+[table=2][c,width=4][c,width=100%]Wider distribution means more chances to get what I need (and possibly others too). Make a package for your Linux distribution or suggest your friend to try bmpanel.[!table]
+[b]Bug reports[!b]
+[table=2][c,width=4][c,width=100%]There are bugs in software. Always. If something works wrong or doesn't work at all, don't delete bmpanel, first of all, let me know.[!table]
+[b]Theme tutorial[!b]
+[table=2][c,width=4][c,width=100%]I have only an old version [u]here[!u], but it sucks.[!table]
+
+[color=y]Git repository[!color][br][br]
+One way to get bmpanel's source code is to download a source distribution. But there is an another way. I have my public git repository online (not 24/7) and you can access it here:[br][br]
+[u]http://jiss.convex.ru[!u][br][br]
+There is also a more reliable mirror on github.com:[br][br]
+[u]http://github.com/nsf/bmpanel[!u][br][br]
+Or you can use the following git commands:[br][br]
+[color=y]
++------------------------------------------------+[br]
+| git clone git://jiss.convex.ru/bmpanel.git     |[br]
+| git clone git://github.com/nsf/bmpanel.git     |[br]
++------------------------------------------------+
+[!color][br][br]
+[b][color=b]Themes[!color][!b][br][br]
+Arch theme: [u]arch.tag.gz[!u][br][br]
+
+[b][color=b]Contacts[!b][!color][br][br]
+You can send an email to me: [color=g][u]no.smile.face@gmail.com[!u][!color], my nickname is nsf.[br]
+Or find me on IRC @ Freenode \[nick: nsf] (channels: #archlinux, #freedesktop, #xcb).
+[c,width=2][!table]
+

@@ -1,0 +1,311 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.4.5" />
+<title>BMPanel&#8217;s News History</title>
+<link rel="stylesheet" href="data/xhtml11.css" type="text/css" />
+<link rel="stylesheet" href="data/xhtml11-quirks.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1>BMPanel&#8217;s News History</h1>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph"><p><a href="index.html">back</a></p></div>
+<div class="paragraph"><div class="title">29 June 2009</div><p>Couple of weeks ago I had created a development blog. My english sucks, but I&#8217;m
+practicing.  Anyway, currently there are only few bmpanel2 entries in that
+blog. If you&#8217;re interested in the bmpanel2 project, welcome!</p></div>
+<div class="paragraph"><p><a href="http://nsfdev.wordpress.com">http://nsfdev.wordpress.com</a></p></div>
+<div class="paragraph"><div class="title">2 June 2009</div><p>I suck at making videos. But anyway:
+<a href="http://www.youtube.com/watch?v=1bq_WLxeahY">http://www.youtube.com/watch?v=1bq_WLxeahY</a>.</p></div>
+<div class="paragraph"><p>This is my first youtube video ever uploaded :) So.. The demo shows 3 simple
+features of upcoming bmpanel2: drag&#8217;n'drop tasks on taskbar, drag&#8217;n'drop tasks
+from taskbar to desktop switcher (move tasks between desktops), and drag&#8217;n'drop
+tasks out off the panel to kill them (close app). My english sucks too, just
+see the video :)</p></div>
+<div class="paragraph"><div class="title">28 April 2009</div><p>Misterious screenshot is
+<a href="http://nsf.110mb.com/bmpanel/bmpanel2_wip.png">here</a>.</p></div>
+<div class="paragraph"><p>What this is all about? Well, it&#8217;s a WIP (work in progress) bmpanel2
+build. And as you can see, there is a plenty of things implemented.
+Desktop switcher, taskbar and clock are fully functional. There is
+actually one more type of a widget called "decor", but it&#8217;s not shown
+on the screenshot. Decor widget allows you to put any image on the
+panel. But it&#8217;s not the only thing hidden.</p></div>
+<div class="paragraph"><p>Here is a little summary.</p></div>
+<div class="paragraph"><p>Bmpanel2 is being built on top of four solid libraries. <strong>Cairo</strong> for
+rendering, <strong>pango</strong> as a text layout engine, <strong>xlib</strong> as a X11
+communication utility and <strong>glib2</strong> as a main loop implementation. It is
+still carefully written in pure C. Bmpanel2 has a new theme format and
+a completely redesigned internal structure, which allows you to create
+new types of widgets really fast. And there are also few notable
+things like drag&#8217;n'drop support, XDG conformance and settings file.</p></div>
+<div class="paragraph"><p>Even though it works already, there is a lot of things to be done. A
+proper systray implementation, correct composite and shaping support,
+documentation (which includes a man page, a theme tutorial and
+technical notes for programmers), web page, new pack of
+professionally designed themes, multihead support, etc.</p></div>
+<div class="paragraph"><p>And after all, it needs to be tested. So.. keep this address in your
+favourites and come back often, someday it will be released.</p></div>
+<div class="paragraph"><p>P.S. Sources are available on my public git repo which is located on
+my machine (browse sources <a href="http://jiss.convex.ru/git/bmpanel2.git">here</a>).
+However, they are not usable for mere mortals yet, go there only if
+you have programming interest.</p></div>
+<div class="paragraph"><div class="title">7 March 2009</div><p>I have opened a bug tracker for my projects
+<a href="http://nsf.byethost8.com">here</a>.</p></div>
+<div class="paragraph"><p>If you still have bug issues with bmpanel, probably I had ignored them
+or completly had forgotten about them, please <strong>rereport</strong> them to the bug
+tracker. Anonymous bug reports are allowed, at least until spam will
+come out. In the bug tracker bugs will not get lost.</p></div>
+<div class="paragraph"><p>Direct open task link
+<a href="http://nsf.byethost8.com/index.php?do=newtask&amp;project=2">here</a>.</p></div>
+<div class="paragraph"><div class="title">13 February 2009</div><p>Exactly one year ago was the first commit of my very first open source
+project - bmpanel.  And now it&#8217;s a time to say something about it&#8217;s
+future. I was thinking about it for some time.  There are my thoughts:</p></div>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+Bmpanel requires a complete rewrite from scratch. I did a few
+   critical mistakes and I will never fix them.  Not because I can&#8217;t, but
+   I just won&#8217;t.
+</p>
+</li>
+<li>
+<p>
+I thought about a lot of innovations for a new bmpanel, but these
+   were evil thoughts. Bmpanel should continue to be small, simple and
+   elegant.
+</p>
+</li>
+<li>
+<p>
+I thought about libraries that I will use in the new bmpanel. The
+   panel really needs a good, solid base.  I decided to use gdk
+   (installed in most distributions implicitly by gtk) and glib
+   (generally a part of gtk, but actually qt links to it too). GDK for
+   X11 interaction and for drawing, glib for mainloop. Even though Qt
+   becomes LGPL, I don&#8217;t believe in C++ and my current choice is
+   GTK-based desktop. Or maybe I will use the GTK itself, but look and
+   feel definitely remains the same.
+</p>
+</li>
+<li>
+<p>
+Main idea of the "rewrite" project: Make a simple, but useful panel
+   as best as I can. Faithfully follow standards.  Be fearless against
+   bugs.
+</p>
+</li>
+<li>
+<p>
+And well.. That&#8217;s it! It&#8217;s just words for now, the big part of
+   these decisions is HARD WORK. Code, code, code.
+</p>
+</li>
+</ol></div>
+<div class="paragraph"><div class="title">17 September 2008</div><p>BMPanel 0.9.27 release. Changes:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Bug fix. BMPanel had fail assumption that user always has wallpaper.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><div class="title">14 August 2008</div><p>BMPanel 0.9.26 release. Changes:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Correct include deps. There was a warning in previous version during
+  compilation.
+</p>
+</li>
+<li>
+<p>
+Class hint for PekWM, patch supplied by Tim Nieradzik. I didn&#8217;t test
+  it, but it certainly doesn&#8217;t break anything.
+</p>
+</li>
+<li>
+<p>
+<a href="http://en.wikipedia.org/wiki/Pseudo-transparency">Pseudo-transparency</a>
+  support. Now you can use transparent themes without composite mode.
+</p>
+</li>
+<li>
+<p>
+New theme for pseudo-transparency demonstration purposes - <a href="transpy.tar.gz">transpy.tar.gz</a>.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><div class="title">23 July 2008</div><p>BMPanel 0.9.25 release. Changes:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+New compilation options in configure script:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<tt> --with-ev </tt> - use libev to implement event loop
+</p>
+</li>
+<li>
+<p>
+<tt> --with-event </tt> - use libevent to implement event loop
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+<div class="paragraph"><p>These options are useful for those who have no glibc 2.8 (CVS version)
+in their distribution.</p></div>
+<div class="paragraph"><div class="title">12 July 2008</div><p>BMPanel 0.9.24 release. Changes:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Internal code cleanup (a little bit).
+</p>
+</li>
+<li>
+<p>
+A patch introduced by Henrique Dias, which adds support for
+  customizing width of the panel and position on the X axis.
+</p>
+</li>
+<li>
+<p>
+The patch adds new variables to themes:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<em>width</em> - specify width of the panel, number and optional <em>%</em>
+    character at the end (for percentage value).
+</p>
+</li>
+<li>
+<p>
+<em>alignment</em> - specify panel alignment [left|center|right]
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Configure script checks for sys/timerfd.h now and in case if it
+  wasn&#8217;t found gives a nice warning message.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>I know that there was a bug report about a tray icons rendering. I
+didn&#8217;t forget about it, but it&#8217;s really hard to reproduce the effect
+and also I have no idea what is wrong.</p></div>
+<div class="paragraph"><p>Also, notice a new theme in <a href="index.html#themes">Themes</a> section. It
+was contributed by Henrique Dias and serves as an example of new
+bmpanel <em>customizable width</em> thing.</p></div>
+<div class="paragraph"><div class="title">07 July 2008</div><p>Mailing list at groups.google.com. Please see a
+<a href="index.html#mailing-list">mailing list</a> section.</p></div>
+<div class="paragraph"><div class="title">01 July 2008</div><p>BMPanel 0.9.23 release. Notable changes are:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+x86_64 problems fix. BMPanel should work on x86_64 without any
+  problems now.
+</p>
+</li>
+<li>
+<p>
+Remove unnecessary panel redraws. It may cause regressions on some
+  WMs. I didn&#8217;t check.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><div class="title">26 June 2008</div><p>Add portability notice to bmpanel&#8217;s page.</p></div>
+<div class="paragraph"><div class="title">24 June 2008</div><p>BMPanel 0.9.22 release. Few notable changes:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+New versioning scheme for me (no more forgetting to bump up version
+  string).
+</p>
+</li>
+<li>
+<p>
+My helpful scripts are in the git repository now (and as a result in
+  the source package).
+</p>
+</li>
+<li>
+<p>
+Build system updates. Makefile supports external CFLAGS. The panel
+  builds with <tt> -Wall </tt> flag. New options like <tt>
+  --mem-debug </tt> . More beautiful summary table in configure
+  script. Etc.
+</p>
+</li>
+<li>
+<p>
+Tray placement bug fix (appeared in amsn). Thanks for bug report to
+  Thomas Lundgaard.
+</p>
+</li>
+<li>
+<p>
+Libev was removed from dependencies. Actually the panel doesn&#8217;t
+  require <em>high performance</em> event loop. Because it isn&#8217;t a http
+  server.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><div class="title">11 June 2008</div><p>BMPanel&#8217;s page update. Old page is available
+<a href="index-old.html">here</a>.</p></div>
+<div class="paragraph"><div class="title">10 June 2008</div><p>BMPanel 0.9.21 release. There are not so many changes:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Remove scons build system. Replace it with custom configure and
+  Makefile scripts. It isn&#8217;t definitely portable approach, but bmpanel
+  isn&#8217;t portable app. It should work on latest linux distributions
+  (better if distribution is "rolling releases" like gentoo or
+  archlinux).
+</p>
+</li>
+<li>
+<p>
+Few bug fixes. They were on git master for some time, now they are
+  in the source distribution.
+</p>
+</li>
+<li>
+<p>
+It&#8217;s tradition and I forgot to bump up bmpanel&#8217;s version string. So,
+  <tt> bmpanel --version </tt> shows wrong info. I need to rethink
+  this versioning thing.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>To install type: <tt> ./configure && make && make install </tt></p></div>
+<div class="paragraph"><p>or <tt> ./configure --help </tt> for available options</p></div>
+<div class="paragraph"><p>Makefile supports <strong>DESTDIR</strong> for package maintainers.</p></div>
+<div class="paragraph"><p>However, my configure script and Makefiles are not perfect yet. I&#8217;m
+working on it. For example, they lack global system CFLAGS support, to
+use optimizations in PKGBUILD and gentoo&#8217;s ebuilds.</p></div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-5400106-1");
+pageTracker._trackPageview();
+</script>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2009-06-29 17:07:22 YEKST
+</div>
+</div>
+</body>
+</html>

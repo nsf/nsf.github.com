@@ -1,0 +1,141 @@
+<html><head><title>bmpanel</title></head><body>
+<i>quick links: </i><br />
+[[
+<a href="http://www.punbb-hosting.com/forums/bmpanel">forums</a> :: 
+<a href="http://nsf.110mb.com/bmpanel/bmpanel-0.9.21.tar.gz">last version</a> ::
+<a href="http://jiss.convex.ru">nsf pub git repo</a> ::
+<a href="http://github.com/nsf/bmpanel/tree">git repo mirror on	github.com</a> ]]
+<h2>BMPanel</h2>
+BMPanel is a lightweight panel with taskbar, tray, desktop switcher and clock. 
+It is themeable reincarnation of fspanel. Panel should work with NETWM (aka 
+EWMH) compliant window manager (tested on openbox3). Systray follows only 
+systray-spec, KDE tray is not supported (cause there is standard, everything 
+else must die).<br />
+BMPanel uses imlib2, freetype2, Xlib, libev.<br />
+<img src="images/panel.png" /><br />
+<i>(themes/native theme on screenshot)</i><br />
+<img src="images/bmpanelc.jpg" /><br />
+<i>(arch theme on screenshot, new composite mode)</i><br /><br />
+I'm interrested in various contributions like:<br />
+ - themes<br />
+ - screenshots<br />
+ - bug report (if any) and bug fixes<br />
+ - simple feedback (what do you like and what you do not like in bmpanel)<br />
+You can find my mail in themes/native/theme file ;)<br />
+<h2>Forum</h2>
+Kinda official forum here: <a href="http://www.punbb-hosting.com/forums/bmpanel">http://www.punbb-hosting.com/forums/bmpanel</a>
+<h2>Git</h2>
+There is an address of my public git repo where bmpanel is located: <a href="http://jiss.convex.ru">http://jiss.convex.ru</a> (gitweb + git-daemon). 
+If link isn't responding, probably my PC is offline. Repo is located on my home workstation which has no 24/7 uptime.<br />
+For lazy people - copy 'n' paste 'n' execute this command: <code>git clone git://jiss.convex.ru/bmpanel.git</code><br /><br />
+I think it is very unlikely that you will see changes in git repo, which are not introduced in source package, 
+because I like to release products often. I gave you a link to git repo in case if you are a developer and want to contribute to bmpanel. 
+Git pulling is just prefereable way for me to get your patch. So, if you are a package maintainer, there is no point to make the 'bmpanel-git' package.<br /><br />
+24/7 online git copy is available on github hosting <a href="http://github.com/nsf/bmpanel/tree">here</a>. If you're creating bmpanel-git package, please use this git repo.
+<h2>Files</h2>
+See INSTALL for install notes.<br />
+<a href="http://nsf.110mb.com/bmpanel/bmpanel-0.9.15.tar.gz">bmpanel-0.9.15.tar.gz</a><br />
+<a href="http://nsf.110mb.com/bmpanel/bmpanel-0.9.21.tar.gz">bmpanel-0.9.21.tar.gz</a><br />
+<a href="http://nsf.110mb.com/bmpanel/arch.tar.gz">arch.tar.gz</a> - '<a href="http://www.picamatic.com/show/2008/05/26/06/327933_1440x900.jpg">arch</a>' theme (showing new argb skinning abilities)<br />
+<font color="#FF0000">Notice!</font> As of version 0.9.16, bmpanel uses new fontconfig font searching style. If you are using
+custom themes, you should fix them. No font filenames now! Only font names. See: <a href="http://fontconfig.org/fontconfig-user.html">fontconfig user manual</a>.
+But as before, only ttf fonts are allowed. Quick examples: <br />
+<code>DejaVuSans-14<br />
+DejaVuSans-8:bold<br />
+Verdana-12:italic</code>
+<br /><br />
+<b>archlinux</b> users may find PKGBUILD in AUR, or simply use 'yaourt -S bmpanel'<br /><br />
+<h2>Themes</h2>
+<i>(correct for last release)</i><br />
+Themes are very simple. Theme files must be in separate directory and must
+have the "theme" file. Theme file is a simple configuration file, which contains
+key/value pairs. Theme parser can parse three types of lines:<br />
+1. empty line - first symbol is '\n', empty lines are skipped<br />
+2. comment line - first symbol is '#', comment lines are skipped too<br />
+3. key/value line - first word is key and everything else on the line is the value<br /><br />
+All keys are predefined by the panel itself. Values have different types, such as:<br />
+1. [string] - text string ;)<br />
+2. [integer] - integer number<br />
+3. [image] - image file name, for example: "linux.png"<br />
+4. [font] - the fontconfig search pattern, see: <a href="http://fontconfig.org/fontconfig-user.html">fontconfig user manual</a><br />
+5. [color] - six letters (hex representation of color), just like in html, but without '#'. I.e. example: FF00ff<br />
+6. Everything else is considered to be a special value, it could be part of enumeration, or a specially parsed string.<br /><br />
+Let's take a look at themes/native/theme files. For example, if there are
+four sections (general, clock, taskbar, desktop switcher) then:<br /><br />
+<b>* general *</b><br />
+name [string] - theme name<br />
+author [string] - theme authors name<br />
+version_major [integer] - major version number<br />
+version_minor [integer] - minor version number<br /><br />
+First four lines are basic information about the theme, and are currently not used anywhere, but possibly it could be
+used in some kind of a theme browser.<br /><br />
+use_composite [integer] - 1 to use composite/render extensions for rendering and 0 to don't use.<br />
+height_override [integer] - force height of a panel to this value, usable for themes with a lot of transparent stuff.<br />
+placement [enum:bottom|top] - bmpanel placement<br />
+tile_img [image] - background horizontal tile image<br />
+separator_img [image] - separator image, which is placed between panel, to separate elements such as taskbar, clock, etc.<br />
+<img src="images/separator_img.png"><br />
+tray_icon_w [integer] - tray icon width<br />
+tray_icon_h [integer] - tray icon height<br />
+tray_space_gap [integer] - space between tray icons and separators<br />
+tray_icons_spacing [integer] - space between tray icons<br />
+elements [string] - special string, which defines tray order and
+presence of elements in the panel: 's' - desktop switcher, 'b' - taskbar, 't' -
+tray, 'c' - clock, for example: sbtc (desktop switcher then taskbar then
+tray then clock), taskbar gets all the empty space left, and defines alignment of other
+elements<br /><br />
+That's it, all general key/values. Then following configuraion for each element:<br />
+<b>* clock *</b><br />
+clock_right_img [image] - right corner of clocks background<br />
+clock_tile_img [image] - clock background tile image<br />
+clock_left_img [image] - left corner of clocks background<br />
+<img src="images/clock.png"><br />
+clock_font [font] - clock font, better if all numbers have fixed width<br />
+clock_text_color [color] - color of the clock text (white on screenshot)<br />
+clock_text_offset_x [integer] - horizontal clock text offset, in case you want to move
+the text, to fit the theme do it here<br />
+clock_text_offset_y [integer] - same as horizontal offset, but vertical<br />
+clock_text_padding [integer] - how many pixels clock's background wider than text<br />
+clock_text_align [enum:left|right|center] - text alignment<br />
+clock_space_gap [integer] - separator gap between separators and clock<br />
+clock_format [string] - clock text format (%H:%M:%S for hours:minutes:seconds)<br />
+<img src="images/clock_space_gap.png"><br /><br />
+<b>* taskbar *</b><br />
+tb_right_*_img [image] - right corner of taskbar's buttons<br />
+tb_tile_*_img [image] - tile image of taskbar's buttons<br />
+tb_left_*_img [image] - left corner of taskbar's buttons<br />
+<img src="images/taskbar.png"><br />
+tb_default_icon_img [image] - default icon for taskbar buttons (in case if program didn't supply one)<br />
+tb_font [font] - font of button's captions<br />
+tb_text_color_* [color] - color of button's captions<br />
+tb_text_offset_x [integer] - same as in clock, but for buttons text<br />
+tb_text_offset_y [integer] - same as in clock, but for buttons text<br />
+tb_text_align [enum:left|right|center] - same as in clock, but for button's text<br />
+tb_separator_img [image] - optional separator image, inserted between taskbar's buttons<br />
+tb_icon_offset_x [integer] - same as text offset but for icons<br />
+tb_icon_offset_y [integer] - same as text offset but for icons<br />
+tb_icon_w [integer] - icon width, better if it has the same width as tb_default_icon_img<br />
+tb_icon_h [integer] - icon height, better if if has the same height as tb_default_icon_img<br />
+<i>(if icon width/height equals zero, the icons are not drawn)</i><br />
+tb_space_gap [integer] - empty space (gap) between taskbar buttons and separators<br />
+<img src="images/taskbar_space_gap.png"><br /><br />
+<b>* desktop switcher *</b><br />
+ds_left_corner_*_img [image]<br />
+ds_right_corner_*_img [image]<br />
+ds_right_*_img [image]<br />
+ds_tile_*_img [image]<br />
+ds_left_*_img [image] - see these on screenshot below, this should be pretty much self-explanatory<br />
+<img src="images/switcher.png"><br />
+ds_font [font] - boring stuff..<br />
+ds_text_color_* [color] - boring stuff..<br />
+ds_text_offset_x [integer] - even more boring stuff here..<br />
+ds_text_offset_y [integer] - even more boring stuff here..<br />
+ds_text_padding [integer] - same as in other elements<br />
+ds_text_align [enum:left|right|center] - same as in other elements<br />
+ds_space_gap [integer] - see screenshot below<br />
+ds_separator_img [image] - see screenshot below<br />
+<img src="images/switcher_sepgap.png"><br /><br />
+Most of the images, and some of integers are not necessary. See themes/redmini for a minimalistic example.
+
+
+</body></html> 

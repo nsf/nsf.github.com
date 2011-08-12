@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.5.2" />
+<title>BMPanel&#8217;s page</title>
+<link rel="stylesheet" href="data/xhtml11.css" type="text/css" />
+<link rel="stylesheet" href="data/xhtml11-quirks.css" type="text/css" />
+<script type="text/javascript">
+/*<![CDATA[*/
+window.onload = function(){asciidoc.footnotes(); asciidoc.toc(2);}
+/*]]>*/
+</script>
+<script type="text/javascript" src="data/asciidoc-xhtml11.js"></script>
+</head>
+<body>
+<div id="header">
+<h1>BMPanel&#8217;s page</h1>
+<div id="toc">
+  <div id="toctitle">Table of Contents</div>
+  <noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph"><p><span class="image">
+<img src="images/panel.png" alt="bmpanel - native theme" />
+</span><br />
+<span class="image">
+<img src="images/bmpanelc.jpg" alt="bmpanel - arch theme" />
+</span></p></div>
+</div>
+</div>
+<h2 id="bmpanel">BMPanel <a href="http://code.google.com/p/bmpanel2">2</a></h2>
+<div class="sectionbody">
+<div class="paragraph"><p>BMPanel (BitMap Panel) is a lightweight,
+<a href="http://freedesktop.org/Standards/wm-spec">NETWM</a> compliant panel
+for X11 Window System, which contains a desktop switcher, taskbar,
+system tray and clock. The application is inspired by simplicity of
+fspanel.  BMPanel has a modern look and feel, while keeping itself
+tiny and small.</p></div>
+<div class="paragraph"><p>It is written in C and has only a few dependencies, such as: imlib2,
+xlib, fontconfig, xrender and xcomposite extensions. Also, the panel
+has a few notable features:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+BMPanel can select ARGB visuals providing, together with composite
+   manager, a true transparency (but system tray doesn&#8217;t work in
+   composite mode).
+</p>
+</li>
+<li>
+<p>
+BMPanel has no configuration files. Its behaviour is customized via
+   themes.
+</p>
+</li>
+<li>
+<p>
+Well, it is themable!
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>BMPanel doesn&#8217;t try to be portable. It should work on a distribution
+with the latest <a href="http://kernel.org">Linux kernel</a> and with the
+latest software (probably CVS/SVN/git versions). Supported
+architectures are <strong>x86</strong> (32 bit) and <strong>x86_64</strong> (64 bit). However,
+BMpanel may work on other distributions, kernels (like FreeBSD) and
+even architectures, but it isn&#8217;t guaranteed. <strong>Update:</strong> It was reported
+to run on <strong>PowerPC</strong>.</p></div>
+</div>
+<h2 id="latest_news">Latest News</h2>
+<div class="sectionbody">
+<div class="paragraph"><p><em>There are only 3 latest news in this section, all news history is
+<a href="news-history.html">here</a></em></p></div>
+<div class="paragraph"><div class="title">29 June 2009</div><p>Couple of weeks ago I had created a development blog. My english sucks, but I&#8217;m
+practicing.  Anyway, currently there are only few bmpanel2 entries in that
+blog. If you&#8217;re interested in the bmpanel2 project, welcome!</p></div>
+<div class="paragraph"><p><a href="http://nsfdev.wordpress.com">http://nsfdev.wordpress.com</a></p></div>
+<div class="paragraph"><div class="title">2 June 2009</div><p>I suck at making videos. But anyway:
+<a href="http://www.youtube.com/watch?v=1bq_WLxeahY">http://www.youtube.com/watch?v=1bq_WLxeahY</a>.</p></div>
+<div class="paragraph"><p>This is my first youtube video ever uploaded :) So.. The demo shows 3 simple
+features of upcoming bmpanel2: drag&#8217;n'drop tasks on taskbar, drag&#8217;n'drop tasks
+from taskbar to desktop switcher (move tasks between desktops), and drag&#8217;n'drop
+tasks out off the panel to kill them (close app). My english sucks too, just
+see the video :)</p></div>
+<div class="paragraph"><div class="title">28 April 2009</div><p>Misterious screenshot is
+<a href="http://nsf.110mb.com/bmpanel/bmpanel2_wip.png">here</a>.</p></div>
+<div class="paragraph"><p>What this is all about? Well, it&#8217;s a WIP (work in progress) bmpanel2
+build. And as you can see, there is a plenty of things implemented.
+Desktop switcher, taskbar and clock are fully functional. There is
+actually one more type of a widget called "decor", but it&#8217;s not shown
+on the screenshot. Decor widget allows you to put any image on the
+panel. But it&#8217;s not the only thing hidden.</p></div>
+<div class="paragraph"><p>Here is a little summary.</p></div>
+<div class="paragraph"><p>Bmpanel2 is being built on top of four solid libraries. <strong>Cairo</strong> for
+rendering, <strong>pango</strong> as a text layout engine, <strong>xlib</strong> as a X11
+communication utility and <strong>glib2</strong> as a main loop implementation. It is
+still carefully written in pure C. Bmpanel2 has a new theme format and
+a completely redesigned internal structure, which allows you to create
+new types of widgets really fast. And there are also few notable
+things like drag&#8217;n'drop support, XDG conformance and settings file.</p></div>
+<div class="paragraph"><p>Even though it works already, there is a lot of things to be done. A
+proper systray implementation, correct composite and shaping support,
+documentation (which includes a man page, a theme tutorial and
+technical notes for programmers), web page, new pack of
+professionally designed themes, multihead support, etc.</p></div>
+<div class="paragraph"><p>And after all, it needs to be tested. So.. keep this address in your
+favourites and come back often, someday it will be released.</p></div>
+<div class="paragraph"><p>P.S. Sources are available on my public git repo which is located on
+my machine (browse sources <a href="http://jiss.convex.ru/git/bmpanel2.git">here</a>).
+However, they are not usable for mere mortals yet, go there only if
+you have programming interest.</p></div>
+</div>
+<h2 id="downloads">Downloads</h2>
+<div class="sectionbody">
+<div class="paragraph"><div class="title">Source version</div><p>The latest version: <a href="bmpanel-0.9.27.tar.gz">bmpanel-0.9.27.tar.gz</a> (30kb)</p></div>
+<div class="paragraph"><p>You can also try to download older versions by changing raw url. But I
+can&#8217;t give any promises that they will stay here forever.</p></div>
+<div class="paragraph"><div class="title">Distribution packages</div><p>ArchLinux (AUR): <a href="http://aur.archlinux.org/packages.php?ID=15165">http://aur.archlinux.org/packages.php?ID=15165</a></p></div>
+</div>
+<h2 id="development">Development</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>All open source projects are always in development. BMPanel is not an
+exception. It needs various contributions like:</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<strong>Ports</strong>
+</dt>
+<dd>
+<p>
+BMPanel currently works only on x86 and x86_64 machines.
+</p>
+</dd>
+<dt class="hdlist1">
+<strong>Themes</strong>
+</dt>
+<dd>
+<p>
+If you are an artist or have such skills and you like bmpanel, you
+can make a theme, which will be included in source distribution. Even
+if you can&#8217;t deal with actual theme creation, just draw a look of
+theme and I or someone else will help you create actual theme.
+</p>
+</dd>
+<dt class="hdlist1">
+<strong>Distribution</strong>
+</dt>
+<dd>
+<p>
+Wider distribution means more chances to get what I need (and possibly
+others too). Make a package for your Linux distribution or suggest
+your friend to try bmpanel.
+</p>
+</dd>
+<dt class="hdlist1">
+<strong>Bug reports</strong>
+</dt>
+<dd>
+<p>
+There are bugs in software. Always. If something works wrong or
+doesn&#8217;t work at all, don&#8217;t delete bmpanel, first of all, let me know.
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>Please! Put bug reports
+<a href="http://nsf.byethost8.com/index.php?do=newtask&amp;project=2">here</a></p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<strong>Theme tutorial</strong>
+</dt>
+<dd>
+<p>
+I have only an old version <a href="index-old.html">here</a>, but it sucks.
+</p>
+</dd>
+</dl></div>
+<h3 id="git_repo">Git repository</h3><div style="clear:left"></div>
+<div class="paragraph"><p>One way to get bmpanel&#8217;s source code is to download a source
+distribution. But there is an another way. I have my public git
+repository online (not 24/7) and you can access it here:</p></div>
+<div class="paragraph"><p><a href="http://jiss.convex.ru">http://jiss.convex.ru</a></p></div>
+<div class="paragraph"><p>There is also a more reliable mirror on github.com:</p></div>
+<div class="paragraph"><p><a href="http://github.com/nsf/bmpanel">http://github.com/nsf/bmpanel</a></p></div>
+<div class="paragraph"><p>Or you can use the following <tt>git</tt> commands:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>git clone git://jiss.convex.ru/bmpanel.git
+git clone git://github.com/nsf/bmpanel.git</tt></pre>
+</div></div>
+</div>
+<h2 id="themes">Themes</h2>
+<div class="sectionbody">
+<div class="paragraph"><p><em>(All themes &lt; 10kb)</em></p></div>
+<div class="paragraph"><p>arch theme: <a href="arch.tar.gz">arch.tar.gz</a></p></div>
+<div class="paragraph"><p>darkpink18 theme: <a href="darkpink18.tar.gz">darkpink18.tar.gz</a></p></div>
+<div class="paragraph"><p>Blacky theme: <a href="Blacky.tar.gz">Blacky.tar.gz</a></p></div>
+<div class="paragraph"><p>clearlooks theme: <a href="clearlooks.tar.gz">clearlooks.tar.gz</a></p></div>
+<div class="paragraph"><p>transpy theme: <a href="transpy.tar.gz">transpy.tar.gz</a></p></div>
+<div class="paragraph"><p>darkblack18 theme: <a href="darkblack18.tar.gz">darkblack18.tar.gz</a></p></div>
+<div class="paragraph"><p>simplegray theme: <a href="simplegray.tar.gz">simplegray.tar.gz</a></p></div>
+<div class="paragraph"><p>tint theme: <a href="tint.tar.gz">tint.tar.gz</a></p></div>
+<div class="paragraph"><p>tint-pack themes (updated tint with multiple colors): <a href="tint-pack.tar.gz">tint-pack.tar.gz</a></p></div>
+<div class="paragraph"><p>inverted clearlooks theme: <a href="clearlooks_iv.tar.gz">clearlooks_iv.tar.gz</a></p></div>
+<div class="paragraph"><p>glass water theme: <a href="glasswater.tar.gz">glasswater.tar.gz</a></p></div>
+<div class="paragraph"><p>carbon theme: <a href="carbon.tar.gz">carbon.tar.gz</a></p></div>
+</div>
+<h2 id="contacts">Contacts</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>You can send an email to me: <a href="mailto:no.smile.face@gmail.com">no.smile.face@gmail.com</a>, my
+nickname is nsf.</p></div>
+<div class="paragraph"><p>Or find me on IRC @ Freenode [nick: nsf] (channels: #archlinux,
+#archlinux-ru).</p></div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-5400106-1");
+pageTracker._trackPageview();
+</script>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2010-01-09 14:28:01 YEKST
+</div>
+</div>
+</body>
+</html>
